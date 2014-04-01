@@ -20,11 +20,15 @@ from pygame.locals import *
 from maproom1 import *
 from maproom2 import *
 
+from selector import *
 from taskbar import *
 from time import *
 from inventory import *
 from meter import *
+from playergnollfighter import*
+from playerhumanfighter import*
 from playerkattafighter import*
+from playerelffighter import*
 from playerdrowmage import *
 
 class Game:
@@ -44,33 +48,45 @@ class Game:
         self.x = 0
         self.y = 0
         
+        while gameover == 0:
+            pygame.display.update()
+            screen.blit(titleimage, (0,0))
+            for event in pygame.event.get():
+                if event.type == QUIT:
+                    return
+                elif event.type == KEYDOWN:
+                    gameover = 1
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    gameover = 1
+
         self.room = Maproom1(0,0)
         heartmeter = Meter()
-        player = PlayerDrowMage(heartmeter)
-##        selector = Selector(screen, font)
-##
-##        selector.select()
-##        
+###        player = PlayerDrowMage(heartmeter)
+        screen.blit(blankimage, (0,0))
+        selector = Selector(screen, font)
+
+        selector.select()
+        
 ##	heartmeter = Meter()
-##	player = PlayerFighter(heartmeter)##default fighter class
-##	if selector.askrace() == "Human":
-##            if selector.askclass() == "Fighter":
-##                player = PlayerHumanFighter(heartmeter)
-##            elif selector.askclass() == "Magic User":
-##                player = PlayerMagicUser(heartmeter)
-##        if selector.askrace() == "Bugbear":
-##            if selector.askclass() == "Fighter":
-##                player = PlayerGnollFighter(heartmeter)
-##        if selector.askrace() == "Katta":
-##            if selector.askclass() == "Fighter":
-##                player = PlayerKattaFighter(heartmeter)
-##        if selector.askrace() == "Elven":
-##            if selector.askclass() == "Fighter":
-##                player = PlayerElfFighter(heartmeter)
-##        if selector.askrace() == "Abeille":
-##            if selector.askclass() == "Fighter":
-##                player = PlayerAbeilleFighter(heartmeter)
-##        
+##	player = PlayerFighter(heartmeter)default fighter class
+	if selector.askrace() == "Human":
+            if selector.askclass() == "Fighter":
+                player = PlayerHumanFighter(heartmeter)
+            elif selector.askclass() == "Magic User":
+                player = PlayerMagicUser(heartmeter)
+        if selector.askrace() == "Bugbear":
+            if selector.askclass() == "Fighter":
+                player = PlayerGnollFighter(heartmeter)
+        if selector.askrace() == "Katta":
+            if selector.askclass() == "Fighter":
+                player = PlayerKattaFighter(heartmeter)
+        if selector.askrace() == "Elven":
+            if selector.askclass() == "Fighter":
+                player = PlayerElfFighter(heartmeter)
+        if selector.askrace() == "Abeille":
+            if selector.askclass() == "Fighter":
+                player = PlayerAbeilleFighter(heartmeter)
+        
 ##        player2 = None
 ##        
       
@@ -83,17 +99,6 @@ class Game:
         self.taskbar = Taskbar(screen,font,player)
         self.talker = None
         
-        while gameover == 0:
-            pygame.display.update()
-            screen.blit(titleimage, (0,0))
-            for event in pygame.event.get():
-                if event.type == QUIT:
-                    return
-                elif event.type == KEYDOWN:
-                    gameover = 1
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    gameover = 1
-
         pygame.key.set_repeat(1,1)
         gameover = 0
         while gameover == 0:

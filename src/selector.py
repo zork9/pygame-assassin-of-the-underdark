@@ -27,11 +27,11 @@ class Selector:
         self.klass = "Fighter"
         self.race = "Human"
         # fighters
-        self.humanfighterimage = pygame.image.load('./pics/taskbar-PC.bmp').convert()
-        self.gnollfighterimage = pygame.image.load('./pics/taskbar-PC-gnoll.bmp').convert()
-        self.kattafighterimage = pygame.image.load('./pics/taskbar-PC-kattafighter.bmp').convert()
-        self.elffighterimage = pygame.image.load('./pics/taskbar-PC-elffighter.bmp').convert()
-        self.abeillefighterimage = pygame.image.load('./pics/taskbar-PC-abeillefighter.bmp').convert()
+        self.humanfighterimage = pygame.image.load('./pics/playerhumanmage1-48x48.bmp').convert()
+        self.gnollfighterimage = pygame.image.load('./pics/playergnollfighter1-48x48.bmp').convert()
+        self.kattafighterimage = pygame.image.load('./pics/playerkattafighter1-48x48.bmp').convert()
+        self.elffighterimage = pygame.image.load('./pics/playerelffighter1-48x48.bmp').convert()
+###        self.abeillefighterimage = pygame.image.load('./pics/taskbar-PC-abeillefighter.bmp').convert()
         # magic users
        
         # thieves
@@ -43,7 +43,7 @@ class Selector:
         self.screen.blit(self.gnollfighterimage, (50,0))
         self.screen.blit(self.kattafighterimage, (100,0))
         self.screen.blit(self.elffighterimage, (150,0))
-        self.screen.blit(self.abeillefighterimage, (200,0))
+###        self.screen.blit(self.abeillefighterimage, (200,0))
         # magic users
         
 

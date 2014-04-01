@@ -20,33 +20,38 @@ from stateimagelibrary import *
 from playerkatta import *
 from playerfighter import *
 from playermagicuser import *
+from playerthief import *
 from playerelf import *
+from playergnoll import *
 from playerdrow import *
+from playerhuman import *
+
 
 class PlayerBase:
     def __init__(self):
-        1
+       	1	 
 
 class PlayerBase(PlayerBase,PlayerBase):
     "Player"
 
-    PlayerBase.FIGHTER,PlayerBase.MAGICUSER = xrange(2)#,PlayerBase.MAGICUSER,PlayerBase.THIEF = xrange(3)
-    PlayerBase.KATTA,PlayerBase.DROW = xrange(2)#,PlayerBase.HUMAN,PlayerBase.DROW = xrange(3)
+    PlayerBase.FIGHTER,PlayerBase.MAGICUSER,PlayerBase.THIEF = xrange(3)
+    PlayerBase.ELF,PlayerBase.GNOLL,PlayerBase.KATTA,PlayerBase.HUMAN,PlayerBase.DROW = xrange(5)
     
     def __init__(self,PLAYERRACE,PLAYERCLASS,heartmeter):
         classByType = {
-                #PlayerBase.HUMAN : PlayerHuman,
+                PlayerBase.HUMAN : PlayerHuman,
+                PlayerBase.GNOLL : PlayerGnoll,
                 PlayerBase.KATTA : PlayerKatta,
-                #PlayerBase.ELF : PlayerElf,
+                PlayerBase.ELF : PlayerElf,
                 PlayerBase.DROW : PlayerDrow,
         }
         classByType2 = {
                 PlayerBase.FIGHTER : PlayerFighter,
                 PlayerBase.MAGICUSER : PlayerMagicUser,
-                #Player.THIEF : PlayerThief,
+                PlayerBase.THIEF : PlayerThief,
         }
 	self.heartmeter = heartmeter
-
+	self.hitpoints = 78
         self.x = 150 
         self.y = 150 
         self.w = 48 
@@ -151,4 +156,28 @@ class PlayerBase(PlayerBase,PlayerBase):
 
     def askpicture(self):
         return './pics/taskbar-PC.bmp'
+
+    def collidewithenemyweapon(self,room,o):
+        if o.collide(room,self):
+		return self ## NOTE : returns collided entity (single)
+		
+	return None
+
+    def hitwithenemyweapon(self,damage):
+	if damage > 0:
+		print 'player is hit!'
+        self.hitpoints -= damage
+
+    def pickup(self,room):
+        n = room.pickup(self)
+	return n
+
+    def fight(self,room):
+        self.fightcounter = 1
+        o = room.collidesword(self)
+        if o:
+            o.hitwithweapon(self.sword.roll())
+       
+    def setrubysword(self):
+	self.sword = RubySword(0,0)
 

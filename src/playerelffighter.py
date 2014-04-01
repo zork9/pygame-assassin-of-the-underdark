@@ -22,7 +22,7 @@ from playerbase import *
 class PlayerElfFighter(PlayerBase):
     "playerelffighter Fighter"
     def __init__(self,heartmeter):
-        PlayerBase.__init__(self,heartmeter)
+        PlayerBase.__init__(self,PlayerBase.ELF,PlayerBase.FIGHTER,heartmeter)
 
         self.stimlib = Stateimagelibrary()	
         image = pygame.image.load('./pics/playerelffighter1-48x48.bmp').convert()

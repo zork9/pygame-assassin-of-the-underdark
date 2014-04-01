@@ -17,10 +17,10 @@
 import pygame
 from pygame.locals import *
 from stateimagelibrary import *
-from playerbase import *
+#from playerbase import *
 
-class PlayerHumanFighter(PlayerBase):
+class PlayerGnoll:
     "Player Fighter"
     def __init__(self,heartmeter):
-        PlayerBase.__init__(self,PlayerBase.HUMAN, PlayerBase.FIGHTER, heartmeter)
+        1#PlayerBase.__init__(self,heartmeter)
 
