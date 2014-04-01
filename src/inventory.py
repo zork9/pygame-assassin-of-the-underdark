@@ -26,11 +26,11 @@ class Inventory(object):
         self.background = pygame.image.load('./pics/blank.bmp').convert()
         self.list = []
 	self.ITEMWIDTH = 36 
-	self.ITEMMAX = 7 
+	self.ITEMMAX = 8 
         self.list.append(Inventorybomb())
 
-###        self.rectimage = pygame.image.load('./pics/rectinventory-36x36.bmp').convert()
-###        self.rectimage.set_colorkey((0,0,0))
+        self.rectimage = pygame.image.load('./pics/rectinventory-36x36.bmp').convert()
+        self.rectimage.set_colorkey((0,0,0))
         self.selectioncounter = 0 
 
     def draw(self,screen):
@@ -42,12 +42,12 @@ class Inventory(object):
             if o:
                 o.draw(screen,40*(i%self.ITEMMAX),i/36)
 
-	x = self.selectioncounter * self.ITEMWIDTH % self.ITEMMAX*self.ITEMWIDTH 
+	x = self.selectioncounter * self.ITEMWIDTH % (self.ITEMMAX*self.ITEMWIDTH) 
 	y = self.selectioncounter / self.ITEMMAX * self.ITEMWIDTH
         self.drawrect(screen,x,y)
 
     def drawrect(self,screen,x,y):
-        1 ###screen.blit(self.rectimage, (x, y))
+        screen.blit(self.rectimage, (x, y))
 
 
     def moveleft(self):

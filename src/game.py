@@ -148,6 +148,7 @@ class Game:
                        		1###FIX for key in inventory.additem(Inventorykey1())
                        	if self.inventorykey2 == 1:
                        		1###FIX for key in inventory
+        		pygame.key.set_repeat(1000,1000)
 			while flag == 0:#NOTE1
                             for event in pygame.event.get():
                                 if event.type == QUIT:
