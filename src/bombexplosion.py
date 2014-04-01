@@ -17,15 +17,14 @@
 import pygame
 from pygame.locals import *
 from gameobject import *
-from bombexplosion import *
 
-class Bomb(Gameobject):
+class BombExplosion(Gameobject):
     ""
     def __init__(self, xx,yy):
         Gameobject.__init__(self,xx,yy)
         self.w = 16 
         self.h = 16 
-        self.image = pygame.image.load('./pics/bomb1-16x16.bmp').convert()
+        self.image = pygame.image.load('./pics/bombexplosion2-36x36.bmp').convert()
         self.image.set_colorkey((0,0,0)) 
    	self.counter = 0 
 
@@ -33,7 +32,7 @@ class Bomb(Gameobject):
     def update(self,room,player):
 	self.counter += 1
 	j = 0
-	if (self.counter > 9):
+	if (self.counter > 4):
 	    for i in room.gameobjects:
 		if (i == self):
 		    l = 0
@@ -41,7 +40,6 @@ class Bomb(Gameobject):
 			if i != k and k and k.collideobjectXY(room):
 			    room.gameobjects[l] = None
 			l += 1    	
-		    room.gameobjects.append(BombExplosion(k.x,k.y)) 
-		    room.gameobjects[j] = None
+		    room.gameobjects[j] = None 
 		    return
 	    	j += 1 
