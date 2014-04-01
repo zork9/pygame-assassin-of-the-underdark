@@ -23,7 +23,7 @@ from inventoryitem import *
 
 class Inventorybomb(Inventoryitem):
     def __init__(self):
-        Inventoryitem.__init__(self, "./pics/bomb1.bmp")
+        Inventoryitem.__init__(self, "./pics/bomb-inventory-68x72.bmp")
 
     def use(self,e,game):
         print 'You used a bomb on %s' % e

@@ -29,7 +29,7 @@ class Bomb(Gameobject):
    	self.counter = 0 
 
 
-    def update(self,room):
+    def update(self,room,player):
 	self.counter += 1
 	j = 0
 	if (self.counter > 50):
