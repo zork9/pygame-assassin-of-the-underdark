@@ -18,6 +18,7 @@ import pygame
 from pygame.locals import *
 from stateimagelibrary import *
 from playerbase import *
+from broadsword import *
 
 class PlayerElfFighter(PlayerBase):
     "playerelffighter Fighter"
@@ -66,6 +67,8 @@ class PlayerElfFighter(PlayerBase):
         image = pygame.image.load('./pics/playerelffighterfight3-48x48.bmp').convert()
         image.set_colorkey((0,0,0))
         self.stimlibfight.addpicture(image)
+	self.sword = BroadSword(0,0)
+
 
 
     def askclass(self):

@@ -18,6 +18,7 @@ import pygame
 from pygame.locals import *
 from stateimagelibrary import *
 from playerbase import *
+from broadsword import*
 
 class PlayerGnollFighter(PlayerBase):
     "Player Fighter"
@@ -66,6 +67,8 @@ class PlayerGnollFighter(PlayerBase):
         image = pygame.image.load('./pics/playergnollfighterfight3-48x48.bmp').convert()
         image.set_colorkey((0,0,0))
         self.stimlibfight.addpicture(image)
+	self.sword = BroadSword(0,0)
+
 
     def askclass(self):
         return "Fighter"

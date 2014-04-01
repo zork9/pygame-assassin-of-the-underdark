@@ -18,9 +18,11 @@ import pygame
 from pygame.locals import *
 from stateimagelibrary import *
 from playerbase import *
+from broadsword import *
 
 class PlayerHumanFighter(PlayerBase):
     "Player Fighter"
     def __init__(self,heartmeter):
         PlayerBase.__init__(self,PlayerBase.HUMAN, PlayerBase.FIGHTER, heartmeter)
+	self.sword = BroadSword(0,0)
 

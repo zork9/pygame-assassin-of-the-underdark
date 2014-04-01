@@ -22,7 +22,7 @@ import random
 from rng import *
 
 class BroadSword(Gameobject):
-    "Ruby Sword"
+    "BroadSword"
     def __init__(self,xx,yy):
 	Gameobject.__init__(self, xx, yy)
         self.w = 36
