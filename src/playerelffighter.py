@@ -20,8 +20,8 @@ from stateimagelibrary import *
 from playerbase import *
 from broadsword import *
 
-class PlayerElfFighter(PlayerBase):
-    "playerelffighter Fighter"
+class PlayerElfMagicuser(PlayerBase):
+    "playerelffighter Magicuser"
     def __init__(self,heartmeter):
         PlayerBase.__init__(self,PlayerBase.ELF,PlayerBase.FIGHTER,heartmeter)
 
@@ -72,7 +72,7 @@ class PlayerElfFighter(PlayerBase):
 
 
     def askclass(self):
-        return "Fighter"
+        return "Magicuser"
 
     def askrace(self):
         return "Elf"

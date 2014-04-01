@@ -48,7 +48,7 @@ class PlayerBase(PlayerBase,PlayerBase):
         }
         classByType2 = {
                 PlayerBase.FIGHTER : PlayerFighter,
-                PlayerBase.MAGICUSER : PlayerMagicUser,
+                PlayerBase.MAGICUSER : PlayerMagicuser,
                 PlayerBase.THIEF : PlayerThief,
         }
 	self.heartmeter = heartmeter

@@ -32,6 +32,11 @@ from playerelffighter import*
 from playerdrowfighter import*
 from playerdrowmage import *
 from bomb import *
+from playergnollmagicuser import*
+from playerhumanmagicuser import*
+from playerkattamagicuser import*
+from playerelfmagicuser import*
+from playerdrowmagicuser import*
 
 class Game:
     "Main function"
@@ -39,7 +44,7 @@ class Game:
         pygame.init()
         pygame.font.init()
         screen = pygame.display.set_mode((300, 350))
-        font = pygame.font.SysFont("Times", 14)
+        font = pygame.font.SysFont("Times", 8)
         gameover = 0
 
         askplayers = 0 # NOTE: 2 Player flag
@@ -75,19 +80,27 @@ class Game:
             if selector.askclass() == "Fighter":
                 player = PlayerHumanFighter(heartmeter)
             elif selector.askclass() == "Magic User":
-                player = PlayerMagicUser(heartmeter)
-        elif selector.askrace() == "Bugbear":
+                player = PlayerHumanMagicuser(heartmeter)
+        elif selector.askrace() == "Gnoll":
             if selector.askclass() == "Fighter":
                 player = PlayerGnollFighter(heartmeter)
+            elif selector.askclass() == "Magic User":
+                player = PlayerGnollMagicuser(heartmeter)
         elif selector.askrace() == "Katta":
             if selector.askclass() == "Fighter":
                 player = PlayerKattaFighter(heartmeter)
+            elif selector.askclass() == "Magic User":
+                player = PlayerKattaMagicuser(heartmeter)
         elif selector.askrace() == "Elven":
             if selector.askclass() == "Fighter":
                 player = PlayerElfFighter(heartmeter)
+            elif selector.askclass() == "Magic User":
+                player = PlayerElfMagicuser(heartmeter)
         elif selector.askrace() == "Drow":
             if selector.askclass() == "Fighter":
                 player = PlayerDrowFighter(heartmeter)
+            elif selector.askclass() == "Magic User":
+                player = PlayerDrowMagicuser(heartmeter)
 	else: ### default human fighter
                 player = PlayerHumanFighter(heartmeter)
 ##        if selector.askrace() == "Abeille":

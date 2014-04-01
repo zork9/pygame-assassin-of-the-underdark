@@ -20,58 +20,58 @@ from stateimagelibrary import *
 from playerbase import *
 from broadsword import*
 
-class PlayerGnollFighter(PlayerBase):
-    "Player Fighter"
+class PlayerGnollMagicuser(PlayerBase):
+    "Player Magicuser"
     def __init__(self,heartmeter):
         PlayerBase.__init__(self,PlayerBase.GNOLL,PlayerBase.FIGHTER,heartmeter)
 
         self.stimlib = Stateimagelibrary()	
-        image = pygame.image.load('./pics/playergnollfighter1-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuser1-48x48.bmp').convert()
         image.set_colorkey((0,0,0)) 
 	self.stimlib.addpicture(image)	
-        image = pygame.image.load('./pics/playergnollfighter2-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuser2-48x48.bmp').convert()
         image.set_colorkey((0,0,0)) 
 	self.stimlib.addpicture(image)	
-        image = pygame.image.load('./pics/playergnollfighter3-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuser3-48x48.bmp').convert()
         image.set_colorkey((0,0,0)) 
 	self.stimlib.addpicture(image)	
-        image = pygame.image.load('./pics/playergnollfighter2-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuser2-48x48.bmp').convert()
         image.set_colorkey((0,0,0)) 
 	self.stimlib.addpicture(image)	
-        image = pygame.image.load('./pics/playergnollfighter1-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuser1-48x48.bmp').convert()
         image.set_colorkey((0,0,0)) 
 	self.stimlib.addpicture(image)	
-        image = pygame.image.load('./pics/playergnollfighter2-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuser2-48x48.bmp').convert()
         image.set_colorkey((0,0,0)) 
 	self.stimlib.addpicture(image)	
-        image = pygame.image.load('./pics/playergnollfighter3-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuser3-48x48.bmp').convert()
         image.set_colorkey((0,0,0)) 
 	self.stimlib.addpicture(image)	
 
         self.stimlibfight = Stateimagelibrary()	
-        image = pygame.image.load('./pics/playergnollfighterfight1-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuserfight1-48x48.bmp').convert()
         image.set_colorkey((0,0,0))
         self.stimlibfight.addpicture(image)
-        image = pygame.image.load('./pics/playergnollfighterfight1-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuserfight1-48x48.bmp').convert()
         image.set_colorkey((0,0,0))
         self.stimlibfight.addpicture(image)
-        image = pygame.image.load('./pics/playergnollfighterfight2-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuserfight2-48x48.bmp').convert()
         image.set_colorkey((0,0,0))
         self.stimlibfight.addpicture(image)
-        image = pygame.image.load('./pics/playergnollfighterfight2-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuserfight2-48x48.bmp').convert()
         image.set_colorkey((0,0,0))
         self.stimlibfight.addpicture(image)
-        image = pygame.image.load('./pics/playergnollfighterfight3-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuserfight3-48x48.bmp').convert()
         image.set_colorkey((0,0,0))
         self.stimlibfight.addpicture(image)
-        image = pygame.image.load('./pics/playergnollfighterfight3-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuserfight3-48x48.bmp').convert()
         image.set_colorkey((0,0,0))
         self.stimlibfight.addpicture(image)
 	self.sword = BroadSword(0,0)
 
 
     def askclass(self):
-        return "Fighter"
+        return "Magicuser"
 
     def askrace(self):
         return "Gnoll"
