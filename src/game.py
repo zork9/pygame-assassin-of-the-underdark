@@ -159,9 +159,9 @@ class Game:
                                         inventory.moveleft()
                                     elif event.key == K_RIGHT:
                                         inventory.moveright()
-                                    elif event.key == K_z:
+                                    elif event.key == K_z or event.key == K_x:
                                         self.inventoryitem = inventory.getitem(self.inventoryitem)
-
+					print "%s selected" % (self.inventoryitem)
                                         flag = 1
 
 
