@@ -161,7 +161,8 @@ class Game:
                                         inventory.moveright()
                                     elif event.key == K_z or event.key == K_x:
                                         self.inventoryitem = inventory.getitem(self.inventoryitem)
-					print "%s selected" % (self.inventoryitem)
+					self.taskbar.inventoryitem = self.inventoryitem
+					print "%s selected from inventory" % (self.inventoryitem)
                                         flag = 1
 
 
@@ -221,6 +222,8 @@ class Game:
                 self.talker.talk(screen,font)
 
             self.taskbar.draw()
+            ###if self.inventoryitem:
+	    ###	self.inventoryitem.draw(screen, 0,0)
             heartmeter.draw(screen)
             
             pygame.display.update()
