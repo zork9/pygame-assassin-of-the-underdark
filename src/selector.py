@@ -26,11 +26,14 @@ class Selector:
         self.background = pygame.image.load('./pics/blank.bmp').convert()
         self.klass = "Fighter"
         self.race = "Human"
+
         # fighters
+
         self.humanfighterimage = pygame.image.load('./pics/playerhumanmage1-48x48.bmp').convert()
         self.gnollfighterimage = pygame.image.load('./pics/playergnollfighter1-48x48.bmp').convert()
         self.kattafighterimage = pygame.image.load('./pics/playerkattafighter1-48x48.bmp').convert()
         self.elffighterimage = pygame.image.load('./pics/playerelffighter1-48x48.bmp').convert()
+        self.drowfighterimage = pygame.image.load('./pics/playerdrowfighter1-48x48.bmp').convert()
 ###        self.abeillefighterimage = pygame.image.load('./pics/taskbar-PC-abeillefighter.bmp').convert()
         # magic users
        
@@ -43,7 +46,8 @@ class Selector:
         self.screen.blit(self.gnollfighterimage, (50,0))
         self.screen.blit(self.kattafighterimage, (100,0))
         self.screen.blit(self.elffighterimage, (150,0))
-###        self.screen.blit(self.abeillefighterimage, (200,0))
+        self.screen.blit(self.drowfighterimage, (200,0))
+###        self.screen.blit(self.abeillefighterimage, (250,0))
         # magic users
         
 
@@ -76,7 +80,7 @@ class Selector:
                             self.klass = "Fighter"
                             return
                         elif mousex > 200 and mousex < 250 and mousey > 0 and mousey < 50:
-                            self.race = "Abeille"    
+                            self.race = "Drow"    
                             self.klass = "Fighter"
                             return
 

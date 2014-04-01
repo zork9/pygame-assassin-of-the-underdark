@@ -29,6 +29,7 @@ from playergnollfighter import*
 from playerhumanfighter import*
 from playerkattafighter import*
 from playerelffighter import*
+from playerdrowfighter import*
 from playerdrowmage import *
 from bomb import *
 
@@ -75,18 +76,23 @@ class Game:
                 player = PlayerHumanFighter(heartmeter)
             elif selector.askclass() == "Magic User":
                 player = PlayerMagicUser(heartmeter)
-        if selector.askrace() == "Bugbear":
+        elif selector.askrace() == "Bugbear":
             if selector.askclass() == "Fighter":
                 player = PlayerGnollFighter(heartmeter)
-        if selector.askrace() == "Katta":
+        elif selector.askrace() == "Katta":
             if selector.askclass() == "Fighter":
                 player = PlayerKattaFighter(heartmeter)
-        if selector.askrace() == "Elven":
+        elif selector.askrace() == "Elven":
             if selector.askclass() == "Fighter":
                 player = PlayerElfFighter(heartmeter)
-        if selector.askrace() == "Abeille":
+        elif selector.askrace() == "Drow":
             if selector.askclass() == "Fighter":
-                player = PlayerAbeilleFighter(heartmeter)
+                player = PlayerDrowFighter(heartmeter)
+	else: ### default human fighter
+                player = PlayerHumanFighter(heartmeter)
+##        if selector.askrace() == "Abeille":
+##            if selector.askclass() == "Fighter":
+##                player = PlayerAbeilleFighter(heartmeter)
         
 ##        player2 = None
 ##        
