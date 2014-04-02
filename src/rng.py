@@ -73,6 +73,14 @@ class RNG(Gameobject):
 
 	r = self.rolld2()
 	return r
+
+    def rollcentipede(self):
+	if randint(0,4) <= 3:
+		return 0
+
+	r = self.rolld2()
+	return r
+
     def rollbeholderzap(self):
 	if randint(0,1) == 0:
 		return 0
