@@ -19,7 +19,10 @@ from pygame.locals import *
 from stateimagelibrary import *
 from playerkatta import *
 from playerfighter import *
+from playerfightermagicuser import *
+from playerfighterthief import *
 from playermagicuser import *
+from playermagicuserthief import *
 from playerthief import *
 from playerelf import *
 from playergnoll import *
@@ -52,11 +55,10 @@ class PlayerBaseKlass:
     def __init__(self,PLAYERCLASS):
         classByType2 = {
                 PlayerBase0.FIGHTER : PlayerFighter,
-		####################### NOTE FIXME :
-                PlayerBase0.FIGHTERMAGICUSER : PlayerFighter,
-                PlayerBase0.FIGHTERTHIEF : PlayerFighter,
+                PlayerBase0.FIGHTERMAGICUSER : PlayerFighterMagicuser,
+                PlayerBase0.FIGHTERTHIEF : PlayerFighterThief,
                 PlayerBase0.MAGICUSER : PlayerMagicuser,
-                PlayerBase0.MAGICUSERTHIEF : PlayerMagicuser,
+                PlayerBase0.MAGICUSERTHIEF : PlayerMagicuserThief,
                 PlayerBase0.THIEF : PlayerThief,
         }
         ### classByType2[PLAYERCLASS].__init__(self)
