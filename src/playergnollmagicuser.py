@@ -23,7 +23,7 @@ from broadsword import*
 class PlayerGnollMagicuser(PlayerBase):
     "Player Magicuser"
     def __init__(self,heartmeter):
-        PlayerBase.__init__(self,PlayerBase.GNOLL,PlayerBase.FIGHTER,heartmeter)
+        PlayerBase.__init__(self,PlayerBase.GNOLL,PlayerBase.MAGICUSER,heartmeter)
 
         self.stimlib = Stateimagelibrary()	
         image = pygame.image.load('./pics/playergnollmagicuser1-48x48.bmp').convert()
@@ -71,7 +71,7 @@ class PlayerGnollMagicuser(PlayerBase):
 
 
     def askclass(self):
-        return "Magicuser"
+        return "Magic User"
 
     def askrace(self):
         return "Gnoll"

@@ -20,51 +20,51 @@ from stateimagelibrary import *
 from playerbase import *
 from broadsword import *
 
-class PlayerElfMagicuser(PlayerBase):
-    "playerelffighter Fighter"
+class PlayerHumanThief(PlayerBase):
+    "player"
     def __init__(self,heartmeter):
-        PlayerBase.__init__(self,PlayerBase.ELF,PlayerBase.MAGICUSER,heartmeter)
+        PlayerBase.__init__(self,PlayerBase.HUMAN,PlayerBase.THIEF,heartmeter)
 
         self.stimlib = Stateimagelibrary()	
-        image = pygame.image.load('./pics/playerelffighter1-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playerhumanmagicuser1-48x48.bmp').convert()
         image.set_colorkey((0,0,0)) 
 	self.stimlib.addpicture(image)	
-        image = pygame.image.load('./pics/playerelffighter2-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playerhumanmagicuser2-48x48.bmp').convert()
         image.set_colorkey((0,0,0)) 
 	self.stimlib.addpicture(image)	
-        image = pygame.image.load('./pics/playerelffighter3-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playerhumanmagicuser3-48x48.bmp').convert()
         image.set_colorkey((0,0,0)) 
 	self.stimlib.addpicture(image)	
-        image = pygame.image.load('./pics/playerelffighter2-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playerhumanmagicuser2-48x48.bmp').convert()
         image.set_colorkey((0,0,0)) 
 	self.stimlib.addpicture(image)	
-        image = pygame.image.load('./pics/playerelffighter1-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playerhumanmagicuser1-48x48.bmp').convert()
         image.set_colorkey((0,0,0)) 
 	self.stimlib.addpicture(image)	
-        image = pygame.image.load('./pics/playerelffighter2-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playerhumanmagicuser2-48x48.bmp').convert()
         image.set_colorkey((0,0,0)) 
 	self.stimlib.addpicture(image)	
-        image = pygame.image.load('./pics/playerelffighter3-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playerhumanmagicuser3-48x48.bmp').convert()
         image.set_colorkey((0,0,0)) 
 	self.stimlib.addpicture(image)	
 
         self.stimlibfight = Stateimagelibrary()	
-        image = pygame.image.load('./pics/playerelffighterfight1-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playerhumanmagicuserfight1-48x48.bmp').convert()
         image.set_colorkey((0,0,0))
         self.stimlibfight.addpicture(image)
-        image = pygame.image.load('./pics/playerelffighterfight1-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playerhumanmagicuserfight1-48x48.bmp').convert()
         image.set_colorkey((0,0,0))
         self.stimlibfight.addpicture(image)
-        image = pygame.image.load('./pics/playerelffighterfight2-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playerhumanmagicuserfight2-48x48.bmp').convert()
         image.set_colorkey((0,0,0))
         self.stimlibfight.addpicture(image)
-        image = pygame.image.load('./pics/playerelffighterfight2-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playerhumanmagicuserfight2-48x48.bmp').convert()
         image.set_colorkey((0,0,0))
         self.stimlibfight.addpicture(image)
-        image = pygame.image.load('./pics/playerelffighterfight3-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playerhumanmagicuserfight3-48x48.bmp').convert()
         image.set_colorkey((0,0,0))
         self.stimlibfight.addpicture(image)
-        image = pygame.image.load('./pics/playerelffighterfight3-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playerhumanmagicuserfight3-48x48.bmp').convert()
         image.set_colorkey((0,0,0))
         self.stimlibfight.addpicture(image)
 	self.sword = BroadSword(0,0)
@@ -72,10 +72,10 @@ class PlayerElfMagicuser(PlayerBase):
 
 
     def askclass(self):
-        return "Fighter"
+        return "Thief"
 
     def askrace(self):
-        return "Elf"
+        return "Human"
 
     def askpicture(self):
         return './pics/taskbar-PC-elffighter.bmp'

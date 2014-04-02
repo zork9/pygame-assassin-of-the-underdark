@@ -22,10 +22,10 @@ from rng import *
 from broadsword import *
 from rubysword import *
 
-class PlayerKattaMagicuser(PlayerBase):
-    "Player Katta Magicuser"
+class PlayerKattaThief(PlayerBase):
+    "Player Katta"
     def __init__(self,heartmeter):
-        PlayerBase.__init__(self,PlayerBase.KATTA,PlayerBase.MAGICUSER,heartmeter)
+        PlayerBase.__init__(self,PlayerBase.KATTA,PlayerBase.THIEF,heartmeter)
         
         self.stimlib = Stateimagelibrary()	
         image = pygame.image.load('./pics/playerkattamagicuser1-48x48.bmp').convert()
@@ -74,7 +74,7 @@ class PlayerKattaMagicuser(PlayerBase):
        	self.sword = BroadSword(0,0)
  
     def askclass(self):
-        return "Magicuser"
+        return "Thief"
 
     def askrace(self):
         return "Katta"

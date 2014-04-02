@@ -18,64 +18,63 @@ import pygame
 from pygame.locals import *
 from stateimagelibrary import *
 from playerbase import *
-from broadsword import *
+from broadsword import*
 
-class PlayerElfMagicuser(PlayerBase):
-    "playerelffighter Fighter"
+class PlayerGnollThief(PlayerBase):
+    "Player"
     def __init__(self,heartmeter):
-        PlayerBase.__init__(self,PlayerBase.ELF,PlayerBase.MAGICUSER,heartmeter)
+        PlayerBase.__init__(self,PlayerBase.GNOLL,PlayerBase.THIEF,heartmeter)
 
         self.stimlib = Stateimagelibrary()	
-        image = pygame.image.load('./pics/playerelffighter1-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuser1-48x48.bmp').convert()
         image.set_colorkey((0,0,0)) 
 	self.stimlib.addpicture(image)	
-        image = pygame.image.load('./pics/playerelffighter2-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuser2-48x48.bmp').convert()
         image.set_colorkey((0,0,0)) 
 	self.stimlib.addpicture(image)	
-        image = pygame.image.load('./pics/playerelffighter3-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuser3-48x48.bmp').convert()
         image.set_colorkey((0,0,0)) 
 	self.stimlib.addpicture(image)	
-        image = pygame.image.load('./pics/playerelffighter2-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuser2-48x48.bmp').convert()
         image.set_colorkey((0,0,0)) 
 	self.stimlib.addpicture(image)	
-        image = pygame.image.load('./pics/playerelffighter1-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuser1-48x48.bmp').convert()
         image.set_colorkey((0,0,0)) 
 	self.stimlib.addpicture(image)	
-        image = pygame.image.load('./pics/playerelffighter2-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuser2-48x48.bmp').convert()
         image.set_colorkey((0,0,0)) 
 	self.stimlib.addpicture(image)	
-        image = pygame.image.load('./pics/playerelffighter3-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuser3-48x48.bmp').convert()
         image.set_colorkey((0,0,0)) 
 	self.stimlib.addpicture(image)	
 
         self.stimlibfight = Stateimagelibrary()	
-        image = pygame.image.load('./pics/playerelffighterfight1-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuserfight1-48x48.bmp').convert()
         image.set_colorkey((0,0,0))
         self.stimlibfight.addpicture(image)
-        image = pygame.image.load('./pics/playerelffighterfight1-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuserfight1-48x48.bmp').convert()
         image.set_colorkey((0,0,0))
         self.stimlibfight.addpicture(image)
-        image = pygame.image.load('./pics/playerelffighterfight2-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuserfight2-48x48.bmp').convert()
         image.set_colorkey((0,0,0))
         self.stimlibfight.addpicture(image)
-        image = pygame.image.load('./pics/playerelffighterfight2-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuserfight2-48x48.bmp').convert()
         image.set_colorkey((0,0,0))
         self.stimlibfight.addpicture(image)
-        image = pygame.image.load('./pics/playerelffighterfight3-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuserfight3-48x48.bmp').convert()
         image.set_colorkey((0,0,0))
         self.stimlibfight.addpicture(image)
-        image = pygame.image.load('./pics/playerelffighterfight3-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playergnollmagicuserfight3-48x48.bmp').convert()
         image.set_colorkey((0,0,0))
         self.stimlibfight.addpicture(image)
 	self.sword = BroadSword(0,0)
 
 
-
     def askclass(self):
-        return "Fighter"
+        return "Thief"
 
     def askrace(self):
-        return "Elf"
+        return "Gnoll"
 
     def askpicture(self):
-        return './pics/taskbar-PC-elffighter.bmp'
+        return './pics/taskbar-PC-gnoll.bmp'

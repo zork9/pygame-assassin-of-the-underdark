@@ -19,10 +19,12 @@ from pygame.locals import *
 from stateimagelibrary import *
 from playerbase import *
 
+from broadsword import *
+
 class PlayerElfThief(PlayerBase):
     "Player Thief"
     def __init__(self,heartmeter):
-        PlayerBase.__init__(self,heartmeter)
+        PlayerBase.__init__(self,PlayerBase.ELF,PlayerBase.THIEF,heartmeter)
 
         self.stimlib = Stateimagelibrary()	
         image = pygame.image.load('./pics/playerelfthief1-48x48.bmp').convert()
@@ -67,12 +69,13 @@ class PlayerElfThief(PlayerBase):
         image.set_colorkey((0,0,0))
         self.stimlibfight.addpicture(image)
 
+	self.sword = BroadSword(0,0)
 
     def askclass(self):
         return "Thief"
 
     def askrace(self):
-        return "Elven"
+        return "Elf"
 
     def askpicture(self):
         return './pics/taskbar-PC-elfthief.bmp'

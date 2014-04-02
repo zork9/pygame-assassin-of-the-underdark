@@ -20,7 +20,7 @@ from stateimagelibrary import *
 #from playerbase import *
 
 class PlayerThief:
-    "Player Fighter"
+    "Player Thief"
     def __init__(self,heartmeter):
         1#PlayerBase.__init__(self,heartmeter)
 

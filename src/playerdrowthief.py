@@ -21,24 +21,24 @@ from stateimagelibrary import *
 from playerbase import *
 from broadsword import *
 
-class PlayerDrowFighter(PlayerBase):
-    "Player Fighter"
+class PlayerDrowThief(PlayerBase):
+    "Player"
     def __init__(self,heartmeter):
-        PlayerBase.__init__(self,PlayerBase.DROW, PlayerBase.FIGHTER, heartmeter)
+        PlayerBase.__init__(self,PlayerBase.DROW, PlayerBase.THIEF, heartmeter)
 	self.sword = BroadSword(0,0)
 
         self.stimlib = Stateimagelibrary()	
-        image = pygame.image.load('./pics/playerdrowfighter1-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playerdrowmagicuser1-48x48.bmp').convert()
         image.set_colorkey((0,0,0)) 
 	self.stimlib.addpicture(image)	
 
         self.stimlibfight = Stateimagelibrary()	
-        image = pygame.image.load('./pics/playerdrowfighter1-48x48.bmp').convert()
+        image = pygame.image.load('./pics/playerdrowmagicuser1-48x48.bmp').convert()
         image.set_colorkey((0,0,0)) 
 	self.stimlibfight.addpicture(image)	
 
     def askclass(self):
-        return "Fighter"
+        return "Thief"
 
     def askrace(self):
         return "Drow"

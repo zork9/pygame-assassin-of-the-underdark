@@ -37,3 +37,12 @@ class PlayerDrowMagicuser(PlayerBase):
         image.set_colorkey((0,0,0)) 
 	self.stimlibfight.addpicture(image)	
 
+    def askclass(self):
+        return "Magic User"
+
+    def askrace(self):
+        return "Drow"
+
+    def askpicture(self):
+        return './pics/taskbar-PC-elffighter.bmp'
+

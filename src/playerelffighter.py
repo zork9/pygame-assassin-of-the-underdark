@@ -20,7 +20,7 @@ from stateimagelibrary import *
 from playerbase import *
 from broadsword import *
 
-class PlayerElfMagicuser(PlayerBase):
+class PlayerElfFighter(PlayerBase):
     "playerelffighter Magicuser"
     def __init__(self,heartmeter):
         PlayerBase.__init__(self,PlayerBase.ELF,PlayerBase.FIGHTER,heartmeter)

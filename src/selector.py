@@ -27,6 +27,8 @@ class Selector:
         self.klass = "Fighter"
         self.race = "Human"
 
+	self.yoffset = 70
+
         # fighters
 
         self.humanfighterimage = pygame.image.load('./pics/playerhumanfighter1-48x48.bmp').convert()
@@ -46,6 +48,12 @@ class Selector:
 
         # thieves
          
+        self.humanthiefimage = pygame.image.load('./pics/playerhumanthief1-48x48.bmp').convert()
+        self.gnollthiefimage = pygame.image.load('./pics/playergnollthief1-48x48.bmp').convert()
+        self.kattathiefimage = pygame.image.load('./pics/playerkattathief1-48x48.bmp').convert()
+        self.elfthiefimage = pygame.image.load('./pics/playerelfthief1-48x48.bmp').convert()
+        self.drowthiefimage = pygame.image.load('./pics/playerdrowthief1-48x48.bmp').convert()
+
     def draw(self):
         # fighters
         self.screen.blit(self.background, (0, 300))       
@@ -61,21 +69,31 @@ class Selector:
         self.screen.blit(self.font.render("drow fighter", 6, (255,255,255)), (200,50))
 ###        self.screen.blit(self.abeillefighterimage, (250,0))
 
-
         # magic users
         
-        self.screen.blit(self.humanmagicuserimage, (0,70))
-        self.screen.blit(self.font.render("human magic user", 6, (255,255,255)), (0,50+70))
-        self.screen.blit(self.gnollmagicuserimage, (50,70))
-        self.screen.blit(self.font.render("gnoll magic user", 6, (255,255,255)), (50,50+70))
-        self.screen.blit(self.kattamagicuserimage, (100,70))
-        self.screen.blit(self.font.render("katta magic user", 6, (255,255,255)), (100,50+70))
-        self.screen.blit(self.elfmagicuserimage, (150,70))
-        self.screen.blit(self.font.render("elf magic user", 6, (255,255,255)), (150,50+70))
-        self.screen.blit(self.drowmagicuserimage, (200,70))
-        self.screen.blit(self.font.render("drow magic user", 6, (255,255,255)), (200,50+70))
-
-	self.yoffset = 70
+        self.screen.blit(self.humanmagicuserimage, (0,self.yoffset))
+        self.screen.blit(self.font.render("human magic user", 6, (255,255,255)), (0,50+self.yoffset))
+        self.screen.blit(self.gnollmagicuserimage, (50,self.yoffset))
+        self.screen.blit(self.font.render("gnoll magic user", 6, (255,255,255)), (50,50+self.yoffset))
+        self.screen.blit(self.kattamagicuserimage, (100,self.yoffset))
+        self.screen.blit(self.font.render("katta magic user", 6, (255,255,255)), (100,50+self.yoffset))
+        self.screen.blit(self.elfmagicuserimage, (150,self.yoffset))
+        self.screen.blit(self.font.render("elf magic user", 6, (255,255,255)), (150,50+self.yoffset))
+        self.screen.blit(self.drowmagicuserimage, (200,self.yoffset))
+        self.screen.blit(self.font.render("drow magic user", 6, (255,255,255)), (200,50+self.yoffset))
+       
+	# thieves
+ 
+        self.screen.blit(self.humanthiefimage, (0,self.yoffset * 2))
+        self.screen.blit(self.font.render("human thief", 6, (255,255,255)), (0,50+self.yoffset * 2))
+        self.screen.blit(self.gnollthiefimage, (50,self.yoffset * 2))
+        self.screen.blit(self.font.render("gnoll thief", 6, (255,255,255)), (50,50+self.yoffset * 2))
+        self.screen.blit(self.kattathiefimage, (100,self.yoffset * 2))
+        self.screen.blit(self.font.render("katta thief", 6, (255,255,255)), (100,50+self.yoffset * 2))
+        self.screen.blit(self.elfthiefimage, (150,self.yoffset * 2))
+        self.screen.blit(self.font.render("elf thief", 6, (255,255,255)), (150,50+self.yoffset * 2))
+        self.screen.blit(self.drowthiefimage, (200,self.yoffset * 2))
+        self.screen.blit(self.font.render("drow thief", 6, (255,255,255)), (200,50+self.yoffset * 2))
 
 
     def select(self):
@@ -103,7 +121,7 @@ class Selector:
                             self.klass = "Fighter"
                             return
                         elif mousex > 150 and mousex < 200 and mousey > 0 and mousey < 50:
-                            self.race = "Elven"    
+                            self.race = "Elf"    
                             self.klass = "Fighter"
                             return
                         elif mousex > 200 and mousex < 250 and mousey > 0 and mousey < 50:
@@ -124,12 +142,33 @@ class Selector:
                             self.klass = "Magic User"
                             return
                         elif mousex > 150 and mousex < 200 and mousey > self.yoffset+0 and mousey < self.yoffset+50:
-                            self.race = "Elven"    
+                            self.race = "Elf"    
                             self.klass = "Magic User"
                             return
                         elif mousex > 200 and mousex < 250 and mousey > self.yoffset+0 and mousey < self.yoffset+50:
                             self.race = "Drow"    
                             self.klass = "Magic User"
+                            return
+
+                        elif mousex > 0 and mousex < 50 and mousey > self.yoffset * 2+0 and mousey < self.yoffset * 2+50:
+                            self.race = "Human"    
+                            self.klass = "Thief"
+                            return
+                        elif mousex > 50 and mousex < 100 and mousey > self.yoffset * 2+0 and mousey < self.yoffset * 2+50:
+                            self.race = "Gnoll"    
+                            self.klass = "Thief"
+                            return
+                        elif mousex > 100 and mousex < 150 and mousey > self.yoffset * 2+0 and mousey < self.yoffset * 2+50:
+                            self.race = "Katta"    
+                            self.klass = "Thief"
+                            return
+                        elif mousex > 150 and mousex < 200 and mousey > self.yoffset * 2+0 and mousey < self.yoffset * 2+50:
+                            self.race = "Elf"    
+                            self.klass = "Thief"
+                            return
+                        elif mousex > 200 and mousex < 250 and mousey > self.yoffset * 2+0 and mousey < self.yoffset * 2+50:
+                            self.race = "Drow"    
+                            self.klass = "Thief"
                             return
 
     def askrace(self):

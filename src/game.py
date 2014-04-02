@@ -37,6 +37,11 @@ from playerhumanmagicuser import*
 from playerkattamagicuser import*
 from playerelfmagicuser import*
 from playerdrowmagicuser import*
+from playergnollthief import*
+from playerhumanthief import*
+from playerkattathief import*
+from playerelfthief import*
+from playerdrowthief import*
 
 class Game:
     "Main function"
@@ -81,27 +86,37 @@ class Game:
                 player = PlayerHumanFighter(heartmeter)
             elif selector.askclass() == "Magic User":
                 player = PlayerHumanMagicuser(heartmeter)
+            elif selector.askclass() == "Thief":
+                player = PlayerHumanThief(heartmeter)
         elif selector.askrace() == "Gnoll":
             if selector.askclass() == "Fighter":
                 player = PlayerGnollFighter(heartmeter)
             elif selector.askclass() == "Magic User":
                 player = PlayerGnollMagicuser(heartmeter)
+            elif selector.askclass() == "Thief":
+                player = PlayerGnollThief(heartmeter)
         elif selector.askrace() == "Katta":
             if selector.askclass() == "Fighter":
                 player = PlayerKattaFighter(heartmeter)
             elif selector.askclass() == "Magic User":
                 player = PlayerKattaMagicuser(heartmeter)
-        elif selector.askrace() == "Elven":
+            elif selector.askclass() == "Thief":
+                player = PlayerKattaThief(heartmeter)
+        elif selector.askrace() == "Elf":
             if selector.askclass() == "Fighter":
                 player = PlayerElfFighter(heartmeter)
             elif selector.askclass() == "Magic User":
                 player = PlayerElfMagicuser(heartmeter)
+            elif selector.askclass() == "Thief":
+                player = PlayerElfThief(heartmeter)
         elif selector.askrace() == "Drow":
             if selector.askclass() == "Fighter":
                 player = PlayerDrowFighter(heartmeter)
             elif selector.askclass() == "Magic User":
                 player = PlayerDrowMagicuser(heartmeter)
-	else: ### default human fighter
+            elif selector.askclass() == "Thief":
+                player = PlayerDrowThief(heartmeter)
+	else: ### default human fighter FIXME make random
                 player = PlayerHumanFighter(heartmeter)
 ##        if selector.askrace() == "Abeille":
 ##            if selector.askclass() == "Fighter":
