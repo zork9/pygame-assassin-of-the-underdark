@@ -1,0 +1,3 @@
+. pickup enemies with 'x' key is possible but not yet implemented
+	you need Goblin.inventoryitem for it for example
+. remove sleep fnuctions
