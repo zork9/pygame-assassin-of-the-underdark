@@ -50,6 +50,17 @@ class Gameobject:
 	else:
 	    return 0
 
+    def collidewithbarehands(self, room, player):
+        #print 'gameobject x=%d y=%d player x=%d y=%d' % (self.x,self.y,player.x-room.relativex,player.y-room.relativey)
+	if (player.x-room.relativex > self.x-self.w  and 
+	player.x-room.relativex < self.x+self.w and 
+	player.y-room.relativey > self.y-self.h and 
+	player.y-room.relativey < self.y + self.h):
+	    #print "collision with Game Object!"
+	    return 1 
+	else:
+	    return 0
+
     def collide(self, room, player):
         # FIX BUG
         #print 'gameobject x=%d y=%d player x=%d y=%d' % (self.x,self.y,player.x-room.relativex,player.y-room.relativey)

@@ -137,6 +137,14 @@ class PlayerBase(PlayerBase,PlayerBase):
         	if o:
             		print 'player hits with sword!'
             		game.room.hitwithsword(o)
+	else: ### hit with bare hands
+        	o = game.room.collidebarehands(game)
+        	if o:
+            		print 'player hits with sword!'
+            		game.room.hitwithbarehands(o)
+
+
+		
 ##        self.x += 30
 ##        self.y += 30
 ##        self.w -= 30
