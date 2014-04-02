@@ -105,7 +105,7 @@ class Maproom1(MaproomDungeon):
         # draw bg
         game.screen.blit(self.background, (0+self.relativex, 0+self.relativey))
         # draw walls
-        MaproomDungeon.draw(self,game.screen)
+        MaproomDungeon.draw(self, game)
         for t in self.tileboxes:
             t.draw(game.screen,self.relativex,self.relativey)
         #self.southwall1.draw(game.screen,self.relativex,self.relativey)

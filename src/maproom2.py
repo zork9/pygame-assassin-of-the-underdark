@@ -82,19 +82,19 @@ class Maproom2(MaproomDungeon):
 ##        self.gameobjects.append(Box(0,400,800,100))
         #self.addnorthwall(0,0)
  
-    def draw(self,screen,player):
+    def draw(self,game):
         # draw bg
-        screen.blit(self.background, (0+self.relativex, 0+self.relativey))
+        game.screen.blit(self.background, (0+self.relativex, 0+self.relativey))
         # draw walls
-        MaproomDungeon.draw(self,screen)
+        MaproomDungeon.draw(self, game)
         for t in self.tileboxes:
-            t.draw(screen,self.relativex,self.relativey)
-        #self.southwall1.draw(screen,self.relativex,self.relativey)
+            t.draw(game.screen,self.relativex,self.relativey)
+        #self.southwall1.draw(game.screen,self.relativex,self.relativey)
         # draw gameobjects
         for i in self.gameobjects:
 	    if i != None:
-		i.update(self,player)
-		i.draw(screen,self)
+		i.update(game)
+		i.draw(game.screen,self)
 	
     def isroomupexit(self,game):
 	if self.relativey  > 150:

@@ -245,7 +245,7 @@ class Game:
             self.room.draw(self) 
             player.drawstatic(self.screen)
             
-	    sleep(0.2)
+	    #sleep(0.2)
             # fight for enemies
             # remove dead game objects
 

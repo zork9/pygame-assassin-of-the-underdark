@@ -48,11 +48,11 @@ class MaproomDungeon(MaproomBase):
     def addeastwall(self, x,y):
         self.eastwalls.append(MaproomEastDungeonWall(x,y))
         
-    def draw(self,screen):
+    def draw(self,game):
 	##print "x=%d" % self.relativex 
-        screen.blit(self.background, (0+self.relativex, 0+self.relativey))
+        game.screen.blit(self.background, (0+self.relativex, 0+self.relativey))
         for w in self.northwalls:
-            w.draw(screen,self.relativex,self.relativey)
+            w.draw(game.screen,self.relativex,self.relativey)
       
 # NOTE player can be enemy 
     def collide(self, player):	
