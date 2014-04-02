@@ -110,6 +110,16 @@ class Maproom2(MaproomDungeon):
 		return 1 
 	return 0 
  
+    def collidebarehands(self,game):
+        for i in self.gameobjects:
+	    if i!= None:
+		#self.relativex = self.prevx
+		#self.relativey = self.prevy
+	    	id = i.collidewithbarehands(self,game.player)
+		if id:
+			return i ## NOTE : returns collided entity (single)
+	return None
+
     def collidesword(self,game):
         for i in self.gameobjects:
 	    if i!= None:
@@ -120,6 +130,11 @@ class Maproom2(MaproomDungeon):
 	return None
 
     def hitwithsword(self, o):
+        hitp = o.hit()
+        if hitp < 0:
+            self.removeobject(o)
+
+    def hitwithbarehands(self, o):
         hitp = o.hit()
         if hitp < 0:
             self.removeobject(o)
