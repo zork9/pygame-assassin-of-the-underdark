@@ -30,8 +30,8 @@ from broadsword import *
 ###        race.__init__(self)
 ###        klass.__init__(self)
 	
-class PlayerRaceMulticlass:
-    "Player Multi Class set"
+class PlayerRaceSingleclass:
+    "Player Single Class set"
     def __init__(self,race,klass):
         PlayerBase.__init__(self, race, klass)
 	

@@ -18,20 +18,12 @@ import pygame
 from pygame.locals import *
 from stateimagelibrary import *
 from playerbase import *
+from playerracemulticlass import *
 from broadsword import *
 
-###class PlayerMultiClass:
-###	def __init__(self):
-###		1
+class PlayerKattaMulticlass(PlayerBase,PlayerRaceMultiClass):
+    "Player Fighter"
+    def __init__(self, klass):
+        PlayerRaceMultiClass.__init__(self,PlayerBase.KATTA, klass)
+	self.sword = BroadSword(0,0)
 
-###class PlayerMulticlass:
-###    "Player Fighter"
-###    def __init__(self,race,klass):
-###        race.__init__(self)
-###        klass.__init__(self)
-	
-class PlayerRaceMulticlass:
-    "Player Multi Class set"
-    def __init__(self,race,klass):
-        PlayerBase.__init__(self, race, klass)
-	
