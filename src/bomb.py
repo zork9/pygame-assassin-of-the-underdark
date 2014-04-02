@@ -19,6 +19,7 @@ from pygame.locals import *
 from gameobject import *
 from bombexplosion import *
 from inventorybomb import *
+from time import *
 
 class Bomb(Gameobject):
     ""
@@ -32,6 +33,7 @@ class Bomb(Gameobject):
 	self.inventoryitem = InventoryBomb()
 
     def update(self,game):
+	sleep(0.02)
 	self.counter += 1
 	j = 0
 	if (self.counter > 9):

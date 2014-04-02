@@ -24,6 +24,7 @@ class Inventoryitem(object):
     def __init__(self,imagefilename):
         self.image = pygame.image.load(imagefilename).convert()
         self.image.set_colorkey((0,0,0))#FIXME rgb transdparency
+	self.typename = "inventoryitem"
 
     def draw(self,screen,x,y):
         screen.blit(self.image, (x, y))

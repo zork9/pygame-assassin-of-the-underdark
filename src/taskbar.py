@@ -18,6 +18,7 @@ import pygame
 from pygame.locals import *
 from gameobject import *
 from inventorybomb import *
+from inventorysword import *
 
 class Taskbar:
     "Taskbar"
@@ -32,6 +33,7 @@ class Taskbar:
         self.swordimage.set_colorkey((0,0,255)) 
 #        self.lifeimage = pygame.image.load('./pics/life1.bmp').convert()
 	self.inventoryitem = None ## InventoryBomb() 
+	self.sworditem = None ## InventorySword() 
 
     def drawlife(self):
 	for i in range(0,self.player.hitpoints):
@@ -48,9 +50,11 @@ class Taskbar:
         self.screen.blit(self.font.render(self.player.askrace() + ' ' + self.player.askclass(), 6, (255,0,0)), (0+70,0+300))
 ###       	self.drawlife()
  
-        self.screen.blit(self.swordimage, (200, 310))
+###        self.screen.blit(self.swordimage, (200, 310))
         if self.inventoryitem:
 		self.inventoryitem.draw(self.screen, 250, 310)
+        if self.sworditem:
+		self.sworditem.draw(self.screen, 200, 310)
 
     def setrubysword(self):
         self.setswordimage('./pics/taskbar-rubysword1-32x32.bmp',0,0,255)

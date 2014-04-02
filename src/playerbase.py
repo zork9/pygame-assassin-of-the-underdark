@@ -125,18 +125,18 @@ class PlayerBase(PlayerBase,PlayerBase):
             return
         self.stimlib.draw(screen, self.x,self.y)
 
-    def fight(self,room):
+    def fight(self,game):
         self.fightcounter = 1
 ##        self.x -= 30
 ##        self.y -= 30
 ##        self.w += 30
 ##        self.h += 30
-        
-        o = room.collidesword(room,self)
-        
-        if o:
-            print 'hit!'
-            room.hitwithsword(o)
+       
+	if game.taskbar.sworditem != None: 
+        	o = game.room.collidesword(game)
+        	if o:
+            		print 'player hits with sword!'
+            		game.room.hitwithsword(o)
 ##        self.x += 30
 ##        self.y += 30
 ##        self.w -= 30
@@ -173,7 +173,7 @@ class PlayerBase(PlayerBase,PlayerBase):
         o = room.pickup(self)
 	return o
 
-    def fight(self,room):
+    def fight2(self,room):
         self.fightcounter = 1
         o = room.collidesword(self)
         if o:

@@ -82,4 +82,5 @@ class Snake1(Gameobject):
 	    return 0 ## for game self.talker
 
     def fight(self,room,player):
-        1
+	1
+

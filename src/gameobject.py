@@ -118,6 +118,9 @@ class Gameobject:
             print 'enemy is hit!'
         self.hitpoints -= damage
 
+    def hit(self):
+	self.hitwithweapon(2)
+
     def fight(self,room,player):
 	1
     

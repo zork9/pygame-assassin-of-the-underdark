@@ -93,11 +93,11 @@ class PlayerDrowMage(PlayerBase):
 		print 'player is hit!'
         self.hitpoints -= damage
 
-    def fight(self,room):
-        self.fightcounter = 1
-        o = room.collidesword(self)
-        if o:
-            o.hitwithweapon(self.sword.roll())
+###    def fight(self,game):
+###        self.fightcounter = 1
+###        o = game.room.collidesword(self)
+###        if o:
+###            o.hitwithweapon(self.sword.roll())
        
     def setrubysword(self):
 	self.sword = RubySword(0,0)

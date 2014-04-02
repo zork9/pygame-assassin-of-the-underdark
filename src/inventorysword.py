@@ -24,6 +24,7 @@ from inventoryitem import *
 class InventorySword(Inventoryitem):
     def __init__(self):
         Inventoryitem.__init__(self, "./pics/sword-inventory-36x36.bmp")
+	self.typename = "sword"
 
     def use(self,e,game):
         print 'You used a sword on %s' % e

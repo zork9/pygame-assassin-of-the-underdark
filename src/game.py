@@ -153,13 +153,17 @@ class Game:
                         ###    print "self.talker=%s" % self.talker
 			###if self.talker == None:
                         o = self.player.pickup(self.room)
-			###if o.id == 5:
 		        if o != None:
-				self.inventory.additem(o.inventoryitem)
+				if o.inventoryitem and o.inventoryitem.typename == "sword":
+					self.taskbar.sworditem = o.inventoryitem
+				elif o.inventoryitem and o.inventoryitem.typename == "inventoryitem":
+					self.inventory.additem(o.inventoryitem)
 				self.room.removegameobject(o)
+
 			###self.player.setrubysword()
-                    elif event.key == K_z:
-                        self.player.fight(self.room)  
+       
+	            elif event.key == K_z:
+                        self.player.fight(self)  
                     elif event.key == K_UP:
                         self.room.movedown()    
                     elif event.key == K_DOWN:
