@@ -31,7 +31,7 @@ class Taskbar:
         self.swordimage = pygame.image.load('./pics/taskbar-defaultsword1-32x32.bmp').convert()
         self.swordimage.set_colorkey((0,0,255)) 
 #        self.lifeimage = pygame.image.load('./pics/life1.bmp').convert()
-	self.inventoryitem = None ## Inventorybomb() 
+	self.inventoryitem = None ## InventoryBomb() 
 
     def drawlife(self):
 	for i in range(0,self.player.hitpoints):

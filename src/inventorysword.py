@@ -21,9 +21,9 @@ from pygame.locals import *
 
 from inventoryitem import *
 
-class InventoryBomb(Inventoryitem):
+class InventorySword(Inventoryitem):
     def __init__(self):
-        Inventoryitem.__init__(self, "./pics/bomb-inventory-34x36.bmp")
+        Inventoryitem.__init__(self, "./pics/sword-inventory-36x36.bmp")
 
     def use(self,e,game):
-        print 'You used a bomb on %s' % e
+        print 'You used a sword on %s' % e

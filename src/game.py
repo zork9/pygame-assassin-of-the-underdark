@@ -75,7 +75,7 @@ class Game:
         self.room = Maproom1(0,0)
         heartmeter = Meter()
 	self.player = PlayerDrowMage(heartmeter)
-###player = PlayerFighter(heartmeter)default fighter class
+###self.player = PlayerFighter(heartmeter)default fighter class
         self.screen.blit(blankimage, (0,0))
         selector = Selector(self.screen, self.font)
 
@@ -87,57 +87,53 @@ class Game:
 
 	if selector.askrace() == "Human":
             if selector.askclass() == "Fighter":
-                player = PlayerHumanFighter(heartmeter)
+                self.player = PlayerHumanFighter(heartmeter)
             elif selector.askclass() == "Magic User":
-                player = PlayerHumanMagicuser(heartmeter)
+                self.player = PlayerHumanMagicuser(heartmeter)
             elif selector.askclass() == "Thief":
-                player = PlayerHumanThief(heartmeter)
+                self.player = PlayerHumanThief(heartmeter)
         elif selector.askrace() == "Gnoll":
             if selector.askclass() == "Fighter":
-                player = PlayerGnollFighter(heartmeter)
+                self.player = PlayerGnollFighter(heartmeter)
             elif selector.askclass() == "Magic User":
-                player = PlayerGnollMagicuser(heartmeter)
+                self.player = PlayerGnollMagicuser(heartmeter)
             elif selector.askclass() == "Thief":
-                player = PlayerGnollThief(heartmeter)
+                self.player = PlayerGnollThief(heartmeter)
         elif selector.askrace() == "Katta":
             if selector.askclass() == "Fighter":
-                player = PlayerKattaFighter(heartmeter)
+                self.player = PlayerKattaFighter(heartmeter)
             elif selector.askclass() == "Magic User":
-                player = PlayerKattaMagicuser(heartmeter)
+                self.player = PlayerKattaMagicuser(heartmeter)
             elif selector.askclass() == "Thief":
-                player = PlayerKattaThief(heartmeter)
+                self.player = PlayerKattaThief(heartmeter)
         elif selector.askrace() == "Elf":
             if selector.askclass() == "Fighter":
-                player = PlayerElfFighter(heartmeter)
+                self.player = PlayerElfFighter(heartmeter)
             elif selector.askclass() == "Magic User":
-                player = PlayerElfMagicuser(heartmeter)
+                self.player = PlayerElfMagicuser(heartmeter)
             elif selector.askclass() == "Thief":
-                player = PlayerElfThief(heartmeter)
+                self.player = PlayerElfThief(heartmeter)
         elif selector.askrace() == "Drow":
             if selector.askclass() == "Fighter":
-                player = PlayerDrowFighter(heartmeter)
+                self.player = PlayerDrowFighter(heartmeter)
             elif selector.askclass() == "Magic User":
-                player = PlayerDrowMagicuser(heartmeter)
+                self.player = PlayerDrowMagicuser(heartmeter)
             elif selector.askclass() == "Thief":
-                player = PlayerDrowThief(heartmeter)
-##	else: ### default human fighter FIXED with random in selector
+                self.player = PlayerDrowThief(heartmeter)
 
-
-##                player = PlayerHumanFighter(heartmeter)
 ##        if selector.askrace() == "Abeille":
 ##            if selector.askclass() == "Fighter":
-##                player = PlayerAbeilleFighter(heartmeter)
+##                self.player = PlayerAbeilleFighter(heartmeter)
         
-##        player2 = None
-##        
-      
+        self.inventory = Inventory()
+
         self.inventoryitem = None
         self.inventorymasterkey = None
         self.inventorykey1 = None
         self.inventorykey2 = None
         self.inventoryrubysword = None
         
-        self.taskbar = Taskbar(self.screen,self.font,player)
+        self.taskbar = Taskbar(self.screen,self.font,self.player)
         self.talker = None
         
         pygame.key.set_repeat(1,1)
@@ -150,18 +146,20 @@ class Game:
                 elif event.type == KEYDOWN:
             	    
                     # player 1 key controls
-                    player.draw(self.screen)
+                    self.player.draw(self.screen)
                     if event.key == K_x:
-                        if self.room.collide(player) == 2:
-                            self.talker = self.room.talkto() # FIX
-                            print "self.talker=%s" % self.talker
-			if self.talker == None:
-                        	id = player.pickup(self.room)
-				if id == 5:
-		                	self.taskbar.setrubysword()
-					player.setrubysword()
+                        ###if self.room.collide(self.player) == 2:
+                        ###    self.talker = self.room.talkto() # FIX
+                        ###    print "self.talker=%s" % self.talker
+			###if self.talker == None:
+                        o = self.player.pickup(self.room)
+			###if o.id == 5:
+		        if o != None:
+				self.inventory.additem(o.inventoryitem)
+				self.room.removegameobject(o)
+			###self.player.setrubysword()
                     elif event.key == K_z:
-                        player.fight(self.room)  
+                        self.player.fight(self.room)  
                     elif event.key == K_UP:
                         self.room.movedown()    
                     elif event.key == K_DOWN:
@@ -171,23 +169,22 @@ class Game:
                     elif event.key == K_RIGHT:
                         self.room.moveleft()    
                     elif event.key == K_SPACE:
-                        self.room.gameobjects.append(Bomb(player.x-self.room.relativex,player.y-self.room.relativey))
+                        self.room.gameobjects.append(Bomb(self.player.x-self.room.relativex,self.player.y-self.room.relativey))
     
                     elif event.key == K_i:
 #                        self.level.gameover = 1
                       #FIXME  pygame.event.flush()
                         flag = 0
-                        inventory = Inventory()
 		
 			##if Scrollinvisibility(0,0,0,0,"1","1").readkeys(None):
-                        ##    inventory.additem(Inventoryscrollinvisibility())
+                        ##    self.inventory.additem(Inventoryscrollinvisibility())
 
 			if self.inventorymasterkey == 1:
-                       		1###FIX for key in inventory.additem(Inventorymasterkey())
+                       		1###FIX for key in self.inventory.additem(Inventorymasterkey())
                         if self.inventorykey1 == 1:
-                       		1###FIX for key in inventory.additem(Inventorykey1())
+                       		1###FIX for key in self.inventory.additem(Inventorykey1())
                        	if self.inventorykey2 == 1:
-                       		1###FIX for key in inventory
+                       		1###FIX for key in self.inventory
         		pygame.key.set_repeat(1000,1000)
 			while flag == 0:#NOTE1
                             for event in pygame.event.get():
@@ -196,20 +193,20 @@ class Game:
 
                                 elif event.type == KEYDOWN:
                                     if event.key == K_LEFT:
-                                        inventory.moveleft()
+                                        self.inventory.moveleft()
                                     elif event.key == K_RIGHT:
-                                        inventory.moveright()
+                                        self.inventory.moveright()
                                     elif event.key == K_z or event.key == K_x:
-                                        self.inventoryitem = inventory.getitem(self.inventoryitem)
+                                        self.inventoryitem = self.inventory.getitem(self.inventoryitem)
 					self.taskbar.inventoryitem = self.inventoryitem
 					print "%s selected from inventory" % (self.inventoryitem)
                                         flag = 1
 
 
-                                inventory.draw(self.screen)
+                                self.inventory.draw(self.screen)
                                 pygame.display.update()
  
-#	    pickupid = self.room.pickup(player)
+#	    pickupid = self.room.pickup(self.player)
 #	    if pickupid:
 #		if pickupid == 1: # NOTE : masterkey id
 #		    self.inventorymasterkey = 1
@@ -224,7 +221,7 @@ class Game:
 #                    self.inventoryrubysword = 1
 #                    self.taskbar.setrubysword()
 			 
-            if self.room.collide(player) == 1 or player.hitpoints <= 0: # NOTE: return 1 after player heartmeter runs out (player.hit)
+            if self.room.collide(self.player) == 1 or self.player.hitpoints <= 0: # NOTE: return 1 after player heartmeter runs out (self.player.hit)
         	endingimage = pygame.image.load('./pics/endingscreen.bmp').convert()
         	while gameover == 0:
 	            	pygame.display.update()
@@ -238,23 +235,23 @@ class Game:
                 		if event.type == pygame.MOUSEBUTTONDOWN:
                     			gameover = 1
 					return
-            ###if self.room.collide(player) == 3:###Dungeon wall
+            ###if self.room.collide(self.player) == 3:###Dungeon wall
                 ##self.room.undomove()
             ###    self.room.removeentrance2()
 
             self.room.draw(self) 
-            player.drawstatic(self.screen)
+            self.player.drawstatic(self.screen)
             
 	    #sleep(0.2)
             # fight for enemies
             # remove dead game objects
 
 	    ### Set player hitpoints in life bar
-	    heartmeter.index = player.hitpoints
+	    heartmeter.index = self.player.hitpoints
 
             for o in self.room.gameobjects:
                 if o:
-                    o.fight(self.room,player)
+                    o.fight(self.room,self.player)
                     if o.hitpoints <= 0:
                         self.room.removeobject(o)
 

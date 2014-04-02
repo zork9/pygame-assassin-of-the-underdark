@@ -13,7 +13,8 @@ a random char is made.
 main screen :
 -------------
 
-- z,x buttons (talk & fight with sword)
+- x key : use item
+- z key : fight (with main weapon)
 - spacebar : drop bomb 
 - arrow keys : movemen
 

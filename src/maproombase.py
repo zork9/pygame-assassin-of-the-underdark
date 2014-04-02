@@ -89,8 +89,8 @@ class MaproomBase:
             if o and o.collide(self, player):
                 id = o.pickup(self)
 		self.gameobjects[i] = None
-                return id# FIX 3 
-        return 0
+                return o 
+        return None 
 
 
     def collidesword(self,player):

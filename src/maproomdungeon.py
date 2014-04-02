@@ -35,7 +35,13 @@ class MaproomDungeon(MaproomBase):
         self.gameobjects = []
         self.tileboxes = []
         self.pits = []
-        
+
+    def removegameobject(self, o):
+	for o2 in self.gameobjects:
+		if o2 == o:
+			self.gameobjects.remove(o)
+       			return
+ 
     def addnorthwall(self, x,y):
         self.northwalls.append(MaproomNorthDungeonWall(x,y))
 

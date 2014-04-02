@@ -170,8 +170,8 @@ class PlayerBase(PlayerBase,PlayerBase):
         self.hitpoints -= damage
 
     def pickup(self,room):
-        n = room.pickup(self)
-	return n
+        o = room.pickup(self)
+	return o
 
     def fight(self,room):
         self.fightcounter = 1

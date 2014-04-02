@@ -28,7 +28,7 @@ class Inventory(object):
         self.list = []
 	self.ITEMWIDTH = 36 
 	self.ITEMMAX = 8 
-        self.list.append(Inventorybomb())
+        self.list.append(InventoryBomb())
 
         self.rectimage = pygame.image.load('./pics/rectinventory-36x36.bmp').convert()
         self.rectimage.set_colorkey((0,0,0))

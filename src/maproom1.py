@@ -22,6 +22,7 @@ from tree2 import *
 from dungeonentrance1 import *
 from maproomdungeon import *
 from maproomdungeonnorthwall import *
+from sword import *
 from goblin1 import *
 from goblin2 import *
 from goblin3 import *
@@ -50,6 +51,7 @@ class Maproom1(MaproomDungeon):
         self.tileboxes.append(self.eastwall1)
         self.tileboxes.append(self.southwall1)
 
+        self.gameobjects.append(Sword(100,100))
         self.gameobjects.append(ButterflyDemon(300,100))
         self.gameobjects.append(Goblin3(300,100))
         self.gameobjects.append(Goblin3(340,140))

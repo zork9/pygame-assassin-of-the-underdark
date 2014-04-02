@@ -93,10 +93,6 @@ class PlayerKattaFighter(PlayerBase):
 		print 'player is hit!'
         self.hitpoints -= damage
 
-    def pickup(self,room):
-        n = room.pickup(self)
-	return n
-
     def fight(self,room):
         self.fightcounter = 1
         o = room.collidesword(self)

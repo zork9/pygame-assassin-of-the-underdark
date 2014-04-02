@@ -18,31 +18,18 @@ import pygame
 from pygame.locals import *
 from gameobject import *
 from bombexplosion import *
-from inventorybomb import *
+from inventorysword import *
 
-class Bomb(Gameobject):
+class Sword(Gameobject):
     ""
     def __init__(self, xx,yy):
         Gameobject.__init__(self,xx,yy)
-        self.w = 16 
-        self.h = 16 
-        self.image = pygame.image.load('./pics/bomb1-16x16.bmp').convert()
+        self.w = 36 
+        self.h = 36 
+        self.image = pygame.image.load('./pics/sword1-36x36.bmp').convert()
         self.image.set_colorkey((0,0,0)) 
    	self.counter = 0 
-	self.inventoryitem = InventoryBomb()
+	self.inventoryitem = InventorySword()
 
     def update(self,game):
-	self.counter += 1
-	j = 0
-	if (self.counter > 9):
-	    for i in game.room.gameobjects:
-		if (i == self):
-		    l = 0
-		    for k in game.room.gameobjects: 
-			if i != k and k and k.collideobjectXY(game.room):
-			    game.room.gameobjects[l] = None
-			l += 1    	
-		    game.room.gameobjects.append(BombExplosion(k.x,k.y)) 
-		    game.room.gameobjects[j] = None
-		    return
-	    	j += 1 
+	1
