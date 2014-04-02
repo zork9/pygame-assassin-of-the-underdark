@@ -29,30 +29,49 @@ from broadsword import *
 
 class PlayerBase:
     def __init__(self):
-       	1	 
+	1
 
-class PlayerBase(PlayerBase,PlayerBase):
-    "Player"
+class PlayerBase0:
+    def __init__(self):
+    	PlayerBase0.FIGHTER,PlayerBase0.MAGICUSER,PlayerBase0.THIEF,PlayerBase0.FIGHTERMAGICUSER,PlayerBase0.FIGHTERTHIEF,PlayerBase0.MAGICUSERTHIEF = xrange(6)
+    	PlayerBase0.ELF,PlayerBase0.GNOLL,PlayerBase0.KATTA,PlayerBase0.HUMAN,PlayerBase0.DROW = xrange(5)
+
+class PlayerBaseRace:
+    def __init__(self,PLAYERRACE):
+        classByType = {
+                PlayerBase0.HUMAN : PlayerHuman,
+                PlayerBase0.GNOLL : PlayerGnoll,
+                PlayerBase0.KATTA : PlayerKatta,
+                PlayerBase0.ELF : PlayerElf,
+                PlayerBase0.DROW : PlayerDrow,
+        }
+        ### classByType[PLAYERRACE].__init__(self)
+        classByType[PLAYERRACE]
+
+class PlayerBaseKlass:
+    def __init__(self,PLAYERCLASS):
+        classByType2 = {
+                PlayerBase0.FIGHTER : PlayerFighter,
+		####################### NOTE FIXME :
+                PlayerBase0.FIGHTERMAGICUSER : PlayerFighter,
+                PlayerBase0.FIGHTERTHIEF : PlayerFighter,
+                PlayerBase0.MAGICUSER : PlayerMagicuser,
+                PlayerBase0.MAGICUSERTHIEF : PlayerMagicuser,
+                PlayerBase0.THIEF : PlayerThief,
+        }
+        ### classByType2[PLAYERCLASS].__init__(self)
+        classByType2[PLAYERCLASS]
+
+class PlayerBase(PlayerBase, PlayerBase, PlayerBase0,PlayerBaseRace,PlayerBaseKlass):
+    "Player Base"
 
     PlayerBase.FIGHTER,PlayerBase.MAGICUSER,PlayerBase.THIEF,PlayerBase.FIGHTERMAGICUSER,PlayerBase.FIGHTERTHIEF,PlayerBase.MAGICUSERTHIEF = xrange(6)
     PlayerBase.ELF,PlayerBase.GNOLL,PlayerBase.KATTA,PlayerBase.HUMAN,PlayerBase.DROW = xrange(5)
-    
+
     def __init__(self,PLAYERRACE,PLAYERCLASS):
-        classByType = {
-                PlayerBase.HUMAN : PlayerHuman,
-                PlayerBase.GNOLL : PlayerGnoll,
-                PlayerBase.KATTA : PlayerKatta,
-                PlayerBase.ELF : PlayerElf,
-                PlayerBase.DROW : PlayerDrow,
-        }
-        classByType2 = {
-                PlayerBase.FIGHTER : PlayerFighter,
-                PlayerBase.FIGHTERMAGICUSER : PlayerFighter,
-                PlayerBase.FIGHTERTHIEF : PlayerFighter,
-                PlayerBase.MAGICUSER : PlayerMagicuser,
-                PlayerBase.MAGICUSERTHIEF : PlayerMagicuser,
-                PlayerBase.THIEF : PlayerThief,
-        }
+	PlayerBase0.__init__(self)
+	PlayerBaseRace.__init__(self, PLAYERRACE)
+	PlayerBaseKlass.__init__(self, PLAYERCLASS)
 
 	self.heartmeter = None 
 	self.sword = BroadSword(0,0)
@@ -105,9 +124,6 @@ class PlayerBase(PlayerBase,PlayerBase):
         self.stimlibfight.addpicture(image)
 
         self.fightcounter = 0
-
-        classByType[PLAYERRACE]()
-        classByType2[PLAYERCLASS]()
 
     def drawstatic(self, screen):
         # NOTE

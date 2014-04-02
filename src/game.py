@@ -74,7 +74,7 @@ class Game:
 
         self.room = Maproom1(0,0)
         self.heartmeter = Meter()
-	self.player = PlayerDrowMage(self.heartmeter)
+	self.player = None ### PlayerDrowMage(self.heartmeter)
 ###self.player = PlayerFighter(self.heartmeter)default fighter class
         self.screen.blit(blankimage, (0,0))
         selector = Selector(self.screen, self.font)
