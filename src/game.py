@@ -73,9 +73,9 @@ class Game:
                     gameover = 1
 
         self.room = Maproom1(0,0)
-        heartmeter = Meter()
-	self.player = PlayerDrowMage(heartmeter)
-###self.player = PlayerFighter(heartmeter)default fighter class
+        self.heartmeter = Meter()
+	self.player = PlayerDrowMage(self.heartmeter)
+###self.player = PlayerFighter(self.heartmeter)default fighter class
         self.screen.blit(blankimage, (0,0))
         selector = Selector(self.screen, self.font)
 
@@ -87,44 +87,45 @@ class Game:
 
 	if selector.askrace() == "Human":
             if selector.askclass() == "Fighter":
-                self.player = PlayerHumanFighter(heartmeter)
+                self.player = PlayerHumanFighter()
             elif selector.askclass() == "Magic User":
-                self.player = PlayerHumanMagicuser(heartmeter)
+                self.player = PlayerHumanMagicuser()
             elif selector.askclass() == "Thief":
-                self.player = PlayerHumanThief(heartmeter)
+                self.player = PlayerHumanThief()
         elif selector.askrace() == "Gnoll":
             if selector.askclass() == "Fighter":
-                self.player = PlayerGnollFighter(heartmeter)
+                self.player = PlayerGnollFighter()
             elif selector.askclass() == "Magic User":
-                self.player = PlayerGnollMagicuser(heartmeter)
+                self.player = PlayerGnollMagicuser()
             elif selector.askclass() == "Thief":
-                self.player = PlayerGnollThief(heartmeter)
+                self.player = PlayerGnollThief()
         elif selector.askrace() == "Katta":
             if selector.askclass() == "Fighter":
-                self.player = PlayerKattaFighter(heartmeter)
+                self.player = PlayerKattaFighter()
             elif selector.askclass() == "Magic User":
-                self.player = PlayerKattaMagicuser(heartmeter)
+                self.player = PlayerKattaMagicuser()
             elif selector.askclass() == "Thief":
-                self.player = PlayerKattaThief(heartmeter)
+                self.player = PlayerKattaThief()
         elif selector.askrace() == "Elf":
             if selector.askclass() == "Fighter":
-                self.player = PlayerElfFighter(heartmeter)
+                self.player = PlayerElfFighter()
             elif selector.askclass() == "Magic User":
-                self.player = PlayerElfMagicuser(heartmeter)
+                self.player = PlayerElfMagicuser()
             elif selector.askclass() == "Thief":
-                self.player = PlayerElfThief(heartmeter)
+                self.player = PlayerElfThief()
         elif selector.askrace() == "Drow":
             if selector.askclass() == "Fighter":
-                self.player = PlayerDrowFighter(heartmeter)
+                self.player = PlayerDrowFighter()
             elif selector.askclass() == "Magic User":
-                self.player = PlayerDrowMagicuser(heartmeter)
+                self.player = PlayerDrowMagicuser()
             elif selector.askclass() == "Thief":
-                self.player = PlayerDrowThief(heartmeter)
+                self.player = PlayerDrowThief()
 
 ##        if selector.askrace() == "Abeille":
 ##            if selector.askclass() == "Fighter":
-##                self.player = PlayerAbeilleFighter(heartmeter)
-        
+##                self.player = PlayerAbeilleFighter()
+
+	self.player.setheartmeter(self.heartmeter)        
         self.inventory = Inventory()
 
         self.inventoryitem = None
@@ -183,12 +184,12 @@ class Game:
 			##if Scrollinvisibility(0,0,0,0,"1","1").readkeys(None):
                         ##    self.inventory.additem(Inventoryscrollinvisibility())
 
-			if self.inventorymasterkey == 1:
-                       		1###FIX for key in self.inventory.additem(Inventorymasterkey())
-                        if self.inventorykey1 == 1:
-                       		1###FIX for key in self.inventory.additem(Inventorykey1())
-                       	if self.inventorykey2 == 1:
-                       		1###FIX for key in self.inventory
+####FIXME remove			if self.inventorymasterkey == 1:
+####                       		1###FIX for key in self.inventory.additem(Inventorymasterkey())
+####                        if self.inventorykey1 == 1:
+####                       		1###FIX for key in self.inventory.additem(Inventorykey1())
+####                       	if self.inventorykey2 == 1:
+####                       		1###FIX for key in self.inventory
         		pygame.key.set_repeat(1000,1000)
 			while flag == 0:#NOTE1
                             for event in pygame.event.get():
@@ -251,7 +252,7 @@ class Game:
             # remove dead game objects
 
 	    ### Set player hitpoints in life bar
-	    heartmeter.index = self.player.hitpoints
+	    self.heartmeter.index = self.player.hitpoints
 
             for o in self.room.gameobjects:
                 if o:
@@ -265,7 +266,7 @@ class Game:
             self.taskbar.draw()
             ###if self.inventoryitem:
 	    ###	self.inventoryitem.draw(self.screen, 0,0)
-            heartmeter.draw(self.screen)
+            self.heartmeter.draw(self.screen)
             
             pygame.display.update()
             self.screen.blit(blankimage, (0,0))

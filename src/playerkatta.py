@@ -21,6 +21,6 @@ from stateimagelibrary import *
 
 class PlayerKatta:
     "Player Fighter"
-    def __init__(self,heartmeter):
-        1#PlayerBase.__init__(self,heartmeter)
+    def __init__(self):
+        1#PlayerBase.__init__(self)
 

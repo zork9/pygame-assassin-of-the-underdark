@@ -23,8 +23,8 @@ from broadsword import *
 
 class PlayerDrowThief(PlayerBase):
     "Player"
-    def __init__(self,heartmeter):
-        PlayerBase.__init__(self,PlayerBase.DROW, PlayerBase.THIEF, heartmeter)
+    def __init__(self):
+        PlayerBase.__init__(self,PlayerBase.DROW, PlayerBase.THIEF)
 	self.sword = BroadSword(0,0)
 
         self.stimlib = Stateimagelibrary()	

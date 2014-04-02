@@ -24,8 +24,8 @@ from rubysword import *
 
 class PlayerKattaFighter(PlayerBase):
     "Player Katta Fighter"
-    def __init__(self,heartmeter):
-        PlayerBase.__init__(self,PlayerBase.KATTA,PlayerBase.FIGHTER,heartmeter)
+    def __init__(self):
+        PlayerBase.__init__(self,PlayerBase.KATTA,PlayerBase.FIGHTER)
         
         self.stimlib = Stateimagelibrary()	
         image = pygame.image.load('./pics/playerkattafighter1-48x48.bmp').convert()

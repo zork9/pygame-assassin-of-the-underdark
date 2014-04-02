@@ -22,11 +22,17 @@ from rng import *
 from broadsword import *
 from rubysword import *
 
+########################################################
+# Note that this class is not further developed anymore 
+# and that it is an example for single-PC games
+########################################################
+
 class PlayerDrowMage(PlayerBase):
     "Player Drow"
     def __init__(self,heartmeter):
-        PlayerBase.__init__(self,PlayerBase.DROW,PlayerBase.MAGICUSER,heartmeter)
-        
+        PlayerBase.__init__(self,PlayerBase.DROW,PlayerBase.MAGICUSER)
+       
+	self.heartmeter = heartmeter 
         self.stimlib = Stateimagelibrary()	
         image = pygame.image.load('./pics/playerdrowmage1-48x48.bmp').convert()
         image.set_colorkey((0,0,0)) 

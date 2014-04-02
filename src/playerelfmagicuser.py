@@ -22,8 +22,8 @@ from broadsword import *
 
 class PlayerElfMagicuser(PlayerBase):
     "playerelffighter Fighter"
-    def __init__(self,heartmeter):
-        PlayerBase.__init__(self,PlayerBase.ELF,PlayerBase.MAGICUSER,heartmeter)
+    def __init__(self):
+        PlayerBase.__init__(self,PlayerBase.ELF,PlayerBase.MAGICUSER)
 
         self.stimlib = Stateimagelibrary()	
         image = pygame.image.load('./pics/playerelffighter1-48x48.bmp').convert()

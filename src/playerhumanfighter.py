@@ -22,7 +22,7 @@ from broadsword import *
 
 class PlayerHumanFighter(PlayerBase):
     "Player Fighter"
-    def __init__(self,heartmeter):
-        PlayerBase.__init__(self,PlayerBase.HUMAN, PlayerBase.FIGHTER, heartmeter)
+    def __init__(self):
+        PlayerBase.__init__(self,PlayerBase.HUMAN, PlayerBase.FIGHTER)
 	self.sword = BroadSword(0,0)
 

@@ -23,8 +23,8 @@ from broadsword import *
 
 class PlayerDrowMagicuser(PlayerBase):
     "Player Magicuser"
-    def __init__(self,heartmeter):
-        PlayerBase.__init__(self,PlayerBase.DROW, PlayerBase.MAGICUSER, heartmeter)
+    def __init__(self):
+        PlayerBase.__init__(self,PlayerBase.DROW, PlayerBase.MAGICUSER)
 	self.sword = BroadSword(0,0)
 
         self.stimlib = Stateimagelibrary()	

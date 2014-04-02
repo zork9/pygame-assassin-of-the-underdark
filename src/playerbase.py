@@ -1,6 +1,5 @@
 
-# Copyright (C) Johan Ceuppens 2010
-# Copyright (C) Johan Ceuppens 2014
+# Copyright (C) Johan Ceuppens 2010-2014
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 2 of the License, or
@@ -26,7 +25,7 @@ from playerelf import *
 from playergnoll import *
 from playerdrow import *
 from playerhuman import *
-
+from broadsword import *
 
 class PlayerBase:
     def __init__(self):
@@ -35,10 +34,10 @@ class PlayerBase:
 class PlayerBase(PlayerBase,PlayerBase):
     "Player"
 
-    PlayerBase.FIGHTER,PlayerBase.MAGICUSER,PlayerBase.THIEF = xrange(3)
+    PlayerBase.FIGHTER,PlayerBase.MAGICUSER,PlayerBase.THIEF,PlayerBase.FIGHTERMAGICUSER,PlayerBase.FIGHTERTHIEF,PlayerBase.MAGICUSERTHIEF = xrange(6)
     PlayerBase.ELF,PlayerBase.GNOLL,PlayerBase.KATTA,PlayerBase.HUMAN,PlayerBase.DROW = xrange(5)
     
-    def __init__(self,PLAYERRACE,PLAYERCLASS,heartmeter):
+    def __init__(self,PLAYERRACE,PLAYERCLASS):
         classByType = {
                 PlayerBase.HUMAN : PlayerHuman,
                 PlayerBase.GNOLL : PlayerGnoll,
@@ -48,10 +47,15 @@ class PlayerBase(PlayerBase,PlayerBase):
         }
         classByType2 = {
                 PlayerBase.FIGHTER : PlayerFighter,
+                PlayerBase.FIGHTERMAGICUSER : PlayerFighter,
+                PlayerBase.FIGHTERTHIEF : PlayerFighter,
                 PlayerBase.MAGICUSER : PlayerMagicuser,
+                PlayerBase.MAGICUSERTHIEF : PlayerMagicuser,
                 PlayerBase.THIEF : PlayerThief,
         }
-	self.heartmeter = heartmeter
+
+	self.heartmeter = None 
+	self.sword = BroadSword(0,0)
 	self.hitpoints = 78
         self.x = 150 
         self.y = 150 
@@ -102,8 +106,8 @@ class PlayerBase(PlayerBase,PlayerBase):
 
         self.fightcounter = 0
 
-        classByType[PLAYERRACE](heartmeter)
-        classByType2[PLAYERCLASS](heartmeter)
+        classByType[PLAYERRACE]()
+        classByType2[PLAYERCLASS]()
 
     def drawstatic(self, screen):
         # NOTE
@@ -150,6 +154,8 @@ class PlayerBase(PlayerBase,PlayerBase):
 ##        self.w -= 30
 ##        self.h -= 30
 ##        
+
+### FIXME heartmeter in game class
     def hit(self):
 	self.heartmeter.index -= 1 
 	if self.heartmeter.index <= 0:
@@ -157,11 +163,14 @@ class PlayerBase(PlayerBase,PlayerBase):
 	else:
 		return 0	
 
-    def askclass(self):
-        return "Fighter"
+    def setheartmeter(self, heartmeter):
+	self.heartmeter = heartmeter
 
     def askrace(self):
-        return "Human"
+        return "Random Race"
+
+    def askclass(self):
+        return "Random Class"
 
     def askpicture(self):
         return './pics/taskbar-PC.bmp'

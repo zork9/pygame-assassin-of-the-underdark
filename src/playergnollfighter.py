@@ -22,8 +22,8 @@ from broadsword import*
 
 class PlayerGnollFighter(PlayerBase):
     "Player Fighter"
-    def __init__(self,heartmeter):
-        PlayerBase.__init__(self,PlayerBase.GNOLL,PlayerBase.FIGHTER,heartmeter)
+    def __init__(self):
+        PlayerBase.__init__(self,PlayerBase.GNOLL,PlayerBase.FIGHTER)
 
         self.stimlib = Stateimagelibrary()	
         image = pygame.image.load('./pics/playergnollfighter1-48x48.bmp').convert()
