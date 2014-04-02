@@ -17,6 +17,7 @@
 import pygame
 from pygame.locals import *
 from gameobject import *
+from rng import *
 
 class Selector:
     "Class and Race Selector"
@@ -28,6 +29,9 @@ class Selector:
         self.race = "Human"
 
 	self.yoffset = 70
+
+	self.raceslist = ["Human", "Gnoll", "Katta", "Elf", "Drow"]
+	self.classeslist = ["Fighter", "Magic User", "Thief"]
 
         # fighters
 
@@ -170,6 +174,16 @@ class Selector:
                             self.race = "Drow"    
                             self.klass = "Thief"
                             return
+			else:
+				rng = RNG()
+
+				race0 = self.raceslist[rng.rolldx(len(self.raceslist)-1)]	
+				class0 = self.classeslist[rng.rolldx(len(self.classeslist)-1)]	
+				self.race = race0 
+				self.klass = class0 
+				return
+
+
 
     def askrace(self):
         return self.race

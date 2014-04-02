@@ -33,6 +33,9 @@ class RNG(Gameobject):
     def rolld2(self):
         return randint(1,2)
 
+    def rolldx(self, x):
+        return randint(1,x)
+
     def rollbroadsword(self):
         if randint(0,3) > 2:
             return 0

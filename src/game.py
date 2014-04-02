@@ -20,6 +20,7 @@ from pygame.locals import *
 from maproom1 import *
 from maproom2 import *
 
+from rng import *
 from selector import *
 from taskbar import *
 from time import *
@@ -73,14 +74,17 @@ class Game:
 
         self.room = Maproom1(0,0)
         heartmeter = Meter()
-###        player = PlayerDrowMage(heartmeter)
+###player = PlayerDrowMage(heartmeter)
+###player = PlayerFighter(heartmeter)default fighter class
         screen.blit(blankimage, (0,0))
         selector = Selector(screen, font)
 
+	# display character selection screen and wait for mouse click choice
+
         selector.select()
-        
-##	heartmeter = Meter()
-##	player = PlayerFighter(heartmeter)default fighter class
+       
+	# get data from character selector screen 
+
 	if selector.askrace() == "Human":
             if selector.askclass() == "Fighter":
                 player = PlayerHumanFighter(heartmeter)
@@ -116,8 +120,10 @@ class Game:
                 player = PlayerDrowMagicuser(heartmeter)
             elif selector.askclass() == "Thief":
                 player = PlayerDrowThief(heartmeter)
-	else: ### default human fighter FIXME make random
-                player = PlayerHumanFighter(heartmeter)
+##	else: ### default human fighter FIXED with random in selector
+
+
+##                player = PlayerHumanFighter(heartmeter)
 ##        if selector.askrace() == "Abeille":
 ##            if selector.askclass() == "Fighter":
 ##                player = PlayerAbeilleFighter(heartmeter)
