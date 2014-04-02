@@ -82,9 +82,9 @@ class BeholderGlassSummoner(Gameobject):
         self.stimlib.draw(screen, self.x+room.relativex,self.y+room.relativey)
 	    
 	     
-    def update(self,room,player):
+    def update(self,game):
         sleep(.04) # FIX goblin sleep
-	if room.collidewithenemy(self):
+	if game.room.collidewithenemy(self):
 	    if (self.direction == "right"):
 	        self.x -=6
 	        self.direction = "left" 
@@ -98,16 +98,16 @@ class BeholderGlassSummoner(Gameobject):
 	        self.y +=6
 	        self.direction = "down"
 
-	if player.x+28-room.relativex < self.x:
+	if game.player.x+28-game.room.relativex < self.x:
 		self.x -= 3
 		self.direction = "left"
-	if player.x-28-room.relativex > self.x:
+	if game.player.x-28-game.room.relativex > self.x:
 		self.direction = "right"
 		self.x += 3	
-	if player.y+10-room.relativey < self.y:
+	if game.player.y+10-game.room.relativey < self.y:
 		self.direction = "up"
 		self.y -= 3
-	if player.y-10-room.relativey > self.y:
+	if game.player.y-10-game.room.relativey > self.y:
 		self.direction = "down"
 		self.y += 3
 

@@ -31,9 +31,9 @@ class Maproom(MaproomBase):
         self.masterkey = 0
 
         
-    def draw(self,screen):
+    def draw(self,game):
 	##print "x=%d" % self.relativex 
-        screen.blit(self.background, (0+self.relativex, 0+self.relativey))
+        game.screen.blit(self.background, (0+self.relativex, 0+self.relativey))
 
     def pickup(self, player):
         return 0

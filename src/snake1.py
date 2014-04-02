@@ -67,7 +67,7 @@ class Snake1(Gameobject):
         self.angle -= self.PI/8
         self.angle -= self.PI/8
 	     
-    def update(self,room,player):
+    def update(self,game):
         1
 
     def collide(self, room, player):

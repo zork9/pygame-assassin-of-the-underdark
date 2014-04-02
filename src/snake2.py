@@ -74,9 +74,9 @@ class Snake2(Gameobject):
             self.stimlibup.draw(screen, self.x+room.relativex,self.y+room.relativey)
 	    
 	     
-    def update(self,room,player):
+    def update(self,game):
         ###sleep(.04) # FIX goblin sleep
-	if room.collidewithenemy(self):
+	if game.room.collidewithenemy(self):
 	    if (self.direction == "right"):
 	        self.x -=4
 	        self.direction = "left" 
@@ -90,16 +90,16 @@ class Snake2(Gameobject):
 	        self.y +=4
 	        self.direction = "down"
 
-	if player.x+28-room.relativex < self.x:
+	if game.player.x+28-game.room.relativex < self.x:
 		self.x -= 2
 		self.direction = "left"
-	if player.x-28-room.relativex > self.x:
+	if game.player.x-28-game.room.relativex > self.x:
 		self.direction = "right"
 		self.x += 2	
-	if player.y+10-room.relativey < self.y:
+	if game.player.y+10-game.room.relativey < self.y:
 		self.direction = "up"
 		self.y -= 2
-	if player.y-10-room.relativey > self.y:
+	if game.player.y-10-game.room.relativey > self.y:
 		self.direction = "down"
 		self.y += 2
 

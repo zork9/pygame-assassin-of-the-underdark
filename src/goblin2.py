@@ -56,9 +56,9 @@ class Goblin2(Gameobject):
             self.stimlibright.draw(screen, self.x+room.relativex,self.y+room.relativey)
 	    
 	     
-    def update(self,room,player):
+    def update(self,game):
         sleep(.04) # FIX goblin sleep
-#	if (not self.collideobjectY(room)): 
+#	if (not self.collideobjectY(game.room)): 
 #	    if (self.direction == "right"):
 #	        self.x -=2
 #	        self.direction = "left" 
@@ -66,13 +66,13 @@ class Goblin2(Gameobject):
 #	        self.x +=2
 #	        self.direction = "right"
 
-	if player.x < self.x:
+	if game.player.x < self.x:
 		self.x -= 2
-	elif player.x > self.x+self.w:
+	elif game.player.x > self.x+self.w:
 		self.x += 2	
-	if player.y < self.y:
+	if game.player.y < self.y:
 		self.y -= 2
-	elif player.y > self.y+self.h:
+	elif game.player.y > self.y+self.h:
 		self.y += 2	
 
 	if (self.direction == "left"):

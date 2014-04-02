@@ -37,7 +37,7 @@ class BroadSword(Gameobject):
         self.stimlib.draw(screen, self.x+room.relativex,self.y+room.relativey)
 	
 	     
-    def update(self,room,player):
+    def update(self,game):
 	1
 
     def pickup(self, room):

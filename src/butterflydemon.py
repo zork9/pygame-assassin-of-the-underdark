@@ -46,7 +46,7 @@ class ButterflyDemon(Gameobject):
     def draw(self, screen, room):
         self.stimlib.draw(screen, self.x+room.relativex,self.y+room.relativey)    
 	     
-    def update(self,room,player):
+    def update(self,game):
         sleep(.005)
 ##        self.x-=1
 	if (random.randint(0,14) == 0 and self.direction == "left"):
@@ -58,7 +58,7 @@ class ButterflyDemon(Gameobject):
 	if (random.randint(0,10) == 0 and self.direction == "up"):
 	   self.direction = "down"
 
-	if (not self.collideobjectX(room)): 
+	if (not self.collideobjectX(game.room)): 
 	    if (self.direction == "left"):
 	        self.x +=2
 	        self.direction = "right" 
@@ -66,7 +66,7 @@ class ButterflyDemon(Gameobject):
 	        self.x -=2
 	        self.direction = "left"
 
-	if (not self.collideobjectY(room)): 
+	if (not self.collideobjectY(game.room)): 
 	    if (self.direction == "up"):
 	        self.x +=2
 	        self.direction = "down" 

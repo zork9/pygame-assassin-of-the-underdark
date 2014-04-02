@@ -30,9 +30,9 @@ class MaproomBase:
         self.background = pygame.image.load('./pics/blank.bmp').convert()
         self.direction = "north"
         
-    def draw(self,screen):
+    def draw(self,game):
 	##print "x=%d" % self.relativex 
-        screen.blit(self.background, (0+self.relativex, 0+self.relativey))
+        game.screen.blit(self.background, (0+self.relativex, 0+self.relativey))
 
     def undomove(self):
         if self.direction == "north":

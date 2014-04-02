@@ -49,8 +49,8 @@ class Game:
     def __init__(self):
         pygame.init()
         pygame.font.init()
-        screen = pygame.display.set_mode((300, 350))
-        font = pygame.font.SysFont("Times", 8)
+        self.screen = pygame.display.set_mode((300, 350))
+        self.font = pygame.font.SysFont("Times", 8)
         gameover = 0
 
         askplayers = 0 # NOTE: 2 Player flag
@@ -63,7 +63,7 @@ class Game:
         
         while gameover == 0:
             pygame.display.update()
-            screen.blit(titleimage, (0,0))
+            self.screen.blit(titleimage, (0,0))
             for event in pygame.event.get():
                 if event.type == QUIT:
                     return
@@ -74,10 +74,10 @@ class Game:
 
         self.room = Maproom1(0,0)
         heartmeter = Meter()
-###player = PlayerDrowMage(heartmeter)
+	self.player = PlayerDrowMage(heartmeter)
 ###player = PlayerFighter(heartmeter)default fighter class
-        screen.blit(blankimage, (0,0))
-        selector = Selector(screen, font)
+        self.screen.blit(blankimage, (0,0))
+        selector = Selector(self.screen, self.font)
 
 	# display character selection screen and wait for mouse click choice
 
@@ -137,7 +137,7 @@ class Game:
         self.inventorykey2 = None
         self.inventoryrubysword = None
         
-        self.taskbar = Taskbar(screen,font,player)
+        self.taskbar = Taskbar(self.screen,self.font,player)
         self.talker = None
         
         pygame.key.set_repeat(1,1)
@@ -150,7 +150,7 @@ class Game:
                 elif event.type == KEYDOWN:
             	    
                     # player 1 key controls
-                    player.draw(screen)
+                    player.draw(self.screen)
                     if event.key == K_x:
                         if self.room.collide(player) == 2:
                             self.talker = self.room.talkto() # FIX
@@ -206,7 +206,7 @@ class Game:
                                         flag = 1
 
 
-                                inventory.draw(screen)
+                                inventory.draw(self.screen)
                                 pygame.display.update()
  
 #	    pickupid = self.room.pickup(player)
@@ -228,7 +228,7 @@ class Game:
         	endingimage = pygame.image.load('./pics/endingscreen.bmp').convert()
         	while gameover == 0:
 	            	pygame.display.update()
-        	    	screen.blit(endingimage, (0,0))
+        	    	self.screen.blit(endingimage, (0,0))
             		for event in pygame.event.get():
                 		if event.type == QUIT:
                     			return
@@ -242,8 +242,8 @@ class Game:
                 ##self.room.undomove()
             ###    self.room.removeentrance2()
 
-            self.room.draw(screen,player) 
-            player.drawstatic(screen)
+            self.room.draw(self) 
+            player.drawstatic(self.screen)
             
 	    sleep(0.2)
             # fight for enemies
@@ -259,17 +259,17 @@ class Game:
                         self.room.removeobject(o)
 
             if self.talker != None:
-                self.talker.talk(screen,font)
+                self.talker.talk(self.screen,self.font)
 
             self.taskbar.draw()
             ###if self.inventoryitem:
-	    ###	self.inventoryitem.draw(screen, 0,0)
-            heartmeter.draw(screen)
+	    ###	self.inventoryitem.draw(self.screen, 0,0)
+            heartmeter.draw(self.screen)
             
             pygame.display.update()
-            screen.blit(blankimage, (0,0))
+            self.screen.blit(blankimage, (0,0))
             roomnumber = self.room.exit(self)
-            self.chooseroom(roomnumber,font)
+            self.chooseroom(roomnumber,self.font)
 
 
     def sethitf(self, hitf):

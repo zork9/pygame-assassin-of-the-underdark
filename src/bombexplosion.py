@@ -29,17 +29,17 @@ class BombExplosion(Gameobject):
    	self.counter = 0 
 
 
-    def update(self,room,player):
+    def update(self,game):
 	self.counter += 1
 	j = 0
 	if (self.counter > 4):
-	    for i in room.gameobjects:
+	    for i in game.room.gameobjects:
 		if (i == self):
 		    l = 0
-		    for k in room.gameobjects: 
-			if i != k and k and k.collideobjectXY(room):
-			    room.gameobjects[l] = None
+		    for k in game.room.gameobjects: 
+			if i != k and k and k.collideobjectXY(game.room):
+			    game.room.gameobjects[l] = None
 			l += 1    	
-		    room.gameobjects[j] = None 
+		    game.room.gameobjects[j] = None 
 		    return
 	    	j += 1 

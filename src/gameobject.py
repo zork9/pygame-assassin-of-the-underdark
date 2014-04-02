@@ -99,7 +99,7 @@ class Gameobject:
 	            return 1 
 	return 0 
     
-    def update(self,room,player):
+    def update(self,game):
 	1
 
     def pickup(self, room):
