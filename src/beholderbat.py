@@ -33,10 +33,10 @@ class BeholderBat(Gameobject):
         
 	self.stimlib = Stateimagelibrary()	
         image = pygame.image.load('./pics/beholderbat1-48x48.bmp').convert()
-        image.set_colorkey((255,0,0)) 
+        image.set_colorkey((255,255,255)) 
 	self.stimlib.addpicture(image)	
         image = pygame.image.load('./pics/beholderbat2-48x48.bmp').convert()
-        image.set_colorkey((255,0,0)) 
+        image.set_colorkey((255,255,255)) 
 	self.stimlib.addpicture(image)
 
 	self.talkcounter = 0

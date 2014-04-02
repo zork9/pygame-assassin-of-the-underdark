@@ -47,6 +47,7 @@ class Maproom1(MaproomDungeon):
         self.tileboxes.append(self.eastwall1)
         self.tileboxes.append(self.southwall1)
 
+        self.gameobjects.append(BeholderBat(300,100))
         self.gameobjects.append(Goblin3(300,100))
         self.gameobjects.append(Goblin3(340,140))
         self.gameobjects.append(Goblin3(380,180))
