@@ -17,14 +17,13 @@
 import pygame
 from pygame.locals import *
 
-from treenode import *
 
-class Tree:
+
+class TreeNode:
     ""
-    def __init__(self):
-	self.root = None
+    def __init__(self, d):
+	self.nodes = []
+	self.data = d 
 
-    def __init__(self, tn):
-	self.root = []
-	self.root.append(tn) 
-
+    def add(self, d):
+	self.nodes.add(d)

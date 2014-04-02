@@ -14,17 +14,22 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
+### This isn't a window
+
 import pygame
 from pygame.locals import *
 
-from treenode import *
+from widgettree import *
 
-class Tree:
-    ""
+class WidgetRoot:
+    "Class and Race Selector"
     def __init__(self):
-	self.root = None
+	self.widgettree = WidgetTree()
+	self.parent = None  ### this is persistent	
 
-    def __init__(self, tn):
-	self.root = []
-	self.root.append(tn) 
+    def add(self, widget):
+	self.widgettree.add(widget)
+
+    def interrupt(self, SIGNAL, X, Y):
+	self.widgettree.searchXY(X,Y)	
 

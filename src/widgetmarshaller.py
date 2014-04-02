@@ -13,18 +13,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
 import pygame
 from pygame.locals import *
 
-from treenode import *
-
-class Tree:
+class WidgetMarshaller:
     ""
     def __init__(self):
-	self.root = None
-
-    def __init__(self, tn):
-	self.root = []
-	self.root.append(tn) 
+	self.queue = []	
+	
+    def add(self, widgetsignal):
+	self.queue.append(widgetsignal)
 

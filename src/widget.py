@@ -1,5 +1,5 @@
 
-# Copyright (C) Johan Ceuppens 2010 
+# Copyright (C) Johan Ceuppens 2010-2014 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 2 of the License, or
@@ -17,14 +17,14 @@
 import pygame
 from pygame.locals import *
 
-from treenode import *
+from widgetsystem import *
 
-class Tree:
+class Widget:
     ""
-    def __init__(self):
-	self.root = None
+    def __init__(self, parent, callback = None, widgettreenode = None):
+	self.widgettreenode = widgettreenode ### widget is doubly-linked with node and node with itself 
+	self.callback = callback
+	self.parent = parent
 
-    def __init__(self, tn):
-	self.root = []
-	self.root.append(tn) 
-
+	### each widget contains a widgetroot which has a subtree of the parent of this widget in it
+	self.widgetsystem = WidgetSystem()

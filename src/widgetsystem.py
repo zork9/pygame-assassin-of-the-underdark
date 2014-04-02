@@ -14,17 +14,24 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
+### This isn't a window
+
 import pygame
 from pygame.locals import *
 
-from treenode import *
+from widgetroot import *
+from widgetmarshaller import *
+from widgetsignal import *
 
-class Tree:
+class WidgetSystem:
     ""
     def __init__(self):
-	self.root = None
+	self.widgetroot = WidgetRoot()
+	self.widgetmarshaller = WidgetMarshaller()
+	self.parent = None  ### this is persistent	
 
-    def __init__(self, tn):
-	self.root = []
-	self.root.append(tn) 
+    def add_widget(self, widget):
+	self.widgetroot.add(widget)
 
+    def interrupt(self, SIGNAL, X, Y):
+	self.widgetroot.interrupt(SIGNAL, X, Y)	 

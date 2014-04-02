@@ -17,14 +17,9 @@
 import pygame
 from pygame.locals import *
 
-from treenode import *
+from widget import *
 
-class Tree:
-    ""
-    def __init__(self):
-	self.root = None
-
-    def __init__(self, tn):
-	self.root = []
-	self.root.append(tn) 
-
+class MulticlassSelectorButton(Widget):
+    "Class and Race Selector Window Button"
+    def __init__(self, callback):
+	self.callback = callback

@@ -17,14 +17,14 @@
 import pygame
 from pygame.locals import *
 
-from treenode import *
+from tree import *
 
-class Tree:
+class WidgetTree(Tree):
     ""
     def __init__(self):
-	self.root = None
+	Tree.__init__(self)	
 
-    def __init__(self, tn):
-	self.root = []
-	self.root.append(tn) 
-
+    def depth_first_search(self, d):
+	for tn in self.root:
+		tn.search(d) 
+	

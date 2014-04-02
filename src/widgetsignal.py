@@ -13,18 +13,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
 import pygame
 from pygame.locals import *
 
-from treenode import *
 
-class Tree:
+class WidgetSignal:
     ""
-    def __init__(self):
-	self.root = None
+    WIDGET_SIGNAL_NULL,WIDGET_SIGNAL_CLICK,WIDGET_SIGNAL_UNCLICK = xrange(3)
 
-    def __init__(self, tn):
-	self.root = []
-	self.root.append(tn) 
-
+    def __init__(self, signal):
+	self.signal = signal	
