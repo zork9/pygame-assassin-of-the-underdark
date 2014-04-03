@@ -21,7 +21,7 @@ from playerbase import *
 from playerdrowmulticlass import *
 from broadsword import *
 
-class PlayerDrowMagicuserThief(PlayerBase,PlayerDrowMultiClass):
+class PlayerDrowFighterThief(PlayerBase,PlayerDrowMultiClass):
     "Player Fighter"
     def __init__(self):
         PlayerDrowMultiClass.__init__(self, PlayerBase.FIGHTERTHIEF)

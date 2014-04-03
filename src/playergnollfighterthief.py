@@ -21,7 +21,7 @@ from playerbase import *
 from playergnollmulticlass import *
 from broadsword import *
 
-class PlayerGnollFighterThief(PlayerBase,PlayerElfMultiClass):
+class PlayerGnollFighterThief(PlayerBase,PlayerGnollMultiClass):
     "Player Fighter"
     def __init__(self):
         PlayerGnollMultiClass.__init__(self, PlayerBase.FIGHTERTHIEF)

@@ -30,21 +30,12 @@ from inventory import *
 from meter import *
 from playergnollfighter import*
 from playerhumanfighter import*
-from playerhumanfightermagicuser import*
-from playerhumanfighterthief import*
-from playerhumanmagicuserthief import*
 from playerkattafighter import*
-from playerkattafightermagicuser import*
-from playerkattafighterthief import*
-from playerkattamagicuserthief import*
 from playerelffighter import*
 from playerdrowfighter import*
 from playerdrowmage import *
 from bomb import *
 from playergnollmagicuser import*
-from playergnollfightermagicuser import*
-from playergnollfighterthief import*
-from playergnollmagicuserthief import*
 from playerhumanmagicuser import*
 from playerkattamagicuser import*
 from playerelfmagicuser import*
@@ -53,13 +44,7 @@ from playergnollthief import*
 from playerhumanthief import*
 from playerkattathief import*
 from playerelfthief import*
-from playerelfmagicuser import*
-from playerelffightermagicuser import*
-from playerelffighterthief import*
 from playerdrowthief import*
-from playerdrowfightermagicuser import*
-from playerdrowfighterthief import*
-from playerdrowmagicuserthief import*
 
 class Game:
     "Main function"
@@ -100,78 +85,57 @@ class Game:
         selectormc = MultiClassSelector(self.screen, self.font)
 
         selectormc.select()
+	print "selectormc %s" % selectormc.askclass()
 
 
 
-        selectormr = MultiRaceSelector(self.screen, self.font)
+        selector = MultiRaceSelector(self.screen, self.font)
 
 	# display character selection screen and wait for mouse click choice
 
-        selectormr.select()
+        selector.select()
        
 	# get data from character selector screen 
 
-	if selectormr.askrace() == "Human":
-            if selectormc.askclass() == "Fighter":
+	if selector.askrace() == "Human":
+            if selector.askclass() == "Fighter":
                 self.player = PlayerHumanFighter()
-            elif selectormc.askclass() == "Magic User":
+            elif selector.askclass() == "Magic User":
                 self.player = PlayerHumanMagicuser()
-            elif selectormc.askclass() == "Thief":
+            elif selector.askclass() == "Thief":
                 self.player = PlayerHumanThief()
-            elif selectormc.askclass() == "Fighter Magic User":
-                self.player = PlayerHumanFighterMagicuser()
-            elif selectormc.askclass() == "Fighter Thief":
-                self.player = PlayerHumanFighterThief()
-        elif selectormr.askrace() == "Gnoll":
-            if selectormc.askclass() == "Fighter":
+        elif selector.askrace() == "Gnoll":
+            if selector.askclass() == "Fighter":
                 self.player = PlayerGnollFighter()
-            elif selectormc.askclass() == "Magic User":
+            elif selector.askclass() == "Magic User":
                 self.player = PlayerGnollMagicuser()
-            elif selectormc.askclass() == "Thief":
+            elif selector.askclass() == "Thief":
                 self.player = PlayerGnollThief()
-            elif selectormc.askclass() == "Fighter Magic User":
-                self.player = PlayerGnollFighterMagicuser()
-            elif selectormc.askclass() == "Fighter Thief":
-                self.player = PlayerGnollFighterThief()
-        elif selectormr.askrace() == "Katta":
-            if selectormc.askclass() == "Fighter":
+        elif selector.askrace() == "Katta":
+            if selector.askclass() == "Fighter":
                 self.player = PlayerKattaFighter()
-            elif selectormc.askclass() == "Magic User":
+            elif selector.askclass() == "Magic User":
                 self.player = PlayerKattaMagicuser()
-            elif selectormc.askclass() == "Thief":
+            elif selector.askclass() == "Thief":
                 self.player = PlayerKattaThief()
-            elif selectormc.askclass() == "Fighter Magic User":
-                self.player = PlayerKattaFighterMagicuser()
-            elif selectormc.askclass() == "Fighter Thief":
-                self.player = PlayerKattaFighterThief()
-        elif selectormr.askrace() == "Elf":
-            if selectormc.askclass() == "Fighter":
+        elif selector.askrace() == "Elf":
+            if selector.askclass() == "Fighter":
                 self.player = PlayerElfFighter()
-            elif selectormc.askclass() == "Magic User":
+            elif selector.askclass() == "Magic User":
                 self.player = PlayerElfMagicuser()
-            elif selectormc.askclass() == "Thief":
+            elif selector.askclass() == "Thief":
                 self.player = PlayerElfThief()
-            elif selectormc.askclass() == "Fighter Magic User":
-                self.player = PlayerElfFighterMagicuser()
-            elif selectormc.askclass() == "Fighter Thief":
-                self.player = PlayerElfFighterThief()
-        elif selectormr.askrace() == "Drow":
-            if selectormc.askclass() == "Fighter":
+        elif selector.askrace() == "Drow":
+            if selector.askclass() == "Fighter":
                 self.player = PlayerDrowFighter()
-            elif selectormc.askclass() == "Magic User":
+            elif selector.askclass() == "Magic User":
                 self.player = PlayerDrowMagicuser()
-            elif selectormc.askclass() == "Thief":
+            elif selector.askclass() == "Thief":
                 self.player = PlayerDrowThief()
-            elif selectormc.askclass() == "Fighter Magic User":
-                self.player = PlayerDrowFighterMagicuser()
-            elif selectormc.askclass() == "Fighter Thief":
-                self.player = PlayerDrowFighterThief()
 
-##        if selectormr.askrace() == "Abeille":
-##            if selectormc.askclass() == "Fighter":
+##        if selector.askrace() == "Abeille":
+##            if selector.askclass() == "Fighter":
 ##                self.player = PlayerAbeilleFighter()
-
-	print "foo> %s bar> %s" % (selectormc.askclass(), selectormr.askrace())
 
 	self.player.setheartmeter(self.heartmeter)        
         self.inventory = Inventory()

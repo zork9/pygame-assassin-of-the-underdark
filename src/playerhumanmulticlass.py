@@ -21,7 +21,7 @@ from playerbase import *
 from playerracemulticlass import *
 from broadsword import *
 
-class PlayerHumanMulticlass(PlayerBase,PlayerRaceMultiClass):
+class PlayerHumanMultiClass(PlayerBase,PlayerRaceMultiClass):
     "Player Fighter"
     def __init__(self, klass):
         PlayerRaceMultiClass.__init__(self,PlayerBase.HUMAN, klass)
