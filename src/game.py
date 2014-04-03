@@ -84,7 +84,7 @@ class Game:
         selectormc = MultiClassSelector(self.screen, self.font)
 
         selectormc.select()
-
+	print "selectormc %s" % selectormc.askclass()
         selector = Selector(self.screen, self.font)
 
 	# display character selection screen and wait for mouse click choice

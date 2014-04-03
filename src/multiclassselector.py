@@ -56,7 +56,7 @@ class MultiClassSelector(WidgetRootWindow, WidgetFrame):
         self.screen.blit(self.background, (0, 0))       
         self.screen.blit(self.fightermagicuserimage, (0,0))
         self.screen.blit(self.font.render("fighter/magicuser", 6, (255,255,255)), (0,50))
-        self.screen.blit(self.fighterthiefimage, (150,0))
+        self.screen.blit(self.fighterthiefimage, (75,0))
         self.screen.blit(self.font.render("fighter/thief", 6, (255,255,255)), (75,50))
         self.screen.blit(self.magicuserthiefimage, (150,0))
         self.screen.blit(self.font.render("magicuser/thief", 6, (255,255,255)), (150,50))
@@ -77,17 +77,17 @@ class MultiClassSelector(WidgetRootWindow, WidgetFrame):
                         if mousex > 0 and mousex < 50 and mousey > 0 and mousey < 50:
                             self.klass = "Fighter Magic User"
                             return
-                        elif mousex > 150 and mousex < 200 and mousey > 0 and mousey < 50:
+                        elif mousex > 75 and mousex < 75+50 and mousey > 0 and mousey < 50:
                             self.klass = "Fighter Thief"
                             return
-                        elif mousex > 300 and mousex < 350 and mousey > 0 and mousey < 50:
+                        elif mousex > 150 and mousex < 150+50 and mousey > 0 and mousey < 50:
                             self.klass = "Magic User Thief"
                             return
 			else:
-				rng = RNG()
-				class0 = self.classeslist[rng.rolldx(len(self.classeslist)-1)]	
+				###rng = RNG()
+				###class0 = self.classeslist[rng.rolldx(len(self.classeslist)-1)]	
 				###self.race = race0 
-				self.klass = class0 
+				###self.klass = class0 
 				return
 
 
