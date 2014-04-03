@@ -29,6 +29,8 @@ from playergnoll import *
 from playerdrow import *
 from playerhuman import *
 from broadsword import *
+	### NOTE FIXME : remove elfresources as default
+from playerelfresources import *
 
 class PlayerBase:
     def __init__(self):
@@ -64,7 +66,9 @@ class PlayerBaseKlass:
         ### classByType2[PLAYERCLASS].__init__(self)
         classByType2[PLAYERCLASS]
 
-class PlayerBase(PlayerBase, PlayerBase, PlayerBase0,PlayerBaseRace,PlayerBaseKlass):
+
+	### NOTE FIXME : remove elfresources as default
+class PlayerBase(PlayerBase, PlayerBase, PlayerBase0,PlayerBaseRace,PlayerBaseKlass,PlayerElfResources):
     "Player Base"
 
     PlayerBase.FIGHTER,PlayerBase.MAGICUSER,PlayerBase.THIEF,PlayerBase.FIGHTERMAGICUSER,PlayerBase.FIGHTERTHIEF,PlayerBase.MAGICUSERTHIEF = xrange(6)
@@ -74,9 +78,11 @@ class PlayerBase(PlayerBase, PlayerBase, PlayerBase0,PlayerBaseRace,PlayerBaseKl
 	PlayerBase0.__init__(self)
 	PlayerBaseRace.__init__(self, PLAYERRACE)
 	PlayerBaseKlass.__init__(self, PLAYERCLASS)
+	### NOTE FIXME : remove elfresources as default
+	PlayerElfResources.__init__(self)
 
-	self.klass = "Random Class"
-	self.race = "Random Race"
+	self.klass = "Elf"
+	self.race = "Magic User Thief"
 	self.heartmeter = None 
 	self.sword = BroadSword(0,0)
 	self.hitpoints = 78
@@ -84,49 +90,6 @@ class PlayerBase(PlayerBase, PlayerBase, PlayerBase0,PlayerBaseRace,PlayerBaseKl
         self.y = 150 
         self.w = 48 
         self.h = 48
-	self.stimlib = Stateimagelibrary()	
-        image = pygame.image.load('./pics/player1-30x30.bmp').convert()
-        image.set_colorkey((0,0,0)) 
-	self.stimlib.addpicture(image)	
-        image = pygame.image.load('./pics/player2-30x30.bmp').convert()
-        image.set_colorkey((0,0,0)) 
-	self.stimlib.addpicture(image)	
-        image = pygame.image.load('./pics/player3-30x30.bmp').convert()
-        image.set_colorkey((0,0,0)) 
-	self.stimlib.addpicture(image)	
-        image = pygame.image.load('./pics/player2-30x30.bmp').convert()
-        image.set_colorkey((0,0,0)) 
-	self.stimlib.addpicture(image)	
-        image = pygame.image.load('./pics/player1-30x30.bmp').convert()
-        image.set_colorkey((0,0,0)) 
-	self.stimlib.addpicture(image)	
-        image = pygame.image.load('./pics/player2-30x30.bmp').convert()
-        image.set_colorkey((0,0,0)) 
-	self.stimlib.addpicture(image)	
-        image = pygame.image.load('./pics/player3-30x30.bmp').convert()
-        image.set_colorkey((0,0,0)) 
-	self.stimlib.addpicture(image)	
-
-        self.stimlibfight = Stateimagelibrary()	
-        image = pygame.image.load('./pics/playerfight1-30x30.bmp').convert()
-        image.set_colorkey((0,0,0))
-        self.stimlibfight.addpicture(image)
-        image = pygame.image.load('./pics/playerfight1-30x30.bmp').convert()
-        image.set_colorkey((0,0,0))
-        self.stimlibfight.addpicture(image)
-        image = pygame.image.load('./pics/playerfight2-30x30.bmp').convert()
-        image.set_colorkey((0,0,0))
-        self.stimlibfight.addpicture(image)
-        image = pygame.image.load('./pics/playerfight2-30x30.bmp').convert()
-        image.set_colorkey((0,0,0))
-        self.stimlibfight.addpicture(image)
-        image = pygame.image.load('./pics/playerfight3-30x30.bmp').convert()
-        image.set_colorkey((0,0,0))
-        self.stimlibfight.addpicture(image)
-        image = pygame.image.load('./pics/playerfight3-30x30.bmp').convert()
-        image.set_colorkey((0,0,0))
-        self.stimlibfight.addpicture(image)
-
         self.fightcounter = 0
 
     def drawstatic(self, screen):
@@ -187,10 +150,10 @@ class PlayerBase(PlayerBase, PlayerBase, PlayerBase0,PlayerBaseRace,PlayerBaseKl
 	self.heartmeter = heartmeter
 
     def askrace(self):
-        return "Random Race"
+        return self.race 
 
     def askclass(self):
-        return "Random Class"
+        return self.klass
 
     def setrace(self, r):
        	self.race = r 

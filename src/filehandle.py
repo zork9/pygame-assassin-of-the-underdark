@@ -1,5 +1,5 @@
 
-# Copyright (C) Johan Ceuppens 2010
+# Copyright (C) Johan Ceuppens 2010-2014
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 2 of the License, or
@@ -16,23 +16,17 @@
 
 import pygame
 from pygame.locals import *
-from stateimagelibrary import *
-from playerbase import *
-from playerelfresources import *
-from broadsword import *
 
-class PlayerElfFighter(PlayerBase, PlayerElfResources):
-    "playerelffighter Magicuser"
+class FileHandle:
+    ""
+    FILE_CLOSED, FILE_OPEN = xrange(2)
+
     def __init__(self):
-        PlayerBase.__init__(self,PlayerBase.ELF,PlayerBase.FIGHTER)
-	PlayerElfResources.__init__(self)
-	self.sword = BroadSword(0,0)
+	self.filestatus = self.FILE_CLOSED 
 
-    def askclass(self):
-        return "Fighter"
+    def getfilestatus(self):
+	return self.filestatus
 
-    def askrace(self):
-        return "Elf"
-
-    def askpicture(self):
-        return './pics/taskbar-PC-elffighter.bmp'
+    def set(self, s):
+	self.filestatus = s
+	

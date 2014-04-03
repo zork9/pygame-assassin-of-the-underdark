@@ -1,4 +1,4 @@
-
+#!/usr/local/bin/python
 # Copyright (C) Johan Ceuppens 2010
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,26 +13,25 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
-import pygame
-from pygame.locals import *
-from stateimagelibrary import *
-from playerbase import *
-from playerelfresources import *
-from broadsword import *
-
-class PlayerElfFighter(PlayerBase, PlayerElfResources):
-    "playerelffighter Magicuser"
+class Stateimageresourcelibrary:
     def __init__(self):
-        PlayerBase.__init__(self,PlayerBase.ELF,PlayerBase.FIGHTER)
-	PlayerElfResources.__init__(self)
-	self.sword = BroadSword(0,0)
+	self.index = 0
+	self.max = 0
+	self.list = []
 
-    def askclass(self):
-        return "Fighter"
+    def addpicture(self, imageresource):
+	self.list.append(imageresource)
+	self.max += 1
 
-    def askrace(self):
-        return "Elf"
+    def drawstatic(self, screen, xx, yy, index):
+	if (self.index >= self.max):
+            self.index = 0
 
-    def askpicture(self):
-        return './pics/taskbar-PC-elffighter.bmp'
+	screen.blit(self.list[index].getimage(),(xx,yy)) 
+
+    def draw(self, screen, xx, yy):
+	if (self.index >= self.max):
+            self.index = 0
+
+	screen.blit(self.list[self.index].getimage(),(xx,yy)) 
+	self.index += 1	

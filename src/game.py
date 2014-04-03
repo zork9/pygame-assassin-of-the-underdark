@@ -171,7 +171,6 @@ class Game:
 ##            if self.selectormc.askclass() == "Fighter":
 ##                self.player = PlayerAbeilleFighter()
 
-	print "foo> %s bar> %s" % (self.selectormc.askclass(), self.selectormr.askrace())
 
 	### KLUDGE, above player ctors must set class and race
 	self.player.setrace(self.selectormr.askrace())
