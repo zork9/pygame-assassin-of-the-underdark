@@ -38,7 +38,7 @@ class MultiClassSelector(WidgetRootWindow, WidgetFrame):
 
 	self.yoffset = 70
 
-	self.classeslist = ["Fighter Magic User", "Fighter Thief", "Magic User Thief"]
+	self.classeslist = ["Fighter", "Magic User", "Thief", "Fighter Magic User", "Fighter Thief", "Magic User Thief"]
 
         # fighters
 

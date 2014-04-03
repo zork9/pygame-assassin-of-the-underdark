@@ -32,7 +32,6 @@ class MultiRaceSelector:
 	self.yoffset = 70
 
 	self.raceslist = ["Human", "Gnoll", "Katta", "Elf", "Drow"]
-####	self.classeslist = ["Fighter", "Magic User", "Thief"]
 
         # races 
 
