@@ -104,14 +104,10 @@ class MultiClassSelector(WidgetRootWindow, WidgetFrame):
 			else:
 				rng = RNG()
 				class0 = self.classeslist[rng.rolldx(len(self.classeslist)-1)]	
-				###self.race = race0 
 				self.klass = class0 
 				return
 
-
-
-    def askrace(self):
-        return self.race
-
     def askclass(self):
         return self.klass
+
+
