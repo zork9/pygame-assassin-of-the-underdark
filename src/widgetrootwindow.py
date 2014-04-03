@@ -19,16 +19,11 @@
 import pygame
 from pygame.locals import *
 
-fromt widgetroot import *
+from widgetwindow import *
+from widgetsystem import *
 
-class WidgetRootWindow:
+class WidgetRootWindow(WidgetWindow):
     ""
-    def __init__(self):
-	self.widgetroot = WidgetRoot()
-	self.parent = None  ### this is persistent	
+    def __init__(self, parent, callback = None, treenode = None, system = WidgetSystem()):
+	WidgetWindow.__init__(self, parent, callback, treenode, system)	
 
-    def add(self, widget):
-	self.widgetroot.add(widget)
-
-
-    def action(self, )

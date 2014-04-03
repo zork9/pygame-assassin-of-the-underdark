@@ -1,5 +1,5 @@
 
-# Copyright (C) Johan Ceuppens 2010 
+# Copyright (C) Johan Ceuppens 2010-2014 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 2 of the License, or
@@ -17,15 +17,12 @@
 import pygame
 from pygame.locals import *
 
-from widgetbutton import *
+from treenode import *
+from widget import *
 
-class MultiClassSelectorButton(WidgetButton):
-    "Class and Race Selector Window Button"
-    def __init__(self, parent, callback, node):
-	WidgetButton.__init__(self, parent, callback, node)
+class WidgetButtonBase(Widget):
+    ""
+    def __init__(self, parent, callback = None, widgettreenode = None):
+	Widget.__init__(self, parent, callback, widgettreenode)	
+	self.frame = None	
 
-	if callback == None:
-		self.callback = self.cb
-
-    def cb(self):
-	print "Mutliclassselectorbutton clicked !" ### FIXME 	

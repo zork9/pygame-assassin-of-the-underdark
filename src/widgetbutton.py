@@ -18,10 +18,12 @@ import pygame
 from pygame.locals import *
 
 from treenode import *
-from widget import *
+from widgetbuttonbase import *
+from widgetbuttonbasecoloredframe import *
 
-class WidgetButton(Widget):
+class WidgetButton(WidgetButtonBase,WidgetButtonBaseColoredFrame):
     ""
     def __init__(self, parent, callback = None, widgettreenode = None):
-	Widget.__init__(self, parent, callback, widgettreenode)	
+	WidgetButtonBase.__init__(self, parent, callback, widgettreenode)	
+	WidgetButtonBaseColoredFrame.__init__(self, parent.x, parent.y, parent.w, parent.h, (255,0,0), 6)
 

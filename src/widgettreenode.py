@@ -22,7 +22,7 @@ from treenode import *
 class WidgetTreeNode(TreeNode):
     ""
     def __init__(self, widget = None):
-	TreeNode.__init__(widget)	
+	TreeNode.__init__(self, widget)	
 	self.widget = widget ### widget is doubly-linked with node and node with itself 
 
     def add(self, d):

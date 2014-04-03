@@ -21,10 +21,13 @@ from widgetsystem import *
 
 class Widget:
     ""
-    def __init__(self, parent, callback = None, widgettreenode = None):
-	self.widgettreenode = widgettreenode ### widget is doubly-linked with node and node with itself 
+    def __init__(self, parent, callback = None, widgettreenode = None, widgetsystem = WidgetSystem()):
+	self.widgettreenode = widgettreenode ### widget is doubly-linked with node and node with widget
 	self.callback = callback
 	self.parent = parent
 
 	### each widget contains a widgetroot which has a subtree of the parent of this widget in it
-	self.widgetsystem = WidgetSystem()
+	self.widgetsystem = widgetsystem
+
+    def setcallback(self, callback):
+	self.callback = callback 

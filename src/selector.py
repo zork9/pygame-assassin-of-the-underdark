@@ -18,6 +18,7 @@ import pygame
 from pygame.locals import *
 from gameobject import *
 from rng import *
+import sys
 
 class Selector:
     "Class and Race Selector"
@@ -106,6 +107,7 @@ class Selector:
                 pygame.display.update()
                 for event in pygame.event.get():
                     if event.type == QUIT:
+			sys.exit
                         return
                     if event.type == pygame.MOUSEBUTTONDOWN:
                         position = pygame.mouse.get_pos()

@@ -27,4 +27,6 @@ class WidgetTree(Tree):
     def depth_first_search(self, d):
 	for tn in self.root:
 		tn.search(d) 
-	
+
+    def add_widget(self, widget):
+	self.insert(widget)	

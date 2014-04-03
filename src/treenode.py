@@ -17,8 +17,6 @@
 import pygame
 from pygame.locals import *
 
-
-
 class TreeNode:
     ""
     def __init__(self, d):

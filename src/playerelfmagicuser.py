@@ -72,7 +72,7 @@ class PlayerElfMagicuser(PlayerBase):
 
 
     def askclass(self):
-        return "Fighter"
+        return "Magic User"
 
     def askrace(self):
         return "Elf"

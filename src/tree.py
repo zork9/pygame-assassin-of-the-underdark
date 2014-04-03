@@ -24,7 +24,6 @@ class Tree:
     def __init__(self):
 	self.root = None
 
-    def __init__(self, tn):
-	self.root = []
-	self.root.append(tn) 
-
+#### FIXME
+    def insert(self, node):
+	self.root = node

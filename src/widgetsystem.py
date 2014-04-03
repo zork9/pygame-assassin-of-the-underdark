@@ -28,10 +28,9 @@ class WidgetSystem:
     def __init__(self):
 	self.widgetroot = WidgetRoot()
 	self.widgetmarshaller = WidgetMarshaller()
-	self.parent = None  ### this is persistent	
 
     def add_widget(self, widget):
-	self.widgetroot.add(widget)
+	self.widgetroot.add_widget(widget)
 
     def interrupt(self, SIGNAL, X, Y):
 	self.widgetroot.interrupt(SIGNAL, X, Y)	 

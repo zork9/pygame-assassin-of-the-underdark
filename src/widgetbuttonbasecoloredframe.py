@@ -1,5 +1,5 @@
 
-# Copyright (C) Johan Ceuppens 2010 
+# Copyright (C) Johan Ceuppens 2010-2014 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 2 of the License, or
@@ -17,15 +17,15 @@
 import pygame
 from pygame.locals import *
 
-from widgetbutton import *
+from widgetbuttonbaseframe import *
 
-class MultiClassSelectorButton(WidgetButton):
-    "Class and Race Selector Window Button"
-    def __init__(self, parent, callback, node):
-	WidgetButton.__init__(self, parent, callback, node)
+class WidgetButtonBaseColoredFrame(WidgetButtonBaseFrame):
+    ""
+    def __init__(self, xx, yy, ww, hh, colortuple, borderwidth = 2):
+	WidgetButtonBaseFrame.__init__(self, xx, yy, ww, hh, None)
+	self.colortuple = colortuple
+	self.borderwidth = borderwidth
 
-	if callback == None:
-		self.callback = self.cb
+    def draw(self, screen):
+	pygame.draw.rect(screen, self.colortuple, [self.x, self.y, self.w, self.h], self.borderwidth)	
 
-    def cb(self):
-	print "Mutliclassselectorbutton clicked !" ### FIXME 	

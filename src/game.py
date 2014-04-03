@@ -21,6 +21,7 @@ from maproom1 import *
 from maproom2 import *
 
 from rng import *
+from multiclassselector import *
 from selector import *
 from taskbar import *
 from time import *
@@ -77,6 +78,13 @@ class Game:
 	self.player = None ### PlayerDrowMage(self.heartmeter)
 ###self.player = PlayerFighter(self.heartmeter)default fighter class
         self.screen.blit(blankimage, (0,0))
+
+	# display multiclass selection screen and wait for mouse click choice
+
+        selector = MultiClassSelector(self.screen, self.font)
+
+        selector.select()
+
         selector = Selector(self.screen, self.font)
 
 	# display character selection screen and wait for mouse click choice

@@ -17,15 +17,11 @@
 import pygame
 from pygame.locals import *
 
-from widgetbutton import *
+from widget import *
+from widgetroot import *
 
-class MultiClassSelectorButton(WidgetButton):
-    "Class and Race Selector Window Button"
-    def __init__(self, parent, callback, node):
-	WidgetButton.__init__(self, parent, callback, node)
+class WidgetWindow(Widget):
+    ""
+    def __init__(self, parent, callback, treenode, system):
+	Widget.__init__(self, parent, callback, treenode, system)	
 
-	if callback == None:
-		self.callback = self.cb
-
-    def cb(self):
-	print "Mutliclassselectorbutton clicked !" ### FIXME 	
