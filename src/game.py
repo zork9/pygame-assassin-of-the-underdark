@@ -173,6 +173,10 @@ class Game:
 
 	print "foo> %s bar> %s" % (selectormc.askclass(), selectormr.askrace())
 
+	### KLUDGE, above player ctors must set class and race
+	self.player.setrace(selectormr.askrace())
+	self.player.setclass(selectormc.askclass())
+
 	self.player.setheartmeter(self.heartmeter)        
         self.inventory = Inventory()
 

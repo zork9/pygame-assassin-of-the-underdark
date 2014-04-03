@@ -65,9 +65,9 @@ class MultiClassSelector(WidgetRootWindow, WidgetFrame):
         self.screen.blit(self.font.render("magicuser/thief", 6, (255,255,255)), (100,50))
         self.screen.blit(self.fighterimage, (150,0))
         self.screen.blit(self.font.render("fighter", 6, (255,255,255)), (150,50))
-        self.screen.blit(self.magicuserthiefimage, (200,0))
+        self.screen.blit(self.magicuserimage, (200,0))
         self.screen.blit(self.font.render("magic user", 6, (255,255,255)), (200,50))
-        self.screen.blit(self.magicuserthiefimage, (250,0))
+        self.screen.blit(self.thiefimage, (250,0))
         self.screen.blit(self.font.render("thief", 6, (255,255,255)), (250,50))
 
     def select(self):

@@ -75,6 +75,8 @@ class PlayerBase(PlayerBase, PlayerBase, PlayerBase0,PlayerBaseRace,PlayerBaseKl
 	PlayerBaseRace.__init__(self, PLAYERRACE)
 	PlayerBaseKlass.__init__(self, PLAYERCLASS)
 
+	self.klass = "Random Class"
+	self.race = "Random Race"
 	self.heartmeter = None 
 	self.sword = BroadSword(0,0)
 	self.hitpoints = 78
@@ -189,6 +191,12 @@ class PlayerBase(PlayerBase, PlayerBase, PlayerBase0,PlayerBaseRace,PlayerBaseKl
 
     def askclass(self):
         return "Random Class"
+
+    def setrace(self, r):
+       	self.race = r 
+
+    def setclass(self, c):
+       	self.klass = c 
 
     def askpicture(self):
         return './pics/taskbar-PC.bmp'
