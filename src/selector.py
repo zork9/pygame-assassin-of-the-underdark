@@ -61,7 +61,7 @@ class Selector:
 
     def draw(self):
         # fighters
-        self.screen.blit(self.background, (0, 300))       
+        self.screen.blit(self.background, (0, 0))       
         self.screen.blit(self.humanfighterimage, (0,0))
         self.screen.blit(self.font.render("human fighter", 6, (255,255,255)), (0,50))
         self.screen.blit(self.gnollfighterimage, (50,0))

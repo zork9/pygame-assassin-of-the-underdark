@@ -27,7 +27,7 @@ import sys
 class MultiClassSelector(WidgetRootWindow, WidgetFrame):
     "Multi Class Selector"
     def __init__(self, screen, font):
-	WidgetFrame.__init__(self, 0, 0, 640, 480)
+	WidgetFrame.__init__(self, 0, 0, 300, 350)
 	WidgetRootWindow.__init__(self, self)
 
         self.screen = screen
@@ -53,13 +53,13 @@ class MultiClassSelector(WidgetRootWindow, WidgetFrame):
 
     def draw(self):
         # fighters
-        self.screen.blit(self.background, (0, 300))       
+        self.screen.blit(self.background, (0, 0))       
         self.screen.blit(self.fightermagicuserimage, (0,0))
         self.screen.blit(self.font.render("fighter/magicuser", 6, (255,255,255)), (0,50))
         self.screen.blit(self.fighterthiefimage, (150,0))
-        self.screen.blit(self.font.render("fighter/thief", 6, (255,255,255)), (150,50))
-        self.screen.blit(self.magicuserthiefimage, (300,0))
-        self.screen.blit(self.font.render("magicuser/thief", 6, (255,255,255)), (300,50))
+        self.screen.blit(self.font.render("fighter/thief", 6, (255,255,255)), (75,50))
+        self.screen.blit(self.magicuserthiefimage, (150,0))
+        self.screen.blit(self.font.render("magicuser/thief", 6, (255,255,255)), (150,50))
 
     def select(self):
         while 1:

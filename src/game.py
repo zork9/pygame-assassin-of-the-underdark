@@ -81,9 +81,9 @@ class Game:
 
 	# display multiclass selection screen and wait for mouse click choice
 
-        selector = MultiClassSelector(self.screen, self.font)
+        selectormc = MultiClassSelector(self.screen, self.font)
 
-        selector.select()
+        selectormc.select()
 
         selector = Selector(self.screen, self.font)
 

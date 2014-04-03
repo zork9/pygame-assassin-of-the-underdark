@@ -185,10 +185,10 @@ class PlayerBase(PlayerBase, PlayerBase, PlayerBase0,PlayerBaseRace,PlayerBaseKl
 	self.heartmeter = heartmeter
 
     def askrace(self):
-        return "Random Race"
+        return "Elf"
 
     def askclass(self):
-        return "Random Class"
+        return "Magic User"
 
     def askpicture(self):
         return './pics/taskbar-PC.bmp'
