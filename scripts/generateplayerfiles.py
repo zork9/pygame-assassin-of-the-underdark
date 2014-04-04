@@ -51,7 +51,60 @@ def outputplayerracefile():
 	f.write("\t\"Player " + Race + "\"\n")
 	f.write("\tdef __init__(self):\n")
 	f.write("\t\t1\n")
-	# f.write("\n")
+	f.write("\n")
      	
+def outputplayerraceresourcesfile():
+	f = open("./player" + race + "resources.py", "w")    ### .close() # touch file
+	if f == None:
+		print "Error : opening file\n"
+		sys.exit
+
+	for line in gplheader2list():
+		f.write(line)
+
+	f.write("\n")
+
+	f.write("import pygame\n")
+	f.write("from pygame.locals import *\n")
+	f.write("from stateimageresourcelibrary import *\n")
+	f.write("\n")
+	f.write("class Player" + Race + "Resources" + ":\n")
+	f.write("\t\"Player " + Race + " Resources" + "\"\n")
+    	f.write("\tdef __init__(self):\n" +
+        "\t\tself.stimlib = Stateimageresourcelibrary()\n" +
+        "\t\timageres = ImageResource().load0('./pics/player" + race + klass + "fighter1-48x48.bmp')\n" +
+        "\t\tself.stimlib.addpicture(imageres)\n" +
+        "\t\timageres = ImageResource().load0('./pics/player" + race + klass + "fighter2-48x48.bmp')\n" +
+        "\t\tself.stimlib.addpicture(imageres)\n" +
+        "\t\timageres = ImageResource().load0('./pics/player" + race + klass + "fighter3-48x48.bmp')\n" +
+        "\t\tself.stimlib.addpicture(imageres)\n" +
+        "\t\timageres = ImageResource().load0('./pics/player" + race + klass + "fighter2-48x48.bmp')\n" +
+        "\t\tself.stimlib.addpicture(imageres)\n" +
+        "\t\timageres = ImageResource().load0('./pics/player" + race + klass + "fighter1-48x48.bmp')\n" +
+        "\t\tself.stimlib.addpicture(imageres)\n" +
+        "\t\timageres = ImageResource().load0('./pics/player" + race + klass + "fighter2-48x48.bmp')\n" +
+        "\t\tself.stimlib.addpicture(imageres)\n" +
+        "\t\timageres = ImageResource().load0('./pics/player" + race + klass + "fighter3-48x48.bmp')\n" +
+        "\t\tself.stimlib.addpicture(imageres)\n" +
+
+        "\t\tself.stimlibfight = Stateimageresourcelibrary()\n"+
+        "\t\timageres = ImageResource().load0('./pics/player" + race + klass + "fighterfight1-48x48.bmp')\n" +
+        "\t\tself.stimlibfight.addpicture(imageres)\n" +
+        "\t\timageres = ImageResource().load0('./pics/player" + race + klass + "fighterfight1-48x48.bmp')\n" +
+        "\t\tself.stimlibfight.addpicture(imageres)\n" +
+        "\t\timageres = ImageResource().load0('./pics/player" + race + klass + "fighterfight2-48x48.bmp')\n" +
+        "\t\tself.stimlibfight.addpicture(imageres)\n" +
+        "\t\timageres = ImageResource().load0('./pics/player" + race + klass + "fighterfight2-48x48.bmp')\n" +
+        "\t\tself.stimlibfight.addpicture(imageres)\n" +
+        "\t\timageres = ImageResource().load0('./pics/player" + race + klass + "fighterfight3-48x48.bmp')\n" +
+        "\t\tself.stimlibfight.addpicture(imageres)\n" +
+        "\t\timageres = ImageResource().load0('./pics/player" + race + klass + "fighterfight3-48x48.bmp')\n" +
+        "\t\tself.stimlibfight.addpicture(imageres)\n" +
+	"\n" +
+    "\tdef askpicture(self):\n" +
+        "\t\treturn './pics/taskbar-PC-fighter.bmp'\n")
+	
+	f.write("\n")
 
 outputplayerracefile() 
+outputplayerraceresourcesfile() 
