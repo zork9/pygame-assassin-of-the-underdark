@@ -26,5 +26,5 @@ class InventoryGoblin(Inventoryitem):
         Inventoryitem.__init__(self, "./pics/goblin3-36x36.bmp")
 	self.typename = "enemy"
 
-    def use(self,e,game):
-        print 'You used a inventory goblin on %s' % e
+    def use(self,game):
+        print 'You used a goblin' 

@@ -25,5 +25,5 @@ class InventoryBomb(Inventoryitem):
     def __init__(self):
         Inventoryitem.__init__(self, "./pics/bomb-inventory-34x36.bmp")
 
-    def use(self,e,game):
-        print 'You used a bomb on %s' % e
+    def use(self,game):
+        print 'You used a bomb' 
