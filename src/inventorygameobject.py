@@ -24,6 +24,7 @@ from inventoryitem import *
 class InventoryGameobject(Inventoryitem):
     def __init__(self):
         Inventoryitem.__init__(self, "./pics/gameobject-inventory-36x36.bmp")
+	self.typename = "donnotpickup"
 
     def use(self,e,game):
         print 'You used a gameobject on %s' % e

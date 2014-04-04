@@ -91,6 +91,11 @@ class MultiRaceSelector:
 				self.race = race0 
 				return
 
+                    if event.type == KEYDOWN:
+		        rng = RNG()
+		        race0 = self.raceslist[rng.rolldx(len(self.raceslist)-1)]	
+		        self.race = race0 
+		        return
 
 
     def askrace(self):

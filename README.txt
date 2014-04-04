@@ -15,6 +15,8 @@ main screen :
 
 - x key : use item, pickup item or enemy
 - z key : fight (with main weapon)
+- s key : use selected inventory item
+- c key : cast selected spell item 
 - spacebar : drop bomb 
 - arrow keys : movemen
 

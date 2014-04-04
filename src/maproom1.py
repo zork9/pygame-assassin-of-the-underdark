@@ -53,7 +53,7 @@ class Maproom1(MaproomDungeon):
         self.tileboxes.append(self.southwall1)
 
         self.gameobjects.append(Sword(100,120))
-        ### self.gameobjects.append(Spell(100,120))
+        self.gameobjects.append(Spell(500,120))
 
         self.gameobjects.append(Goblin3(300,100))
         self.gameobjects.append(Goblin3(340,140))

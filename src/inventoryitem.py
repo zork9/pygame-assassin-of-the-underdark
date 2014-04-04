@@ -32,5 +32,6 @@ class Inventoryitem:
     def addtolist(self,list):
         list.addobject(self)
 
+    def use(self,game):
+        print 'You used inventoryitem %s' % self
 
-#NOTE There s no fallthrough for item usage

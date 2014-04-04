@@ -26,5 +26,5 @@ class InventorySpell(Inventoryitem):
         Inventoryitem.__init__(self, "./pics/spell-inventory-36x36.bmp")
 	self.typename = "spell"
 
-    def use(self,e,game):
-        print 'You used a spell on %s' % e
+    def cast(self,game):
+        print 'You cast a spell %s' % self

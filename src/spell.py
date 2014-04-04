@@ -46,3 +46,7 @@ class Spell(Gameobject):
 	    return 1 
 	else:
 	    return 0 ## for game self.talker
+
+    def cast(self,game):
+        print 'You cast %s' % self
+

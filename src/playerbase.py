@@ -188,3 +188,8 @@ class PlayerBase(PlayerBase, PlayerBase, PlayerBase0,PlayerBaseRace,PlayerBaseKl
     def setrubysword(self):
 	self.sword = RubySword(0,0)
 
+    def useitem(self, game):
+	1
+
+    def cast(self, game):
+	1

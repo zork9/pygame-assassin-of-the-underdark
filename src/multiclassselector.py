@@ -106,6 +106,11 @@ class MultiClassSelector(WidgetRootWindow, WidgetFrame):
 				class0 = self.classeslist[rng.rolldx(len(self.classeslist)-1)]	
 				self.klass = class0 
 				return
+                    if event.type == KEYDOWN:
+		        rng = RNG()
+		        class0 = self.classeslist[rng.rolldx(len(self.classeslist)-1)]	
+		        self.klass = class0 
+		        return
 
     def askclass(self):
         return self.klass

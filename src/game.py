@@ -210,6 +210,15 @@ class Game:
             	    
                     # player 1 key controls
                     self.player.draw(self.screen)
+
+                    if event.key == K_s:
+			if self.taskbar.inventoryitem != None:
+                        	self.taskbar.inventoryitem.use(self)
+
+                    if event.key == K_c:
+			if self.taskbar.spellitem != None:
+                        	self.taskbar.spellitem.cast(self)
+
                     if event.key == K_x:
                         ###if self.room.collide(self.player) == 2:
                         ###    self.talker = self.room.talkto() # FIX
