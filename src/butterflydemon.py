@@ -18,6 +18,7 @@ import pygame
 from pygame.locals import *
 from gameobject import *
 from stateimagelibrary import *
+from inventorygameobject import *
 import random
 from time import *
 
@@ -27,6 +28,8 @@ class ButterflyDemon(Gameobject):
 	Gameobject.__init__(self, xx, yy)
         self.w = 66 
         self.h = 50
+	self.collisionw = 110-self.w 
+	self.collisionh = 110-self.h 
 	self.stimlib = Stateimagelibrary()
         image = pygame.image.load('./pics/butterflydemon1-66x50.bmp').convert()
         image.set_colorkey((255,255,255)) 
@@ -40,7 +43,7 @@ class ButterflyDemon(Gameobject):
 	image = pygame.image.load('./pics/butterflydemon4-66x50.bmp').convert()
         image.set_colorkey((255,255,255)) 
 	self.stimlib.addpicture(image)
-
+	### in gamobject base class : self.inventoryitem = InventoryGameobject()
 	self.direction = "left"
 
     def draw(self, screen, room):
@@ -86,11 +89,13 @@ class ButterflyDemon(Gameobject):
 	        
 
     def collide(self, room, player):
-	if (player.x > self.x+room.relativex  and 
-	player.x < self.x+room.relativex+self.w and 
-	player.y > self.y+room.relativey and 
-	player.y < self.y+room.relativey + self.h):
-	    print "collision with Butterflydemon!"
-	return 0
-
+        #print 'sword x=%d y=%d player x=%d y=%d' % (self.x,self.y,player.x-room.relativex,player.y-room.relativey)
+	if (player.x-room.relativex > self.x - self.collisionw and 
+	player.x-room.relativex < self.x + self.w + self.collisionw and 
+	player.y-room.relativey > self.y - self.collisionh and 
+	player.y-room.relativey < self.y + self.h + self.collisionh):
+	    #print "collision with Butterfly Demon" 
+	    return 1 
+	else:
+	    return 0 ## for game self.talker
 		 

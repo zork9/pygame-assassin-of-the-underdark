@@ -264,6 +264,7 @@ class Game:
 
                                 self.inventory.draw(self.screen)
                                 pygame.display.update()
+                    ### pygame.key.set_repeat(90,90)
  
             if self.room.collide(self.player) == 1 or self.player.hitpoints <= 0: # NOTE: return 1 after player heartmeter runs out (self.player.hit)
         	endingimage = pygame.image.load('./pics/endingscreen.bmp').convert()

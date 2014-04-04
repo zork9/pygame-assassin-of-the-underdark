@@ -1,7 +1,7 @@
 
-# Copyright (C) Johan Ceuppens 2014
 # Copyright (C) Johan Ceuppens 2011
 # Copyright (C) Johan Ceuppens 2010
+
 # Copyright (C) Johan Ceuppens 2009 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,18 +19,11 @@
 import pygame
 from pygame.locals import *
 
+from inventoryitem import *
 
-class Inventoryitem:
-    def __init__(self,imagefilename):
-        self.image = pygame.image.load(imagefilename).convert()
-        self.image.set_colorkey((0,0,0))#FIXME rgb transdparency
-	self.typename = "inventoryitem"
+class InventoryGameobject(Inventoryitem):
+    def __init__(self):
+        Inventoryitem.__init__(self, "./pics/gameobject-inventory-36x36.bmp")
 
-    def draw(self,screen,x,y):
-        screen.blit(self.image, (x, y))
-
-    def addtolist(self,list):
-        list.addobject(self)
-
-
-#NOTE There s no fallthrough for item usage
+    def use(self,e,game):
+        print 'You used a gameobject on %s' % e

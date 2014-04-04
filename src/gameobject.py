@@ -16,6 +16,7 @@
 
 import pygame
 from pygame.locals import *
+from inventorygameobject import *
 
 class Gameobject:
     "Game object"
@@ -27,6 +28,7 @@ class Gameobject:
         self.h = 48
         self.SCREENH = 300
         self.SCREENW = 300
+	self.inventoryitem = InventoryGameobject()
         ## dungeon statue as default picture
         ## self.image = pygame.image.load('./pics/dungeon-statue1-36x36.bmp').convert()
         self.image = pygame.image.load('./pics/nopicture.bmp').convert()
