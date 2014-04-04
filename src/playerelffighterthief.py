@@ -24,11 +24,11 @@ class PlayerElfFighterThief(PlayerBase, PlayerElfResources):
 	"Player Elf Fighter Magicuser"
 	def __init__(self):
 		PlayerBase.__init__(self,PlayerBase.ELF, PlayerBase.FIGHTERTHIEF)
-		PlayerGnollResources.__init__(self)
+		PlayerElfResources.__init__(self)
 
 	def askclass(self):
-		return "Fighter Magic User"
+		return "Fighter Thief"
 
 	def askrace(self):
-		return "Drow"
+		return "Elf"
 

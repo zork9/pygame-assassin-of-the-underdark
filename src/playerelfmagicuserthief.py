@@ -30,5 +30,5 @@ class PlayerElfMagicuserThief(PlayerBase, PlayerElfResources):
 		return "Fighter Magic User"
 
 	def askrace(self):
-		return "Drow"
+		return "Elf"
 

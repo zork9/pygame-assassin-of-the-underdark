@@ -182,7 +182,7 @@ class Game:
 ##            if self.selectormc.askclass() == "Fighter":
 ##                self.player = PlayerAbeilleFighter()
 
-	print "race=%s class=%s" % (self.selectormr.askrace(),self.selectormc.askclass())
+	### print "race=%s class=%s" % (self.selectormr.askrace(),self.selectormc.askclass())
 	### KLUDGE, above player ctors must set class and race
 	self.player.setrace(self.selectormr.askrace())
 	self.player.setclass(self.selectormc.askclass())
@@ -199,7 +199,7 @@ class Game:
         self.taskbar = Taskbar(self.screen,self.font,self.player)
         self.talker = None
         
-        pygame.key.set_repeat(1,1)
+        pygame.key.set_repeat(90,90)
         gameover = 0
         while gameover == 0:
 
@@ -219,12 +219,14 @@ class Game:
 		        if o != None:
 				if o.inventoryitem and o.inventoryitem.typename == "sword":
 					self.taskbar.sworditem = o.inventoryitem
+				elif o.inventoryitem and o.inventoryitem.typename == "spell":
+					self.taskbar.spellitem = o.inventoryitem
+				elif o.inventoryitem and o.inventoryitem.typename == "enemy":
+					self.inventory.additem(o.inventoryitem)
 				elif o.inventoryitem and o.inventoryitem.typename == "inventoryitem":
 					self.inventory.additem(o.inventoryitem)
 				self.room.removegameobject(o)
 
-			###self.player.setrubysword()
-       
 	            elif event.key == K_z:
                         self.player.fight(self)  
                     elif event.key == K_UP:
@@ -240,18 +242,8 @@ class Game:
     
                     elif event.key == K_i:
 #                        self.level.gameover = 1
-                      #FIXME  pygame.event.flush()
                         flag = 0
 		
-			##if Scrollinvisibility(0,0,0,0,"1","1").readkeys(None):
-                        ##    self.inventory.additem(Inventoryscrollinvisibility())
-
-####FIXME remove			if self.inventorymasterkey == 1:
-####                       		1###FIX for key in self.inventory.additem(Inventorymasterkey())
-####                        if self.inventorykey1 == 1:
-####                       		1###FIX for key in self.inventory.additem(Inventorykey1())
-####                       	if self.inventorykey2 == 1:
-####                       		1###FIX for key in self.inventory
         		pygame.key.set_repeat(1000,1000)
 			while flag == 0:#NOTE1
                             for event in pygame.event.get():
@@ -273,21 +265,6 @@ class Game:
                                 self.inventory.draw(self.screen)
                                 pygame.display.update()
  
-#	    pickupid = self.room.pickup(self.player)
-#	    if pickupid:
-#		if pickupid == 1: # NOTE : masterkey id
-#		    self.inventorymasterkey = 1
-#		elif pickupid == 2: ## NOTE: dungeonentrance 2 id opens with key 1
- #                   if self.inventorykey1 == 1:
-#                        self.room.removeentrance2()
-#                elif pickupid == 3: # NOTE dungeon key 1 id
-#                    self.inventorykey1 = 1
-#                elif pickupid == 4: # NOTE dungeon key 2 id
-#                    self.inventorykey2 = 1
-#                elif pickupid == 5: # NOTE ruby sword id
-#                    self.inventoryrubysword = 1
-#                    self.taskbar.setrubysword()
-			 
             if self.room.collide(self.player) == 1 or self.player.hitpoints <= 0: # NOTE: return 1 after player heartmeter runs out (self.player.hit)
         	endingimage = pygame.image.load('./pics/endingscreen.bmp').convert()
         	while gameover == 0:
@@ -309,7 +286,7 @@ class Game:
             self.room.draw(self) 
             self.player.drawstatic(self.screen)
             
-	    #sleep(0.2)
+	    sleep(0.09)
             # fight for enemies
             # remove dead game objects
 

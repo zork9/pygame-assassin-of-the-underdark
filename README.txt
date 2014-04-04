@@ -23,3 +23,8 @@ inventory screen :
 
 - 'z' or 'x' key : exit inventory screen
 - arrow keys : movement in inventory
+
+Scripts :
+---------
+
+In the scripts directory there are character player file generation scripts.

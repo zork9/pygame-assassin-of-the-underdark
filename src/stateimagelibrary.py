@@ -13,7 +13,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-class Stateimagelibrary:
+from stateimagelibrarybase import *
+
+class Stateimagelibrary(StateimagelibraryBase):
     def __init__(self):
 	self.index = 0
 	self.max = 0

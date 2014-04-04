@@ -2,6 +2,7 @@
 . pickup enemies with 'x' key is possible but not yet implemented
 	you need Goblin.inventoryitem for it for example
 . remove sleep fnuctions
-
+. use of item functions
+. picking up gameobjects/enemies
 . make interface for addpicture etc in statimagelibrary and stateimageresourcelibrary
 

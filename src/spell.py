@@ -18,9 +18,9 @@ import pygame
 from pygame.locals import *
 from gameobject import *
 from bombexplosion import *
-from inventorysword import *
+from inventoryspell import *
 
-class Sword(Gameobject):
+class Spell(Gameobject):
     ""
     def __init__(self, xx,yy):
         Gameobject.__init__(self,xx,yy)
@@ -28,21 +28,21 @@ class Sword(Gameobject):
         self.h = 36
 	self.collisionw = 64-self.w 
 	self.collisionh = 64-self.h 
-        self.image = pygame.image.load('./pics/sword1-36x36.bmp').convert()
+        self.image = pygame.image.load('./pics/spell1-36x36.bmp').convert()
         self.image.set_colorkey((0,0,0)) 
    	self.counter = 0 
-	self.inventoryitem = InventorySword()
+	self.inventoryitem = InventorySpell()
 
     def update(self,game):
 	1
 
     def collide(self, room, player):
-        #print 'sword x=%d y=%d player x=%d y=%d' % (self.x,self.y,player.x-room.relativex,player.y-room.relativey)
+        #print 'spell x=%d y=%d player x=%d y=%d' % (self.x,self.y,player.x-room.relativex,player.y-room.relativey)
 	if (player.x-room.relativex > self.x - self.collisionw and 
 	player.x-room.relativex < self.x + self.w + self.collisionw and 
 	player.y-room.relativey > self.y - self.collisionh and 
 	player.y-room.relativey < self.y + self.h + self.collisionh):
-	    #print "collision with Sword"
+	    #print "collision with Spell"
 	    return 1 
 	else:
 	    return 0 ## for game self.talker

@@ -13,27 +13,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from stateimagelibrarybase import *
+class StateimagelibraryBase:
 
-class Stateimageresourcelibrary(StateimagelibraryBase):
-    def __init__(self):
-	self.index = 0
-	self.max = 0
-	self.list = []
-
-    def addpicture(self, imageresource):
-	self.list.append(imageresource)
-	self.max += 1
+    def addpicture(self, image):
+	pass
 
     def drawstatic(self, screen, xx, yy, index):
-	if (self.index >= self.max):
-            self.index = 0
-
-	screen.blit(self.list[index].getimage(),(xx,yy)) 
+	pass
 
     def draw(self, screen, xx, yy):
-	if (self.index >= self.max):
-            self.index = 0
-
-	screen.blit(self.list[self.index].getimage(),(xx,yy)) 
-	self.index += 1	
+	pass

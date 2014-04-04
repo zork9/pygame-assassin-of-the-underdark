@@ -20,6 +20,7 @@ from gameobject import *
 from stateimagelibrary import *
 import random
 from rng import *
+from inventorygoblin import *
 from time import *
 
 class Goblin3(Gameobject):
@@ -31,6 +32,8 @@ class Goblin3(Gameobject):
 
         self.hitpoints = 3
         
+	self.inventoryitem = InventoryGoblin()
+
 	self.stimlibleft = Stateimagelibrary()	
 	self.stimlibright = Stateimagelibrary()	
 	self.stimlibdown = Stateimagelibrary()	
@@ -75,7 +78,6 @@ class Goblin3(Gameobject):
 	    
 	     
     def update(self,game):
-        ###sleep(.04) # FIX goblin sleep
 	if game.room.collidewithenemy(self):
 	    if (self.direction == "right"):
 	        self.x -=4

@@ -23,6 +23,7 @@ from dungeonentrance1 import *
 from maproomdungeon import *
 from maproomdungeonnorthwall import *
 from sword import *
+from spell import *
 from goblin1 import *
 from goblin2 import *
 from goblin3 import *
@@ -52,7 +53,8 @@ class Maproom1(MaproomDungeon):
         self.tileboxes.append(self.southwall1)
 
         self.gameobjects.append(Sword(100,120))
-        self.gameobjects.append(ButterflyDemon(300,100))
+        ### self.gameobjects.append(Spell(100,120))
+
         self.gameobjects.append(Goblin3(300,100))
         self.gameobjects.append(Goblin3(340,140))
         self.gameobjects.append(Goblin3(380,180))
@@ -63,22 +65,23 @@ class Maproom1(MaproomDungeon):
         self.gameobjects.append(Goblin3(480,520))
         self.gameobjects.append(Goblin3(520,520))
         self.gameobjects.append(Goblin3(560,520))
+        self.gameobjects.append(ButterflyDemon(500,500))
 
         self.gameobjects.append(Goblin3(540,620))
         self.gameobjects.append(Goblin3(580,620))
         self.gameobjects.append(Goblin3(620,620))
         self.gameobjects.append(Goblin3(660,620))
 
-        self.gameobjects.append(Beholder(540,600))
-        self.gameobjects.append(Beholder(680,600))
+###        self.gameobjects.append(Beholder(540,600))
+###        self.gameobjects.append(Beholder(680,600))
 
-        self.gameobjects.append(Goblin3(580,720))
-        self.gameobjects.append(Goblin3(620,720))
-        self.gameobjects.append(Goblin3(660,720))
-        #self.gameobjects.append(Snake2(480,140))
-        #self.gameobjects.append(Beholder(300,100))
-        #self.gameobjects.append(BeholderBat(300,100))
-	#self.gameobjects.append(RubySword(400,100))
+###        self.gameobjects.append(Goblin3(580,720))
+###        self.gameobjects.append(Goblin3(620,720))
+###        self.gameobjects.append(Goblin3(660,720))
+###        self.gameobjects.append(Snake2(480,140))
+###        self.gameobjects.append(Beholder(300,100))
+###        self.gameobjects.append(BeholderBat(300,100))
+###	self.gameobjects.append(RubySword(400,100))
 
         #FIX	self.gameobjects.append(Dungeonentrance1(0,0))
 ##	self.gameobjects.append(Tree2(10,100))
