@@ -127,13 +127,15 @@ class Gameobject:
         self.hitpoints -= 2
         return self.hitpoints
 
-    def hitwithweapon(self,damage):
-	if damage > 0:
-            print 'enemy is hit!'
-        self.hitpoints -= damage
+    def hitwithweapon(self,game):
+	if game.taskbar and game.taskbar.sworditem:
+		damage = game.taskbar.sworditem.roll(game)
+		if damage > 0:
+            		print 'gameobject is hit with %d damage !' % damage
+        		self.hitpoints -= damage
 
-    def hit(self):
-	self.hitwithweapon(2)
+    def hit(self, game):
+	self.hitwithweapon(game)
 
     def fight(self,room,player):
 	1

@@ -46,6 +46,16 @@ class RNG(Gameobject):
         else:
             return r
 
+    def rollsword(self):
+        if randint(0,3) > 2:
+            return 0
+        
+        r = self.rolld4()
+        if r == 4: # critical hit
+            return 4*2
+        else:
+            return r
+
     def rollrubysword(self):
         if randint(0,3) > 2:
             return 0

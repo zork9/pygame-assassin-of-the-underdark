@@ -154,13 +154,13 @@ class Maproom1(MaproomDungeon):
 			return i ## NOTE : returns collided entity (single)
 	return None
 
-    def hitwithsword(self, o):
-        hitp = o.hit()
+    def hitwithsword(self, o, game):
+        hitp = o.hit(game)
         if hitp < 0:
             self.removeobject(o)
 
-    def hitwithbarehands(self, o):
-        hitp = o.hit()
+    def hitwithbarehands(self, o, game):
+        hitp = o.hit(game)
         if hitp < 0:
             self.removeobject(o)
 

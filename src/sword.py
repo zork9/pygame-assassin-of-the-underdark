@@ -46,3 +46,4 @@ class Sword(Gameobject):
 	    return 1 
 	else:
 	    return 0 ## for game self.talker
+

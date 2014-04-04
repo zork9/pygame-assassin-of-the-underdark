@@ -19,6 +19,7 @@ from pygame.locals import *
 from gameobject import *
 from inventorybomb import *
 from inventorysword import *
+from inventoryrubysword import *
 
 class Taskbar:
     "Taskbar"
@@ -32,7 +33,7 @@ class Taskbar:
         self.swordimage = pygame.image.load('./pics/taskbar-defaultsword1-32x32.bmp').convert()
         self.swordimage.set_colorkey((0,0,255)) 
 	self.inventoryitem = None ## InventoryBomb() 
-	self.sworditem = None ## InventorySword() 
+	self.sworditem = InventoryRubySword() ### None or InventorySword() 
 	self.spellitem = None ## InventorySpell() 
 
     def drawlife(self):

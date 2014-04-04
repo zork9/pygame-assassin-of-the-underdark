@@ -19,19 +19,15 @@
 import pygame
 from pygame.locals import *
 
-from inventoryitem import *
-from rng import *
+from inventorysword import *
 
-class InventorySword(Inventoryitem):
+class InventoryRubySword(InventorySword):
     def __init__(self):
-        Inventoryitem.__init__(self, "./pics/sword-inventory-36x36.bmp")
-	self.typename = "sword"
-	self.rng = RNG()
+        Inventoryitem.__init__(self, "./pics/rubysword-inventory-36x36.bmp")
 
     def use(self,game):
         print 'You used a sword'
 
     def roll(self, game):
 	self.rng.rollsword()	
-
 

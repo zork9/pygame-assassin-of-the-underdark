@@ -123,7 +123,7 @@ class PlayerBase(PlayerBase, PlayerBase, PlayerBase0,PlayerBaseRace,PlayerBaseKl
         	o = game.room.collidesword(game)
         	if o:
             		print 'player hits with sword!'
-            		game.room.hitwithsword(o)
+            		game.room.hitwithsword(o, game)
 	else: ### hit with bare hands
         	o = game.room.collidebarehands(game)
         	if o:
@@ -179,11 +179,11 @@ class PlayerBase(PlayerBase, PlayerBase, PlayerBase0,PlayerBaseRace,PlayerBaseKl
         o = room.pickup(self)
 	return o
 
-    def fight2(self,room):
-        self.fightcounter = 1
-        o = room.collidesword(self)
-        if o:
-            o.hitwithweapon(self.sword.roll())
+###    def fight2(self,room):
+###        self.fightcounter = 1
+###        o = room.collidesword(self)
+###        if o:
+###            o.hitwithweapon(self.sword.roll())
        
     def setrubysword(self):
 	self.sword = RubySword(0,0)

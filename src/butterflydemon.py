@@ -43,6 +43,9 @@ class ButterflyDemon(Gameobject):
 	image = pygame.image.load('./pics/butterflydemon4-66x50.bmp').convert()
         image.set_colorkey((255,255,255)) 
 	self.stimlib.addpicture(image)
+
+
+	### NOTE that gameobjects cannot be picked up by default !
 	### in gamobject base class : self.inventoryitem = InventoryGameobject()
 	self.direction = "left"
 
