@@ -30,8 +30,8 @@ class Inventory(object):
 	self.ITEMMAX = 8 
         self.list.append(InventoryBomb())
 
-### FIX        self.rectimage = pygame.image.load('./pics/rectinventory-36x36.bmp').convert()
-### FIX        self.rectimage.set_colorkey((0,0,0))
+        self.rectimage = pygame.image.load('./pics/rectinventory-36x36.bmp').convert()
+        self.rectimage.set_colorkey((0,0,0))
         self.selectioncounter = 0 
 
     def draw(self,screen):
@@ -48,7 +48,7 @@ class Inventory(object):
         self.drawrect(screen,x,y)
 
     def drawrect(self,screen,x,y):
-        1 ### FIX screen.blit(self.rectimage, (x, y))
+        screen.blit(self.rectimage, (x, y))
 
 
     def moveleft(self):
