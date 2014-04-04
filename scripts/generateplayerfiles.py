@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+######### ./generateplayerfiles.py elf fighter magicuser Elf Fighter Magicuser ELF FIGHTERMAGICUSER
 ######### ./generateplayerfiles.py elf fighter Elf Fighter ELF FIGHTER
 
 # Copyright (C) Johan Ceuppens 2014
@@ -69,6 +70,7 @@ def outputplayerraceresourcesfile():
 	f.write("import pygame\n")
 	f.write("from pygame.locals import *\n")
 	f.write("from stateimageresourcelibrary import *\n")
+	f.write("from imageresource import *\n")
 	f.write("\n")
 	f.write("class Player" + Race + "Resources" + ":\n")
 	f.write("\t\"Player " + Race + " Resources" + "\"\n")

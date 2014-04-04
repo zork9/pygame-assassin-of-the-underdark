@@ -28,38 +28,39 @@ from taskbar import *
 from time import *
 from inventory import *
 from meter import *
-from playergnollfighter import*
-from playerhumanfighter import*
-from playerhumanfightermagicuser import*
-from playerhumanfighterthief import*
-from playerhumanmagicuserthief import*
-from playerkattafighter import*
-from playerkattafightermagicuser import*
-from playerkattafighterthief import*
-from playerkattamagicuserthief import*
-from playerelffighter import*
-from playerdrowfighter import*
+from playergnollfighter import *
+from playerhumanfighter import *
+from playerhumanfightermagicuser import *
+from playerhumanfighterthief import *
+from playerhumanmagicuserthief import *
+from playerkattafighter import *
+from playerkattafightermagicuser import *
+from playerkattafighterthief import *
+from playerkattamagicuserthief import *
+from playerelffighter import *
+from playerdrowfighter import *
 from playerdrowmage import *
 from bomb import *
-from playergnollmagicuser import*
-from playergnollfightermagicuser import*
-from playergnollfighterthief import*
-from playergnollmagicuserthief import*
-from playerhumanmagicuser import*
-from playerkattamagicuser import*
-from playerelfmagicuser import*
-from playerdrowmagicuser import*
-from playergnollthief import*
-from playerhumanthief import*
-from playerkattathief import*
-from playerelfthief import*
-from playerelfmagicuser import*
-from playerelffightermagicuser import*
-from playerelffighterthief import*
-from playerdrowthief import*
-from playerdrowfightermagicuser import*
-from playerdrowfighterthief import*
-from playerdrowmagicuserthief import*
+from playergnollmagicuser import *
+from playergnollfightermagicuser import *
+from playergnollfighterthief import *
+from playergnollmagicuserthief import *
+from playerhumanmagicuser import *
+from playerkattamagicuser import *
+from playerelfmagicuser import *
+from playerdrowmagicuser import *
+from playergnollthief import *
+from playerhumanthief import *
+from playerkattathief import *
+from playerelfthief import *
+from playerelfmagicuser import *
+from playerelffightermagicuser import *
+from playerelffighterthief import *
+from playerelfmagicuserthief import *
+from playerdrowthief import *
+from playerdrowfightermagicuser import *
+from playerdrowfighterthief import *
+from playerdrowmagicuserthief import *
 
 class Game:
     "Main function"
@@ -122,6 +123,8 @@ class Game:
                 self.player = PlayerHumanFighterMagicuser()
             elif self.selectormc.askclass() == "Fighter Thief":
                 self.player = PlayerHumanFighterThief()
+            elif self.selectormc.askclass() == "Magic User Thief":
+                self.player = PlayerHumanMagicuserThief()
         elif self.selectormr.askrace() == "Gnoll":
             if self.selectormc.askclass() == "Fighter":
                 self.player = PlayerGnollFighter()
@@ -133,6 +136,8 @@ class Game:
                 self.player = PlayerGnollFighterMagicuser()
             elif self.selectormc.askclass() == "Fighter Thief":
                 self.player = PlayerGnollFighterThief()
+            elif self.selectormc.askclass() == "Magic User Thief":
+                self.player = PlayerGnollMagicuserThief()
         elif self.selectormr.askrace() == "Katta":
             if self.selectormc.askclass() == "Fighter":
                 self.player = PlayerKattaFighter()
@@ -144,6 +149,8 @@ class Game:
                 self.player = PlayerKattaFighterMagicuser()
             elif self.selectormc.askclass() == "Fighter Thief":
                 self.player = PlayerKattaFighterThief()
+            elif self.selectormc.askclass() == "Magic User Thief":
+                self.player = PlayerKattaMagicuserThief()
         elif self.selectormr.askrace() == "Elf":
             if self.selectormc.askclass() == "Fighter":
                 self.player = PlayerElfFighter()
@@ -155,6 +162,8 @@ class Game:
                 self.player = PlayerElfFighterMagicuser()
             elif self.selectormc.askclass() == "Fighter Thief":
                 self.player = PlayerElfFighterThief()
+            elif self.selectormc.askclass() == "Magic User Thief":
+                self.player = PlayerElfMagicuserThief()
         elif self.selectormr.askrace() == "Drow":
             if self.selectormc.askclass() == "Fighter":
                 self.player = PlayerDrowFighter()
@@ -166,12 +175,14 @@ class Game:
                 self.player = PlayerDrowFighterMagicuser()
             elif self.selectormc.askclass() == "Fighter Thief":
                 self.player = PlayerDrowFighterThief()
+            elif self.selectormc.askclass() == "Magic User Thief":
+                self.player = PlayerDrowMagicuserThief()
 
 ##        if self.selectormr.askrace() == "Abeille":
 ##            if self.selectormc.askclass() == "Fighter":
 ##                self.player = PlayerAbeilleFighter()
 
-
+	print "race=%s class=%s" % (self.selectormr.askrace(),self.selectormc.askclass())
 	### KLUDGE, above player ctors must set class and race
 	self.player.setrace(self.selectormr.askrace())
 	self.player.setclass(self.selectormc.askclass())
