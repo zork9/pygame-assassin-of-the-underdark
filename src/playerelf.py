@@ -22,5 +22,5 @@ from playerbase import *
 class PlayerElf:
     "Player Fighter"
     def __init__(self):
-        1#PlayerBase.__init__(self)
+        1
 

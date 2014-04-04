@@ -1,5 +1,5 @@
-
-# Copyright (C) Johan Ceuppens 2010
+#!/usr/local/bin/python
+# Copyright (C) Johan Ceuppens 2014
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 2 of the License, or
@@ -13,26 +13,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import filelines2list
+import sys
 
-import pygame
-from pygame.locals import *
-from stateimagelibrary import *
-from playerbase import *
-from playerelfmagicuserresources import *
-from broadsword import *
+# command line args in a list
+args = str(sys.argv)
 
-class PlayerElfMagicuser(PlayerBase, PlayerElfMagicuserResources):
-    "playerelffighter"
-    def __init__(self):
-        PlayerBase.__init__(self,PlayerBase.ELF,PlayerBase.MAGICUSER)
-	PlayerElfMagicuserResources.__init__(self)
-	self.sword = BroadSword(0,0)
+if len(sys.argv < 3 or sys.argv > 3)
+	print "Usage : outputplayer.py [playerrace] [playerclass]\n"	
+	sys.exit
 
-    def askclass(self):
-        return "Magic User"
 
-    def askrace(self):
-        return "Elf"
 
-    def askpicture(self):
-        return './pics/taskbar-PC-elffighter.bmp'

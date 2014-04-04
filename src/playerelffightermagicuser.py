@@ -19,11 +19,13 @@ from pygame.locals import *
 from stateimagelibrary import *
 from playerbase import *
 from playerelfmulticlass import *
+from playerelffightermagicuserresources import *
 from broadsword import *
 
-class PlayerElfFighterMagicuser(PlayerBase,PlayerElfMultiClass):
+class PlayerElfFighterMagicuser(PlayerBase,PlayerElfMultiClass,PlayerElfFighterMagicuserResources):
     "Player Fighter"
     def __init__(self):
         PlayerElfMultiClass.__init__(self, PlayerBase.FIGHTERMAGICUSER)
+        PlayerElfFighterMagicuserResources.__init__(self)
 	self.sword = BroadSword(0,0)
 

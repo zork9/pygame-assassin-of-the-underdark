@@ -1,1 +1,7 @@
 - grep for FIX
+. pickup enemies with 'x' key is possible but not yet implemented
+	you need Goblin.inventoryitem for it for example
+. remove sleep fnuctions
+
+. make interface for addpicture etc in statimagelibrary and stateimageresourcelibrary
+

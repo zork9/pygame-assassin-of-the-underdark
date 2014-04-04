@@ -16,23 +16,11 @@
 
 import pygame
 from pygame.locals import *
-from stateimagelibrary import *
-from playerbase import *
-from playerelfmagicuserresources import *
-from broadsword import *
+from stateimageresourcelibrary import *
+from imageresource import *
+from playerelfresources import *
 
-class PlayerElfMagicuser(PlayerBase, PlayerElfMagicuserResources):
-    "playerelffighter"
+class PlayerElfFighterMagicuserResources(PlayerElfResources):
+    "playerelf"
     def __init__(self):
-        PlayerBase.__init__(self,PlayerBase.ELF,PlayerBase.MAGICUSER)
-	PlayerElfMagicuserResources.__init__(self)
-	self.sword = BroadSword(0,0)
-
-    def askclass(self):
-        return "Magic User"
-
-    def askrace(self):
-        return "Elf"
-
-    def askpicture(self):
-        return './pics/taskbar-PC-elffighter.bmp'
+	PlayerElfResources.__init__(self)

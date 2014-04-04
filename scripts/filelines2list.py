@@ -1,5 +1,5 @@
-
-# Copyright (C) Johan Ceuppens 2010
+#!/usr/local/bin/python
+# Copyright (C) Johan Ceuppens 2014
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 2 of the License, or
@@ -13,26 +13,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+def filelines2list(filename):
+	with open(filename) as f:
+		content = f.readlines()
+	if content == []:
+		print "Warning : filelines2list : empty file"	
+	return content	
 
-import pygame
-from pygame.locals import *
-from stateimagelibrary import *
-from playerbase import *
-from playerelffighterresources import *
-from broadsword import *
-
-class PlayerElfFighter(PlayerBase, PlayerElfFighterResources):
-    "playerelffighter Magicuser"
-    def __init__(self):
-        PlayerBase.__init__(self,PlayerBase.ELF,PlayerBase.FIGHTER)
-	PlayerElfResources.__init__(self)
-	self.sword = BroadSword(0,0)
-
-    def askclass(self):
-        return "Fighter"
-
-    def askrace(self):
-        return "Elf"
-
-    def askpicture(self):
-        return './pics/taskbar-PC-elffighter.bmp'
+load('../src/game.old.py')
