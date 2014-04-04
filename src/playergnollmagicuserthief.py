@@ -21,7 +21,7 @@ from playerbase import *
 from playergnollresources import *
 
 class PlayerGnollMagicuserThief(PlayerBase, PlayerGnollResources):
-	"Player Drow Fighter Magicuser"
+	"Player Gnoll Fighter Magicuser"
 	def __init__(self):
 		PlayerBase.__init__(self,PlayerBase.GNOLL, PlayerBase.FIGHTERMAGICUSER)
 		PlayerGnollResources.__init__(self)
@@ -30,5 +30,5 @@ class PlayerGnollMagicuserThief(PlayerBase, PlayerGnollResources):
 		return "Fighter Magic User"
 
 	def askrace(self):
-		return "Drow"
+		return "Gnoll"
 

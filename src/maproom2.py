@@ -47,16 +47,8 @@ class Maproom2(MaproomDungeon):
 
         self.gameobjects.append(Goblin3(100,100))
         self.gameobjects.append(Goblin3(150,100))
-##        self.gameobjects.append(Goblin3(240,140))
-##        self.gameobjects.append(Goblin3(350,180))
-##        self.gameobjects.append(Goblin3(380,180))
-##        self.gameobjects.append(Goblin3(400,100))
-##        self.gameobjects.append(Goblin3(450,100))
-##        self.gameobjects.append(Goblin3(540,120))
-##        self.gameobjects.append(Snake1(680,140))
-##        self.gameobjects.append(Beholder(300,100))
-##        self.gameobjects.append(BeholderBat(300,100))
-##	 self.gameobjects.append(RubySword(400,100))
+        self.gameobjects.append(Beholder(300,100))
+        self.gameobjects.append(BeholderBat(300,100))
 
 ##        self.gameobjects.append(Dungeonentrance1(0,0))
 ##	self.gameobjects.append(Tree2(10,100))
@@ -81,19 +73,6 @@ class Maproom2(MaproomDungeon):
 ##        self.gameobjects.append(Box(0,400,800,100))
 ##        self.addnorthwall(0,0)
  
-    def draw(self,game):
-        # draw bg
-        game.screen.blit(self.background, (0+self.relativex, 0+self.relativey))
-        # draw walls
-        MaproomDungeon.draw(self, game)
-        for t in self.tileboxes:
-            t.draw(game.screen,self.relativex,self.relativey)
-        # draw gameobjects
-        for i in self.gameobjects:
-	    if i != None:
-		i.update(game)
-		i.draw(game.screen,self)
-	
     def isroomupexit(self,game):
 	if self.relativey  > 150:
 		return 1

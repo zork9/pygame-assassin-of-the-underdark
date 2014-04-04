@@ -24,5 +24,5 @@ class Tree2(Gameobject):
         Gameobject.__init__(self,xx,yy)
         self.w = 92 
         self.h = 92 
-        self.image = pygame.image.load('./pics/tree2-150x150.bmp').convert()
+        self.image = pygame.image.load('./pics/tree2night-130x130.bmp').convert()
         self.image.set_colorkey((0,0,0)) 

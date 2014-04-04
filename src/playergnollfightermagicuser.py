@@ -30,5 +30,5 @@ class PlayerGnollFighterMagicuser(PlayerBase, PlayerGnollResources):
 		return "Fighter Magic User"
 
 	def askrace(self):
-		return "Drow"
+		return "Gnoll"
 

@@ -189,6 +189,7 @@ class Game:
 
 	self.player.setheartmeter(self.heartmeter)        
         self.inventory = Inventory()
+        self.inventoryitem = None 
 
         self.taskbar = Taskbar(self.screen,self.font,self.player)
         self.talker = None

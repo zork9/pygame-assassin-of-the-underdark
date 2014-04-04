@@ -70,53 +70,6 @@ class Maproom1(MaproomDungeon):
         self.gameobjects.append(Goblin3(620,620))
         self.gameobjects.append(Goblin3(660,620))
 
-##        self.gameobjects.append(Beholder(540,600))
-##        self.gameobjects.append(Beholder(680,600))
-
-##        self.gameobjects.append(Goblin3(580,720))
-##        self.gameobjects.append(Goblin3(620,720))
-##        self.gameobjects.append(Goblin3(660,720))
-##        self.gameobjects.append(Snake2(480,140))
-##        self.gameobjects.append(Beholder(300,100))
-##        self.gameobjects.append(BeholderBat(300,100))
-##	self.gameobjects.append(RubySword(400,100))
-
-        #FIX	self.gameobjects.append(Dungeonentrance1(0,0))
-##	self.gameobjects.append(Tree2(10,100))
-##	self.gameobjects.append(Tree2(100,100))
-##	self.gameobjects.append(Tree2(200,120))
-##        self.gameobjects.append(Goblin1(50,230))
-##        self.gameobjects.append(Goblin1(440,230))
-##        b = Box(650,0,150,300)
-##        b.setimage('./pics/knightdungeon1-150x350.bmp',0,0,0)
-##        self.gameobjects.append(b)
-##        # upper crevasses
-##        self.gameobjects.append(Box(0,0,375,75))
-##        self.gameobjects.append(Box(375,0,100,100))
-##        self.gameobjects.append(Box(475,0,100,125))
-##        self.gameobjects.append(Box(500,0,120,180))
-##        self.gameobjects.append(Box(600,0,50,160))
-##        self.gameobjects.append(Box(650,0,25,75))
-##        self.gameobjects.append(Box(675,0,75,40))
-##        self.gameobjects.append(Box(750,0,50,40))
-##        # lower crevasses
-##        self.gameobjects.append(Box(500,220,120,400))
-##        self.gameobjects.append(Box(0,400,800,100))
-##        self.addnorthwall(0,0)
- 
-    def draw(self,game):
-        # draw bg
-        game.screen.blit(self.background, (0+self.relativex, 0+self.relativey))
-        # draw walls
-        MaproomDungeon.draw(self, game)
-        for t in self.tileboxes:
-            t.draw(game.screen,self.relativex,self.relativey)
-        # draw gameobjects
-        for i in self.gameobjects:
-	    if i != None:
-		i.update(game)
-		i.draw(game.screen,self)
-	
     def isroomdownexit(self,game):
 	if self.relativex  < -250 and self.relativex > -650 and self.relativey < -650:
 		return 1
