@@ -23,7 +23,7 @@ from dungeonentrance1 import *
 from maproomdungeon import *
 from maproomdungeonnorthwall import *
 from sword import *
-from spell import *
+from fireballspell import *
 from goblin1 import *
 from goblin2 import *
 from goblin3 import *
@@ -53,7 +53,7 @@ class Maproom1(MaproomDungeon):
         self.tileboxes.append(self.southwall1)
 
         self.gameobjects.append(Sword(100,120))
-        self.gameobjects.append(Spell(500,120))
+        self.gameobjects.append(FireballSpell(500,120))
 
         self.gameobjects.append(Goblin3(300,100))
         self.gameobjects.append(Goblin3(340,140))

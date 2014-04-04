@@ -226,14 +226,8 @@ class Game:
 			###if self.talker == None:
                         o = self.player.pickup(self.room)
 		        if o != None:
-				if o.inventoryitem and o.inventoryitem.typename == "sword":
-					self.taskbar.sworditem = o.inventoryitem
-				elif o.inventoryitem and o.inventoryitem.typename == "spell":
-					self.taskbar.spellitem = o.inventoryitem
-				elif o.inventoryitem and o.inventoryitem.typename == "enemy":
-					self.inventory.additem(o.inventoryitem)
-				elif o.inventoryitem and o.inventoryitem.typename == "inventoryitem":
-					self.inventory.additem(o.inventoryitem)
+				self.inventory.setpickup(o)
+				self.taskbar.setpickup(o)
 				self.room.removegameobject(o)
 
 	            elif event.key == K_z:

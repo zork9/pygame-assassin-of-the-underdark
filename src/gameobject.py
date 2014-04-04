@@ -36,6 +36,7 @@ class Gameobject:
         self.hitpoints = 1
         # NOTE : decrease 1 hitpoint with default sword
         self.hitf = self.hit1
+	self.name = "Gameobject"
         
     def draw(self, screen, room):
         screen.blit(self.image,(self.x+room.relativex,self.y+room.relativey))

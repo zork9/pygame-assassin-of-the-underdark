@@ -39,10 +39,6 @@ class Taskbar:
 	for i in range(0,self.player.hitpoints):
 		self.screen.blit(self.lifeimage, (10+i*2,10))
 
-###    def setswordimage(self, imagefilename,r,g,b):
-###        self.swordimage = pygame.image.load(imagefilename).convert()
-###        self.swordimage.set_colorkey((r,g,b)) 
-
     def draw(self):
         self.screen.blit(self.background, (0, 300))
         self.screen.blit(self.font.render(self.player.askrace() + ' ' + self.player.askclass(), 6, (255,0,0)), (0+70,0+300))
@@ -53,6 +49,12 @@ class Taskbar:
 		self.inventoryitem.draw(self.screen, 220, 310)
         if self.spellitem:
 		self.spellitem.draw(self.screen, 260, 310)
+        	self.screen.blit(self.font.render(self.spellitem.name, 6, (255,255,255)), (265,335))
 
-###    def setrubysword(self):
-###        self.setswordimage('./pics/taskbar-rubysword1-32x32.bmp',0,0,255)
+    def setpickup(self, o):
+	if o.inventoryitem and o.inventoryitem.typename == "sword":
+		self.sworditem = o.inventoryitem
+	elif o.inventoryitem and o.inventoryitem.typename == "spell":
+		self.spellitem = o.inventoryitem
+
+

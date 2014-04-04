@@ -22,9 +22,10 @@ from pygame.locals import *
 from inventoryitem import *
 
 class InventorySpell(Inventoryitem):
-    def __init__(self):
-        Inventoryitem.__init__(self, "./pics/spell-inventory-36x36.bmp")
+    def __init__(self, imagefilename):
+        Inventoryitem.__init__(self, imagefilename)
 	self.typename = "spell"
+###	self.name = "spell"
 
     def cast(self,game):
-        print 'You cast a spell %s' % self
+        print 'You cast the spell %s' % self

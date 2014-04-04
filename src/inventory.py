@@ -75,3 +75,10 @@ class Inventory(object):
 
     def additem(self,o):
         self.list.append(o)
+
+    def setpickup(self, o):
+	if o.inventoryitem and o.inventoryitem.typename == "enemy":
+		self.additem(o.inventoryitem)
+	elif o.inventoryitem and o.inventoryitem.typename == "inventoryitem":
+		self.additem(o.inventoryitem)
+

@@ -5,4 +5,4 @@
 . use of item functions
 . picking up gameobjects/enemies
 . make interface for addpicture etc in statimagelibrary and stateimageresourcelibrary
-
+. spells are inventoryitem deriveds, change to own base class

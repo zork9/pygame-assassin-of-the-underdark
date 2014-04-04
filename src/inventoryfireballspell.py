@@ -1,7 +1,7 @@
 
-# Copyright (C) Johan Ceuppens 2014
 # Copyright (C) Johan Ceuppens 2011
 # Copyright (C) Johan Ceuppens 2010
+
 # Copyright (C) Johan Ceuppens 2009 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,20 +19,12 @@
 import pygame
 from pygame.locals import *
 
+from inventoryspell import *
 
-class Inventoryitem:
-    def __init__(self,imagefilename):
-        self.image = pygame.image.load(imagefilename).convert()
-        self.image.set_colorkey((0,0,0))#FIXME rgb transdparency
-	self.typename = "inventoryitem"
-	self.name = "inventoryitem"
+class InventoryFireballSpell(InventorySpell):
+    def __init__(self):
+        InventorySpell.__init__(self, "./pics/fireballspell-inventory-36x36.bmp")
+	self.name = "fireball"
 
-    def draw(self,screen,x,y):
-        screen.blit(self.image, (x, y))
-
-    def addtolist(self,list):
-        list.addobject(self)
-
-    def use(self,game):
-        print 'You used inventoryitem %s' % self
-
+    def cast(self,game):
+        print 'You cast the spell %s' % self

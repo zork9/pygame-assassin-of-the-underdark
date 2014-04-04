@@ -18,35 +18,17 @@ import pygame
 from pygame.locals import *
 from gameobject import *
 from bombexplosion import *
-from inventoryspell import *
+from inventoryfireballspell import *
+from spell import *
 
-class Spell(Gameobject):
+class FireballSpell(Spell):
     ""
     def __init__(self, xx,yy):
-        Gameobject.__init__(self,xx,yy)
-        self.w = 36
-        self.h = 36
-	self.collisionw = 64-self.w 
-	self.collisionh = 64-self.h 
-        self.image = pygame.image.load('./pics/spell1-36x36.bmp').convert()
+        Spell.__init__(self,xx,yy)
+        self.image = pygame.image.load('./pics/fireballspell1-36x36.bmp').convert()
         self.image.set_colorkey((0,0,0)) 
-   	self.counter = 0 
-	self.name = "spell"
-	self.inventoryitem = InventorySpell('./pics/spell1-36x36.bmp')
-
-    def update(self,game):
-	1
-
-    def collide(self, room, player):
-        #print 'spell x=%d y=%d player x=%d y=%d' % (self.x,self.y,player.x-room.relativex,player.y-room.relativey)
-	if (player.x-room.relativex > self.x - self.collisionw and 
-	player.x-room.relativex < self.x + self.w + self.collisionw and 
-	player.y-room.relativey > self.y - self.collisionh and 
-	player.y-room.relativey < self.y + self.h + self.collisionh):
-	    #print "collision with Spell"
-	    return 1 
-	else:
-	    return 0 ## for game self.talker
+	self.name = "fireball"
+	self.inventoryitem = InventoryFireballSpell()
 
     def cast(self,game):
         print 'You cast %s' % self
