@@ -16,7 +16,6 @@
 
 import pygame
 from pygame.locals import *
-from maproom import *
 from tree import *
 from tree2 import *
 from dungeonentrance1 import *
@@ -42,7 +41,6 @@ class Maproom1(MaproomDungeon):
     def __init__(self,x,y):
         MaproomDungeon.__init__(self,x,y)
         self.background = pygame.image.load('./pics/room-bg1.bmp').convert()
-        ###self.northwall1 = Tilebox(1,1,60,48,16,1,'./pics/walldungeonnorth2-beholderglass-60x48.bmp')
         self.northwall1 = Tilebox(1,1,60,48,13,1,'./pics/walldungeonnorth1-60x48.bmp')
         self.southwall1 = Tilebox(1,200,30,48,13,1,'./pics/walldungeonsouth1-30x48.bmp')
         self.westwall1 = Tilebox(360,200,48,60,1,10,'./pics/walldungeonwest1-48x60.bmp')
@@ -72,16 +70,16 @@ class Maproom1(MaproomDungeon):
         self.gameobjects.append(Goblin3(620,620))
         self.gameobjects.append(Goblin3(660,620))
 
-###        self.gameobjects.append(Beholder(540,600))
-###        self.gameobjects.append(Beholder(680,600))
+##        self.gameobjects.append(Beholder(540,600))
+##        self.gameobjects.append(Beholder(680,600))
 
-###        self.gameobjects.append(Goblin3(580,720))
-###        self.gameobjects.append(Goblin3(620,720))
-###        self.gameobjects.append(Goblin3(660,720))
-###        self.gameobjects.append(Snake2(480,140))
-###        self.gameobjects.append(Beholder(300,100))
-###        self.gameobjects.append(BeholderBat(300,100))
-###	self.gameobjects.append(RubySword(400,100))
+##        self.gameobjects.append(Goblin3(580,720))
+##        self.gameobjects.append(Goblin3(620,720))
+##        self.gameobjects.append(Goblin3(660,720))
+##        self.gameobjects.append(Snake2(480,140))
+##        self.gameobjects.append(Beholder(300,100))
+##        self.gameobjects.append(BeholderBat(300,100))
+##	self.gameobjects.append(RubySword(400,100))
 
         #FIX	self.gameobjects.append(Dungeonentrance1(0,0))
 ##	self.gameobjects.append(Tree2(10,100))
@@ -104,7 +102,7 @@ class Maproom1(MaproomDungeon):
 ##        # lower crevasses
 ##        self.gameobjects.append(Box(500,220,120,400))
 ##        self.gameobjects.append(Box(0,400,800,100))
-        #self.addnorthwall(0,0)
+##        self.addnorthwall(0,0)
  
     def draw(self,game):
         # draw bg
@@ -113,7 +111,6 @@ class Maproom1(MaproomDungeon):
         MaproomDungeon.draw(self, game)
         for t in self.tileboxes:
             t.draw(game.screen,self.relativex,self.relativey)
-        #self.southwall1.draw(game.screen,self.relativex,self.relativey)
         # draw gameobjects
         for i in self.gameobjects:
 	    if i != None:
@@ -134,37 +131,3 @@ class Maproom1(MaproomDungeon):
 		return 2
 	return 0 
  
-    def collidebarehands(self,game):
-        for i in self.gameobjects:
-	    if i!= None:
-		#self.relativex = self.prevx
-		#self.relativey = self.prevy
-	    	id = i.collidewithbarehands(self,game.player)
-		if id:
-			return i ## NOTE : returns collided entity (single)
-	return None
-
-    def collidesword(self,game):
-        for i in self.gameobjects:
-	    if i!= None:
-		#self.relativex = self.prevx
-		#self.relativey = self.prevy
-	    	id = i.collidewithsword(self,game.player)
-		if id:
-			return i ## NOTE : returns collided entity (single)
-	return None
-
-    def hitwithsword(self, o, game):
-        hitp = o.hit(game)
-        if hitp < 0:
-            self.removeobject(o)
-
-    def hitwithbarehands(self, o, game):
-        hitp = o.hit(game)
-        if hitp < 0:
-            self.removeobject(o)
-
-    def removeobject(self, o):
-        for i in range(0,len(self.gameobjects)):
-            if self.gameobjects[i] == o:
-                self.gameobjects[i] = None

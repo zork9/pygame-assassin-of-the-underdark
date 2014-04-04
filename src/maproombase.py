@@ -31,7 +31,6 @@ class MaproomBase:
         self.direction = "north"
         
     def draw(self,game):
-	##print "x=%d" % self.relativex 
         game.screen.blit(self.background, (0+self.relativex, 0+self.relativey))
 
     def undomove(self):
@@ -98,7 +97,7 @@ class MaproomBase:
 	    if i!= None:
 	    	c = i.collide(self,player)
 		if c == 1:
-			return i ## NOTE : returns collided entity (single)
+			return i ## returns collided entity 
 		self.relativex = self.prevx
 		self.relativey = self.prevy
         return None

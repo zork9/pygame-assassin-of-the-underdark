@@ -18,11 +18,11 @@ import pygame
 from pygame.locals import *
 from koboldwizard import *
 from time import *
-from maproom import *
 from maproomdungeonnorthwall import *
 from maproomdungeonsouthwall import *
 from maproomdungeonwestwall import *
 from maproomdungeoneastwall import *
+from maproombase import *
 
 class MaproomDungeon(MaproomBase):
     "Room with a (big) map"
@@ -55,12 +55,10 @@ class MaproomDungeon(MaproomBase):
         self.eastwalls.append(MaproomEastDungeonWall(x,y))
         
     def draw(self,game):
-	##print "x=%d" % self.relativex 
         game.screen.blit(self.background, (0+self.relativex, 0+self.relativey))
         for w in self.northwalls:
             w.draw(game.screen,self.relativex,self.relativey)
       
-# NOTE player can be enemy 
     def collide(self, player):	
 	for i in self.gameobjects:
 	    if i != None and i.collide(self, player):
@@ -94,4 +92,38 @@ class MaproomDungeon(MaproomBase):
                     return 2 # 1 kills game
         return 0
 
+    def collidebarehands(self,game):
+        for i in self.gameobjects:
+	    if i!= None:
+		#self.relativex = self.prevx
+		#self.relativey = self.prevy
+	    	id = i.collidewithbarehands(self,game.player)
+		if id:
+			return i ## NOTE : returns collided entity (single)
+	return None
+
+    def collidesword(self,game):
+        for i in self.gameobjects:
+	    if i!= None:
+		#self.relativex = self.prevx
+		#self.relativey = self.prevy
+	    	id = i.collidewithsword(self,game.player)
+		if id:
+			return i ## NOTE : returns collided entity (single)
+	return None
+
+    def hitwithsword(self, o, game):
+        hitp = o.hit(game)
+        if hitp < 0:
+            self.removeobject(o)
+
+    def hitwithbarehands(self, o, game):
+        hitp = o.hit(game)
+        if hitp < 0:
+            self.removeobject(o)
+
+    def removeobject(self, o):
+        for i in range(0,len(self.gameobjects)):
+            if self.gameobjects[i] == o:
+                self.gameobjects[i] = None
 

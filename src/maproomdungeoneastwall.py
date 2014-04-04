@@ -18,7 +18,6 @@ import pygame
 from pygame.locals import *
 from koboldwizard import *
 from time import *
-from maproom import *
 
 # each wall has its own pic, for dithered and changed images
 class MaproomEastDungeonWall:
