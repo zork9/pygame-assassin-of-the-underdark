@@ -29,5 +29,5 @@ class InventoryBroadSword(InventorySword):
         print 'You used a sword on %s' % e
 
     def roll(self, game):
-	self.rng.rollsword()	
+	self.rng.rollbroadsword()	
 

@@ -29,5 +29,5 @@ class InventoryRubySword(InventorySword):
         print 'You used a sword'
 
     def roll(self, game):
-	self.rng.rollsword()	
+	self.rng.rollrubysword()	
 
