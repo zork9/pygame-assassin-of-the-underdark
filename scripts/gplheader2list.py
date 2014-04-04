@@ -12,10 +12,16 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-def filelines2list(filename):
-	with open(filename) as f:
-		content = f.readlines()
-	if content == []:
-		print "Warning : filelines2list : empty file"	
-	return content	
+import sys
+import filelines2list
+ 
+def gplheader2list(AUTHOR = "Johan Ceuppens", YEAR = "2014", filename = './gpl.txt'):
+	l = ["\n"] 
+	l.append(filelines2list.filelines2list(filename))
+	l.insert(1, "Copyright (C) " + AUTHOR + " " + YEAR + "\n")
 
+	print l
+	return l
+
+
+gplheader2list("bongo")
