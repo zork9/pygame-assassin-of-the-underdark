@@ -1,8 +1,5 @@
 #!/usr/bin/python
 
-######### ./generateplayerfiles.py elf fighter magicuser Elf Fighter Magicuser ELF FIGHTERMAGICUSER
-######### ./generateplayerfiles.py elf fighter Elf Fighter ELF FIGHTER
-
 # Copyright (C) Johan Ceuppens 2014
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,6 +17,16 @@
 from filelines2list import *
 from gplheader2list import *
 import sys
+###############################################
+# Note that the syntax is Magicuser based, Thief and Fighter
+#
+# ./generateplayerfiles.py elf fightermagicuser Elf FighterMagicuser ELF FIGHTERMAGICUSER
+#
+# ./generateplayerfiles.py elf "fighter magicuser" Elf "Fighter Magicuser" ELF FIGHTERMAGICUSER
+#
+# ./generateplayerfiles.py elf fighter Elf Fighter ELF FIGHTER
+#
+###############################################
 
 # command line args in a list
 args = str(sys.argv)
