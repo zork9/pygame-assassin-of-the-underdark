@@ -54,12 +54,12 @@ class Maproom2(MaproomDungeon):
 #        self.gameobjects.append(Goblin3(400,100))
 #        self.gameobjects.append(Goblin3(450,100))
 #        self.gameobjects.append(Goblin3(540,120))
-        #self.gameobjects.append(Snake1(680,140))
-        #self.gameobjects.append(Beholder(300,100))
-        #self.gameobjects.append(BeholderBat(300,100))
-	#self.gameobjects.append(RubySword(400,100))
+#        self.gameobjects.append(Snake1(680,140))
+#        self.gameobjects.append(Beholder(300,100))
+#        self.gameobjects.append(BeholderBat(300,100))
+#	 self.gameobjects.append(RubySword(400,100))
 
-        #FIX	self.gameobjects.append(Dungeonentrance1(0,0))
+#        self.gameobjects.append(Dungeonentrance1(0,0))
 ##	self.gameobjects.append(Tree2(10,100))
 ##	self.gameobjects.append(Tree2(100,100))
 ##	self.gameobjects.append(Tree2(200,120))
@@ -89,7 +89,6 @@ class Maproom2(MaproomDungeon):
         MaproomDungeon.draw(self, game)
         for t in self.tileboxes:
             t.draw(game.screen,self.relativex,self.relativey)
-        #self.southwall1.draw(game.screen,self.relativex,self.relativey)
         # draw gameobjects
         for i in self.gameobjects:
 	    if i != None:
