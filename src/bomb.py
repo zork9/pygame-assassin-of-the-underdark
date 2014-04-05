@@ -20,6 +20,7 @@ from gameobject import *
 from bombexplosion import *
 from inventorybomb import *
 from time import *
+import inventorybomb 
 
 class Bomb(Gameobject):
     ""
@@ -30,7 +31,7 @@ class Bomb(Gameobject):
         self.image = pygame.image.load('./pics/bomb1-16x16.bmp').convert()
         self.image.set_colorkey((0,0,0)) 
    	self.counter = 0 
-	self.inventoryitem = InventoryBomb()
+	self.inventoryitem = inventorybomb.InventoryBomb()
 
     def update(self,game):
 	sleep(0.02)

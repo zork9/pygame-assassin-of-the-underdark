@@ -20,10 +20,12 @@ import pygame
 from pygame.locals import *
 
 from inventoryitem import *
+import bomb 
 
 class InventoryBomb(Inventoryitem):
     def __init__(self):
         Inventoryitem.__init__(self, "./pics/bomb-inventory-34x36.bmp")
 
     def use(self,game):
+        game.room.gameobjects.append(bomb.Bomb(game.player.x-game.room.relativex,game.player.y-game.room.relativey))
         print 'You used a bomb' 

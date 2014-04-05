@@ -224,8 +224,6 @@ class Game:
                         self.room.moveright()    
                     elif event.key == K_RIGHT:
                         self.room.moveleft()    
-                    elif event.key == K_SPACE:
-                        self.room.gameobjects.append(Bomb(self.player.x-self.room.relativex,self.player.y-self.room.relativey))
     
                     elif event.key == K_i:
                         flag = 0
