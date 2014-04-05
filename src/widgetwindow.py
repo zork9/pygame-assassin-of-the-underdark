@@ -19,9 +19,19 @@ from pygame.locals import *
 
 from widget import *
 from widgetroot import *
+from widgetframe import *
 
-class WidgetWindow(Widget):
+class WidgetWindow(Widget,WidgetFrame):
     ""
-    def __init__(self, parent, callback, treenode, system):
+    def __init__(self, xx,yy,ww,hh, parent, callback, treenode, system):
 	Widget.__init__(self, parent, callback, treenode, system)	
+	WidgetFrame.__init__(self,xx,yy,ww,hh)
 
+    def draw(self, screen):
+	# draw root 
+###	if hasattr(self.widgetroot.widgettree.root.widget, 'draw'):
+###		self.widgetroot.widgettree.root.widget.draw(screen)
+	# draw root children FIXME recursion 
+	for tn in self.widgetroot.widgettree.root.nodes:	
+		if hasattr(tn.widget, 'draw'):
+			tn.widget.draw(screen)

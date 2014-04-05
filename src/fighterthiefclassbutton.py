@@ -17,15 +17,19 @@
 import pygame
 from pygame.locals import *
 
-from treenode import *
+from multiclassselectorbutton import *
 
-class Tree:
-    ""
+class FighterThiefClassButton(MultiClassSelectorButton):
+    "FighterThief Class Selector Window Button"
+    def __init__(self, parent, callback, node):
+	MultiClassSelectorButton.__init__(self, parent, callback, node)
+	self.x = 50
+	self.y = 0
+	self.w = 50 
+	self.h = 50 
+	if callback == None:
+		self.callback = self.cb
+	self.borderwidth = 1
 
-###	self.root is a treenode 
-    def __init__(self):
-	self.root = None
-
-### insert a node here
-###    def insertnode(self, node):
-###	self.root = node
+    def cb(self):
+	print "FighterThief class - Mutliclassselectorbutton clicked !"

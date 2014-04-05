@@ -19,13 +19,15 @@ from pygame.locals import *
 
 from maproom1 import *
 from maproom2 import *
+from maproom3 import *
 
 from rng import *
 from multiraceselector import *
 from multiclassselector import *
-from selector import *
+#from selector import *
 from taskbar import *
 from time import *
+from sys import *
 from inventory import *
 from meter import *
 from playergnollfighter import *
@@ -319,7 +321,10 @@ class Game:
             self.room = Maproom2(self.x,self.y)
         elif (roomnumber == 3):
             self.room = Maproom3(self.x,self.y)
-            
+        elif (roomnumber == 4):
+            print "room 4 not yet implemented"
+	    sys.exit(0)
+ 
 if __name__ == "__main__":
     foo = Game()
 

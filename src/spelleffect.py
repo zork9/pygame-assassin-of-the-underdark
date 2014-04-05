@@ -16,16 +16,10 @@
 
 import pygame
 from pygame.locals import *
+from gameobject import *
 
-from treenode import *
-
-class Tree:
+class SpellEffect(Gameobject):
     ""
+    def __init__(self, xx,yy):
+	Gameobject.__init__(self,xx,yy)	
 
-###	self.root is a treenode 
-    def __init__(self):
-	self.root = None
-
-### insert a node here
-###    def insertnode(self, node):
-###	self.root = node

@@ -20,11 +20,25 @@ import pygame
 from pygame.locals import *
 
 from inventoryspell import *
+from fireballspelleffect import *
+from rng import *
 
 class InventoryFireballSpell(InventorySpell):
     def __init__(self):
         InventorySpell.__init__(self, "./pics/fireballspell-inventory-36x36.bmp")
 	self.name = "fireball"
+	self.rng = RNG()
 
     def cast(self,game):
-        print 'You cast the spell %s' % self
+	go = game.room.getclosestgameobject(game.player.x, game.player.y)
+	if go:
+		print "foo> x=%s y=%s" % (go.x,go.y)
+		go.hitwithspell(game)
+		game.room.gameobjects.append(FireballSpellEffect(go.x, go.y))
+        	print 'You cast %s (fireball spell)' % self
+        else:
+		print 'You cast %s (fireball spell), it did nothing' % self
+
+    def roll(self, game):
+	return self.rng.rollfireball()	
+

@@ -63,9 +63,6 @@ class Maproom1(MaproomDungeon):
         self.addwesttilebox(360,200,48,60,1,10,'./pics/walldungeonwest1-48x60.bmp')
         self.addeasttilebox(775,1,48,60,1,14,'./pics/walldungeoneast1-48x60.bmp')
 
-        self.gameobjects.append(Sword(100,120))
-        self.gameobjects.append(FireballSpell(500,120))
-
         self.gameobjects.append(Goblin3(300,100))
         self.gameobjects.append(Goblin3(340,140))
         self.gameobjects.append(Goblin3(380,180))
@@ -82,6 +79,9 @@ class Maproom1(MaproomDungeon):
         self.gameobjects.append(Goblin3(580,620))
         self.gameobjects.append(Goblin3(620,620))
         self.gameobjects.append(Goblin3(660,620))
+
+        self.gameobjects.append(Sword(100,120))
+        self.gameobjects.append(FireballSpell(500,120))
 
     def isroomdownexit(self,game):
 	if self.relativex  < -250 and self.relativex > -650 and self.relativey < -650:

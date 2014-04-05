@@ -20,7 +20,7 @@ from pygame.locals import *
 from widgetbutton import *
 
 class MultiClassSelectorButton(WidgetButton):
-    "Class and Race Selector Window Button"
+    "Class Selector Window Button"
     def __init__(self, parent, callback, node):
 	WidgetButton.__init__(self, parent, callback, node)
 
@@ -28,4 +28,4 @@ class MultiClassSelectorButton(WidgetButton):
 		self.callback = self.cb
 
     def cb(self):
-	print "Mutliclassselectorbutton clicked !" ### FIXME 	
+	print "Mutliclassselectorbutton clicked !"

@@ -120,6 +120,13 @@ class Gameobject(GameobjectResources):
     def pickup(self, room):
         return 0
 
+    def hitwithspell(self,game):
+	if game.taskbar and game.taskbar.spellitem:
+		damage = game.taskbar.spellitem.roll(game)
+		if damage > 0:
+            		print 'gameobject is hit with %d damage (spell) !' % damage
+        		self.hitpoints -= damage
+
     def hitwithweapon(self,game):
 	if game.taskbar and game.taskbar.sworditem:
 		damage = game.taskbar.sworditem.roll(game)

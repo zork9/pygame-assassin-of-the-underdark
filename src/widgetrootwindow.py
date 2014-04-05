@@ -24,6 +24,6 @@ from widgetsystem import *
 
 class WidgetRootWindow(WidgetWindow):
     ""
-    def __init__(self, parent, callback = None, treenode = None, system = WidgetSystem()):
-	WidgetWindow.__init__(self, parent, callback, treenode, system)	
-
+    def __init__(self, ww,hh, parent, callback = None, treenode = None, system = WidgetSystem()):
+	WidgetWindow.__init__(self, 0,0,ww,hh, parent, callback, treenode, system)	
+	self.set_root_widget(self)  ### set root of tree

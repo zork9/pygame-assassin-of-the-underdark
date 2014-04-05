@@ -22,19 +22,32 @@ from widgettreenode import *
 from widgetframe import *
 from widgetrootwindow import *
 from multiclassselectorbutton import *
+from fightermagicuserclassbutton import *
+from fighterthiefclassbutton import *
+from magicuserthiefclassbutton import *
+from fighterclassbutton import *
+from magicuserclassbutton import *
+from thiefclassbutton import *
 import sys
 
-class MultiClassSelector(WidgetRootWindow, WidgetFrame):
+class MultiClassSelector(WidgetRootWindow):
     "Multi Class Selector"
     def __init__(self, screen, font):
-	WidgetFrame.__init__(self, 0, 0, 300, 350)
-	WidgetRootWindow.__init__(self, self)
+	WidgetRootWindow.__init__(self, 300,350, self)
+
+	# construct widgets
+	
+	self.add_widget(FighterMagicuserClassButton(self, self.selectfightermagicuser, None)) 
+	self.add_widget(FighterThiefClassButton(self, self.selectfighterthief, None)) 
+	self.add_widget(MagicuserThiefClassButton(self, self.selectmagicuserthief, None)) 
+	self.add_widget(FighterClassButton(self, self.selectfighter, None)) 
+	self.add_widget(MagicuserClassButton(self, self.selectmagicuser, None)) 
+	self.add_widget(ThiefClassButton(self, self.selectthief, None)) 
 
         self.screen = screen
         self.font = font
         self.background = pygame.image.load('./pics/blank.bmp').convert()
-        self.klass = "Magic User Thief"
-        self.race = "Human"
+        self.klass = "Random Class"
 
 	self.yoffset = 70
 
@@ -49,12 +62,28 @@ class MultiClassSelector(WidgetRootWindow, WidgetFrame):
         self.magicuserimage = pygame.image.load('./pics/playerhumanfighter1-48x48.bmp').convert()
         self.thiefimage = pygame.image.load('./pics/playerhumanfighter1-48x48.bmp').convert()
 
-	self.widgettreenode = WidgetTreeNode()	
-	self.button1 = MultiClassSelectorButton(self, None, self.widgettreenode)
-	self.widgetsystem.add_widget(self.button1) 
-	self.widgettreenode.widget = self.button1 ### NOTE doubly-linked 
 
-    def draw(self):
+    def selectfightermagicuser(self):
+	self.klass = "Fighter Magic User"	
+
+    def selectfighterthief(self):
+	self.klass = "Fighter Thief"	
+
+    def selectmagicuserthief(self):
+	self.klass = "Magic User Thief"	
+
+    def selectfighter(self):
+	self.klass = "Fighter"	
+
+    def selectmagicuser(self):
+	self.klass = "Magic User"	
+
+    def selectthief(self):
+	self.klass = "Thief"	
+
+
+	### NOTE draw member func is in rootwindow
+    def drawimages(self):
         # fighters
         self.screen.blit(self.background, (0, 0))       
         self.screen.blit(self.fightermagicuserimage, (0,0))
@@ -70,9 +99,18 @@ class MultiClassSelector(WidgetRootWindow, WidgetFrame):
         self.screen.blit(self.thiefimage, (250,0))
         self.screen.blit(self.font.render("thief", 6, (255,255,255)), (250,50))
 
+
+
+
+
     def select(self):
         while 1:
-                self.draw()
+                self.drawimages()
+
+		# Needs main loop
+
+		self.draw(self.screen)
+	
                 pygame.display.update()
                 for event in pygame.event.get():
                     if event.type == QUIT:
@@ -82,30 +120,19 @@ class MultiClassSelector(WidgetRootWindow, WidgetFrame):
                         position = pygame.mouse.get_pos()
                         mousex = position[0]
                         mousey = position[1]
-                        
-                        if mousex > 0 and mousex < 50 and mousey > 0 and mousey < 50:
-                            self.klass = "Fighter Magic User"
-                            return
-                        elif mousex > 50 and mousex < 100 and mousey > 0 and mousey < 50:
-                            self.klass = "Fighter Thief"
-                            return
-                        elif mousex > 100 and mousex < 150 and mousey > 0 and mousey < 50:
-                            self.klass = "Magic User Thief"
-                            return
-                        elif mousex > 150 and mousex < 200 and mousey > 0 and mousey < 50:
-                            self.klass = "Fighter"
-                            return
-                        elif mousex > 200 and mousex < 250 and mousey > 0 and mousey < 50:
-                            self.klass = "Magic User"
-                            return
-                        elif mousex > 250 and mousex < 300 and mousey > 0 and mousey < 50:
-                            self.klass = "Thief"
-                            return
-			else:
-				rng = RNG()
-				class0 = self.classeslist[rng.rolldx(len(self.classeslist)-1)]	
-				self.klass = class0 
+
+			self.widgetroot.interrupt(pygame.MOUSEBUTTONDOWN, mousex, mousey)
+
+			if self.klass in set(self.classeslist):
+				print "selected class=%s" % self.klass
 				return
+			else:
+				print "not in list, klass=%s, generatin random class" % self.klass
+		        	rng = RNG()
+		        	class0 = self.classeslist[rng.rolldx(len(self.classeslist)-1)]	
+		        	self.klass = class0 
+		        	return
+					
                     if event.type == KEYDOWN:
 		        rng = RNG()
 		        class0 = self.classeslist[rng.rolldx(len(self.classeslist)-1)]	

@@ -26,11 +26,11 @@ from widgetsignal import *
 class WidgetSystem:
     ""
     def __init__(self):
-	self.widgetroot = WidgetRoot()
 	self.widgetmarshaller = WidgetMarshaller()
 
-    def add_widget(self, widget):
-	self.widgetroot.add_widget(widget)
+###    def add_widget(self, widget):
+###	self.widgetroot.add_widget(widget)
 
-    def interrupt(self, SIGNAL, X, Y):
-	self.widgetroot.interrupt(SIGNAL, X, Y)	 
+###FIXME marshall
+###    def interrupt(self, SIGNAL, X, Y):
+###	self.widgetroot.interrupt(SIGNAL, X, Y)	 

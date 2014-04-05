@@ -7,7 +7,8 @@ These are the commands :
 character selection screen :
 ----------------------------
 
-use mouse to select a picture as character, if you don't click a character,
+use mouse to select a picture as character, if you don't click a character or just 
+press a key ni this screen,
 a random char is made.
 
 main screen :

@@ -17,20 +17,32 @@
 import pygame
 from pygame.locals import *
 from gameobject import *
-from bombexplosion import *
-from inventoryfireballspell import *
-from spell import *
+from spelleffect import *
 
-class FireballSpell(Spell):
+class FireballSpellEffect(SpellEffect):
     ""
     def __init__(self, xx,yy):
-        Spell.__init__(self,xx,yy)
-        self.image = pygame.image.load('./pics/fireballspell1-36x36.bmp').convert()
+        SpellEffect.__init__(self, xx, yy)
+        self.image = pygame.image.load('./pics/bombexplosion2-36x36.bmp').convert()
         self.image.set_colorkey((0,0,0)) 
-	self.name = "fireball"
-	self.inventoryitem = InventoryFireballSpell()
+	self.counter = 0 
 
-###    def cast(self,game):
-###	game.room.gameobjects.append(FireballSpellEffect())
-###        print 'You cast %s' % self
+    def update(self,game):
+	self.counter += 1
+	j = 0
+	if (self.counter > 4):
+	    for i in game.room.gameobjects:
+		if (i == self):
+		    l = 0
+		    for k in game.room.gameobjects: 
+			if i != k and k and k.collideobjectXY(game.room):
+			    game.room.gameobjects[l] = None
+			l += 1    	
+		    game.room.gameobjects[j] = None
+		     
+		    return
+	    	j += 1 
+
+    def draw(self, screen, room):
+        screen.blit(self.image, (self.x,self.y))
 

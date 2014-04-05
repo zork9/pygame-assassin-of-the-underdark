@@ -18,6 +18,7 @@ import pygame
 from pygame.locals import *
 from koboldwizard import *
 from time import *
+import math 
 from maproomdungeonnorthwall import *
 from maproomdungeonsouthwall import *
 from maproomdungeonwestwall import *
@@ -62,8 +63,6 @@ class MaproomDungeon(MaproomBase):
     def addeastwall(self, x,y):
         self.eastwalls.append(MaproomDungeonEastWall(x,y))
        
-
-
  
     def addnorthtilebox(self, x,y,w,h,nx,ny,fn):
         self.northtileboxes.append(NorthTilebox(x,y,w,h,nx,ny,fn))
@@ -211,3 +210,18 @@ class MaproomDungeon(MaproomBase):
             if self.gameobjects[i] == o:
                 self.gameobjects[i] = None
 
+
+    def getclosestgameobject(self, playerx, playery):
+	### FIXME closest game object, needs double lists
+	minx = 1000
+	miny = 1000
+	closestgameobject = None
+	for go in self.gameobjects:
+		if (go and (minx >= math.fabs(go.x-playerx) and 
+		    	miny >= math.fabs(go.y-playery))):
+
+			minx = math.fabs(go.x-playerx)
+			miny = math.fabs(go.y-playery)
+			closestgameobject = go	
+	
+	return closestgameobject	

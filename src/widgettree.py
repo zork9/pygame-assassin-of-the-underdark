@@ -18,15 +18,24 @@ import pygame
 from pygame.locals import *
 
 from tree import *
+from widgettreenode import *
 
 class WidgetTree(Tree):
     ""
     def __init__(self):
 	Tree.__init__(self)	
 
-    def depth_first_search(self, d):
-	for tn in self.root:
-		tn.search(d) 
+    def searchXY(self, SIGNAL, X, Y):
+	if self.root and self.root.nodes:
+		for tn in self.root.nodes:
+			w = tn.searchXY(SIGNAL, X, Y)
+			if w != None:
+				return w 
+	else:
+		print "self.root = nil"
 
     def add_widget(self, widget):
-	self.insert(widget)	
+	self.insertnode(WidgetTreeNode(widget))
+
+    def insertnode(self, node):
+	self.root.nodes.append(node)	

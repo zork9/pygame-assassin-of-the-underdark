@@ -18,16 +18,24 @@ import pygame
 from pygame.locals import *
 
 from widgetsystem import *
+from widgettreenode import *
 
 class Widget:
     ""
     def __init__(self, parent, callback = None, widgettreenode = None, widgetsystem = WidgetSystem()):
+	self.widgetroot = WidgetRoot()
 	self.widgettreenode = widgettreenode ### widget is doubly-linked with node and node with widget
 	self.callback = callback
 	self.parent = parent
 
 	### each widget contains a widgetroot which has a subtree of the parent of this widget in it
 	self.widgetsystem = widgetsystem
+
+    def set_root_widget(self, widget):
+	self.widgetroot.widgettree.root = WidgetTreeNode(widget)
+
+    def add_widget(self, widget):
+	self.widgetroot.widgettree.add_widget(widget)	
 
     def setcallback(self, callback):
 	self.callback = callback 

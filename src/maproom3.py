@@ -31,35 +31,16 @@ from beholder import *
 from beholderbat import *
 from snake2 import *
 
-class Maproom2(MaproomDungeon):
+class Maproom3(MaproomDungeon):
     "Room with a (big) map"
     def __init__(self,x,y):
         MaproomDungeon.__init__(self,x,y)
-        self.background = pygame.image.load('./pics/room-bg2.bmp').convert()
-        #self.westwall1 = Tilebox(1,1,48,60,1,14,'./pics/walldungeonwest2-48x60.bmp')
-        #self.eastwall1 = Tilebox(775,1,48,60,1,14,'./pics/walldungeoneast1-48x60.bmp')
-        #self.tileboxes.append(self.westwall1)
-        #self.tileboxes.append(self.eastwall1)
+        self.background = pygame.image.load('./pics/room-bg3.bmp').convert()
         self.wall1 = Tilebox(600,500,100,100,2,1,'./pics/walldungeon1-100x100.bmp')
         self.tileboxes.append(self.wall1)
-        self.cave = Tilebox(500,500,100,100,1,1,'./pics/walldungeoncave2-100x100.bmp')
-        self.tileboxes.append(self.cave)
-
-        self.gameobjects.append(Goblin3(100,100))
-        self.gameobjects.append(Goblin3(150,100))
-        self.gameobjects.append(Beholder(400,100))
-        self.gameobjects.append(BeholderBat(300,300))
 
     def isroomupexit(self,game):
 	if self.relativey < -650:
-		return 1
-	return 0
-
-    def setxyfromcave(self,game):
-        game.setxy(0,0) 
-
-    def isroomcaveexit(self,game):
-	if self.cave.collide(self, game.player):
 		return 1
 	return 0
 
@@ -69,9 +50,6 @@ class Maproom2(MaproomDungeon):
     def exit(self, game):
 	if self.isroomupexit(game):
 		self.setxyfromup(game)
-		return 4 
-	elif self.isroomcaveexit(game):
-		self.setxyfromcave(game)
-		return 3 
+		return 5 
 	return 0 
  

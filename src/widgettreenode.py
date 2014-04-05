@@ -28,12 +28,20 @@ class WidgetTreeNode(TreeNode):
     def add(self, d):
 	self.nodes.add(d)
 
+    def searchXY(self, SIGNAL, X, Y):
+	if hasattr(self.widget,'x') and hasattr(self.widget,'y') and hasattr(self.widget, 'w') and hasattr(self.widget, 'h') and X > self.widget.x and X < self.widget.x + self.widget.w and Y > self.widget.y and Y < self.widget.y + self.widget.h:
+		if self.nodes == [] or self.nodes == None:
+			self.widget.callback() ### NOTE use args 
+			return self.widget
+	else:
+		for tn in self.nodes:
+		### FIXME hasattr slow, need dispatch
+			if hasattr(tn,'x') and hasattr(tn,'y') and hasattr(tn, 'w') and hasattr(tn, 'h') and X > tn.x and X < tn.x + tn.w and Y > tn.y and Y < tn.y + tn.h:
+				if tn.widget and tn.widget.callback:
+					self.widget.callback() ### NOTE use args 
+					return self.widget
+				else:
+					return tn.searchXY(SIGNAL, X,Y) 
 
-    def depth_first_search(self, d): ### depth-first search
-	for tn in self.nodes:
-		if tn.data == d:
-			return self
-		else:
-			tn.search(d)
-	return None 
-
+    def draw(self, screen):
+	1 ### stub FIXME

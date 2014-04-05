@@ -22,7 +22,7 @@ from pygame.locals import *
 from widgettree import *
 
 class WidgetRoot:
-    "Class and Race Selector"
+    ""
     def __init__(self):
 	self.widgettree = WidgetTree()
 	self.parent = None  ### this is persistent	
@@ -31,5 +31,5 @@ class WidgetRoot:
 	self.widgettree.add_widget(widget)
 
     def interrupt(self, SIGNAL, X, Y):
-	self.widgettree.searchXY(X,Y)	
+	return self.widgettree.searchXY(SIGNAL,X,Y)	
 
