@@ -39,7 +39,6 @@ from playerkattafighterthief import *
 from playerkattamagicuserthief import *
 from playerelffighter import *
 from playerdrowfighter import *
-from playerdrowmage import *
 from bomb import *
 from playergnollmagicuser import *
 from playergnollfightermagicuser import *
@@ -71,8 +70,6 @@ class Game:
         self.font = pygame.font.SysFont("Times", 8)
         gameover = 0
 
-        askplayers = 0 # NOTE: 2 Player flag
-        
         blankimage = pygame.image.load('./pics/blank.bmp').convert()
         ## There are several title screens in the ./pics/ directory
         titleimage = pygame.image.load('./pics/titlescreen0.3.bmp').convert()
@@ -92,8 +89,7 @@ class Game:
 
         self.room = Maproom1(0,0)
         self.heartmeter = Meter()
-	self.player = None ### PlayerDrowMage(self.heartmeter)
-###self.player = PlayerFighter(self.heartmeter)default fighter class
+	self.player = None
         self.screen.blit(blankimage, (0,0))
 
 	# display multiclass selection screen and wait for mouse click choice
@@ -182,8 +178,8 @@ class Game:
 ##            if self.selectormc.askclass() == "Fighter":
 ##                self.player = PlayerAbeilleFighter()
 
-	### print "race=%s class=%s" % (self.selectormr.askrace(),self.selectormc.askclass())
-	### KLUDGE, above player ctors must set class and race
+	# set race and class in player object
+
 	self.player.setrace(self.selectormr.askrace())
 	self.player.setclass(self.selectormc.askclass())
 
@@ -192,7 +188,6 @@ class Game:
         self.inventoryitem = None 
 
         self.taskbar = Taskbar(self.screen,self.font,self.player)
-        self.talker = None
         
         pygame.key.set_repeat(90,90)
         gameover = 0
@@ -203,7 +198,6 @@ class Game:
                     return
                 elif event.type == KEYDOWN:
             	    
-                    # player 1 key controls
                     self.player.draw(self.screen)
 
                     if event.key == K_s:
@@ -215,15 +209,10 @@ class Game:
                         	self.taskbar.spellitem.cast(self)
 
                     if event.key == K_x:
-                        ###if self.room.collide(self.player) == 2:
-                        ###    self.talker = self.room.talkto() # FIX
-                        ###    print "self.talker=%s" % self.talker
-			###if self.talker == None:
                         o = self.player.pickup(self.room)
 		        if o != None:
-				self.inventory.setpickup(o)
-				self.taskbar.setpickup(o)
-				self.room.removegameobject(o)
+				if self.inventory.setpickup(o) or self.taskbar.setpickup(o):
+					self.room.removegameobject(o)
 
 	            elif event.key == K_z:
                         self.player.fight(self)  
@@ -239,11 +228,10 @@ class Game:
                         self.room.gameobjects.append(Bomb(self.player.x-self.room.relativex,self.player.y-self.room.relativey))
     
                     elif event.key == K_i:
-#                        self.level.gameover = 1
                         flag = 0
 		
         		pygame.key.set_repeat(1000,1000)
-			while flag == 0:#NOTE1
+			while flag == 0:
                             for event in pygame.event.get():
                                 if event.type == QUIT:
                                     return
@@ -258,13 +246,13 @@ class Game:
 					self.taskbar.inventoryitem = self.inventoryitem
 					print "%s selected from inventory" % (self.inventoryitem)
                                         flag = 1
+                    			pygame.key.set_repeat(90,90)
 
 
                                 self.inventory.draw(self.screen)
                                 pygame.display.update()
-                    ### pygame.key.set_repeat(90,90)
  
-            if self.room.collide(self.player) == 1 or self.player.hitpoints <= 0: # NOTE: return 1 after player heartmeter runs out (self.player.hit)
+            if self.room.collide(self.player) == 1 or self.player.hitpoints <= 0:
         	endingimage = pygame.image.load('./pics/endingscreen.bmp').convert()
         	while gameover == 0:
 	            	pygame.display.update()
@@ -278,19 +266,17 @@ class Game:
                 		if event.type == pygame.MOUSEBUTTONDOWN:
                     			gameover = 1
 					return
-            ###if self.room.collide(self.player) == 3:###Dungeon wall
-                ##self.room.undomove()
-            ###    self.room.removeentrance2()
-
+            
             self.room.draw(self) 
             self.player.drawstatic(self.screen)
             
-	    sleep(0.09)
+
+	    # Set player hitpoints in life bar
+
+	    self.heartmeter.index = self.player.hitpoints
+
             # fight for enemies
             # remove dead game objects
-
-	    ### Set player hitpoints in life bar
-	    self.heartmeter.index = self.player.hitpoints
 
             for o in self.room.gameobjects:
                 if o:
@@ -298,14 +284,21 @@ class Game:
                     if o.hitpoints <= 0:
                         self.room.removeobject(o)
 
-            if self.talker != None:
-                self.talker.talk(self.screen,self.font)
-
             self.taskbar.draw()
             self.heartmeter.draw(self.screen)
             
             pygame.display.update()
+
+	    # sleep for speed down
+		
+	    sleep(0.09)
+
+	    # start next event loop
+
             self.screen.blit(blankimage, (0,0))
+
+	    # room exit code which changes rooms
+	
             roomnumber = self.room.exit(self)
             self.chooseroom(roomnumber,self.font)
 
@@ -322,13 +315,10 @@ class Game:
         if (roomnumber == 0):
             return
         elif (roomnumber == 1):
-            self.talker = None
             self.room = Maproom1(self.x,self.y)
         elif (roomnumber == 2):
-            self.talker = None
             self.room = Maproom2(self.x,self.y)
         elif (roomnumber == 3):
-            self.talker = None
             self.room = Maproom3(self.x,self.y)
             
 if __name__ == "__main__":

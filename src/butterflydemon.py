@@ -46,7 +46,7 @@ class ButterflyDemon(Gameobject):
 
 
 	### NOTE that gameobjects cannot be picked up by default !
-	### in gamobject base class : self.inventoryitem = InventoryGameobject()
+	### in gameobject base class : self.inventoryitem = InventoryGameobject()
 	self.direction = "left"
 
     def draw(self, screen, room):

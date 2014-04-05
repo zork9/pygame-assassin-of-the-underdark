@@ -23,7 +23,9 @@ from inventorysword import *
 
 class InventoryRubySword(InventorySword):
     def __init__(self):
-        Inventoryitem.__init__(self, "./pics/rubysword-inventory-36x36.bmp")
+        InventorySword.__init__(self)
+        self.image = pygame.image.load("./pics/rubysword-inventory-36x36.bmp").convert()
+        self.image.set_colorkey((0,0,0))#FIXME rgb transdparency
 
     def use(self,game):
         print 'You used a sword'

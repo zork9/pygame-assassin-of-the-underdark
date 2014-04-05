@@ -79,6 +79,8 @@ class Inventory(object):
     def setpickup(self, o):
 	if o.inventoryitem and o.inventoryitem.typename == "enemy":
 		self.additem(o.inventoryitem)
+		return 1
 	elif o.inventoryitem and o.inventoryitem.typename == "inventoryitem":
 		self.additem(o.inventoryitem)
-
+		return 1
+	return 0	

@@ -55,7 +55,9 @@ class Taskbar:
     def setpickup(self, o):
 	if o.inventoryitem and o.inventoryitem.typename == "sword":
 		self.sworditem = o.inventoryitem
+		return 1
 	elif o.inventoryitem and o.inventoryitem.typename == "spell":
 		self.spellitem = o.inventoryitem
-
+		return 1
+	return 0
 

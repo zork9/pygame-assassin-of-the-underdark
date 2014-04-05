@@ -56,7 +56,7 @@ class MaproomDungeon(MaproomBase):
         
     def draw(self,game):
         # draw bg
-        game.screen.blit(self.background, (0+self.relativex, 0+self.relativey))
+        game.screen.blit(self.background, (self.relativex, self.relativey))
         for w in self.northwalls:
             w.draw(game.screen,self.relativex,self.relativey)
         # draw walls

@@ -1,5 +1,5 @@
 
-# Copyright (C) Johan Ceuppens 2010
+# Copyright (C) Johan Ceuppens 2010-2014
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 2 of the License, or
@@ -112,7 +112,7 @@ class Goblin3(Gameobject):
 	player.x-room.relativex < self.x+self.w+self.w and 
 	player.y-room.relativey > self.y-self.h and 
 	player.y-room.relativey < self.y + self.h +self.h):
-	    #print "collision with Game Object!"
+	    #print "collision with Goblin !"
 	    return 1 
 	else:
 	    return 0 ## for game self.talker

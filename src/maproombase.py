@@ -31,7 +31,7 @@ class MaproomBase:
         self.direction = "north"
         
     def draw(self,game):
-        game.screen.blit(self.background, (0+self.relativex, 0+self.relativey))
+        game.screen.blit(self.background, (self.relativex, self.relativey))
 
     def undomove(self):
         if self.direction == "north":

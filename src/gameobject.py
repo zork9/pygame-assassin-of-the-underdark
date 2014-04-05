@@ -17,10 +17,12 @@
 import pygame
 from pygame.locals import *
 from inventorygameobject import *
+from gameobjectresources import *
 
-class Gameobject:
+class Gameobject(GameobjectResources):
     "Game object"
     def __init__(self, xx,yy):
+	GameobjectResources.__init__(self)
 	self.x = xx 
         self.y = yy
 	# default width and height 
@@ -35,7 +37,6 @@ class Gameobject:
         self.image.set_colorkey((0,0,0)) 
         self.hitpoints = 1
         # NOTE : decrease 1 hitpoint with default sword
-        self.hitf = self.hit1
 	self.name = "Gameobject"
         
     def draw(self, screen, room):
@@ -118,14 +119,6 @@ class Gameobject:
 
     def pickup(self, room):
         return 0
-
-    def hit1(self):## NOTE decreases hitpoints
-        self.hitpoints -= 1
-        return self.hitpoints
-
-    def hit2(self):## NOTE decreases hitpoints
-        self.hitpoints -= 2
-        return self.hitpoints
 
     def hitwithweapon(self,game):
 	if game.taskbar and game.taskbar.sworditem:
