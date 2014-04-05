@@ -98,7 +98,7 @@ class Game:
 
         self.selectormc = MultiClassSelector(self.screen, self.font)
 
-        self.selectormc.window_mainloop()
+        self.selectormc.window_mainloop(0.3)
 
 
 
@@ -106,7 +106,7 @@ class Game:
 
 	# display character selection screen and wait for mouse click choice
 
-        self.selectormr.window_mainloop()
+        self.selectormr.window_mainloop(0.3)
        
 	# get data from character selector screen 
 
@@ -199,7 +199,10 @@ class Game:
                 if event.type == QUIT:
                     return
                 elif event.type == KEYDOWN:
-            	    
+            	   
+		    if event.key == K_ESCAPE:
+			gameover = 1
+ 
                     self.player.draw(self.screen)
 
                     if event.key == K_s:

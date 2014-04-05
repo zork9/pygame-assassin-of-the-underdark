@@ -18,11 +18,12 @@ import pygame
 from pygame.locals import *
 
 from multiclassselectorbutton import *
+from playerdrowresources import *
 
 class DrowRaceButton(MultiClassSelectorButton):
     "Drow Race Selector Window Button"
     def __init__(self, parent, callback, node):
-	MultiClassSelectorButton.__init__(self, parent, callback, node)
+	MultiClassSelectorButton.__init__(self, parent, callback, node, PlayerDrowResources())
 	self.x = 200
 	self.y = 0
 	self.w = 50 

@@ -29,6 +29,7 @@ from elfracebutton import *
 from drowracebutton import *
 
 import sys
+import time
 
 class MultiRaceSelector(MultiSelectorWindow):
     "Multi Race Selector"
@@ -45,16 +46,9 @@ class MultiRaceSelector(MultiSelectorWindow):
 
 	self.yoffset = 70
 
+        self.race = "Random Race"
+
 	self.raceslist = ["Human", "Gnoll", "Katta", "Elf", "Drow"]
-
-        # fighters
-
-        self.humanimage = pygame.image.load('./pics/playerhumanfighter1-48x48.bmp').convert()
-        self.gnollimage = pygame.image.load('./pics/playergnollfighter1-48x48.bmp').convert()
-        self.kattaimage = pygame.image.load('./pics/playerkattafighter1-48x48.bmp').convert()
-        self.elfimage = pygame.image.load('./pics/playerelffighter1-48x48.bmp').convert()
-        self.drowimage = pygame.image.load('./pics/playerdrowfighter1-48x48.bmp').convert()
-
 
     def selecthuman(self):
 	self.race = "Human"	
@@ -74,22 +68,13 @@ class MultiRaceSelector(MultiSelectorWindow):
 	### NOTE draw member func is in rootwindow
     def drawimages(self):
 	MultiSelectorWindow.drawimages(self)
-        self.screen.blit(self.humanimage, (0,0))
         self.screen.blit(self.font.render("human", 6, (255,255,255)), (0,50))
-        self.screen.blit(self.gnollimage, (50,0))
         self.screen.blit(self.font.render("gnoll", 6, (255,255,255)), (50,50))
-        self.screen.blit(self.kattaimage, (100,0))
         self.screen.blit(self.font.render("katta", 6, (255,255,255)), (100,50))
-        self.screen.blit(self.elfimage, (150,0))
         self.screen.blit(self.font.render("elf", 6, (255,255,255)), (150,50))
-        self.screen.blit(self.drowimage, (200,0))
         self.screen.blit(self.font.render("drow", 6, (255,255,255)), (200,50))
 
-
-
-
-
-    def window_mainloop(self):
+    def window_mainloop(self, integratedsleeptime):
         while 1:
                 self.drawimages()
 
@@ -122,6 +107,7 @@ class MultiRaceSelector(MultiSelectorWindow):
 		        race0 = self.raceslist[rng.rolldx(len(self.raceslist)-1)]	
 		        self.race = race0 
 		        return
+		time.sleep(integratedsleeptime)
 
     def askrace(self):
         return self.race

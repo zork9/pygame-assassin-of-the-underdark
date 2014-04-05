@@ -18,11 +18,12 @@ import pygame
 from pygame.locals import *
 
 from multiclassselectorbutton import *
+from playergnollresources import *
 
 class GnollRaceButton(MultiClassSelectorButton):
     "Gnoll Race Selector Window Button"
     def __init__(self, parent, callback, node):
-	MultiClassSelectorButton.__init__(self, parent, callback, node)
+	MultiClassSelectorButton.__init__(self, parent, callback, node, PlayerGnollResources())
 	self.x = 50
 	self.y = 0
 	self.w = 50 

@@ -18,11 +18,12 @@ import pygame
 from pygame.locals import *
 
 from multiclassselectorbutton import *
+from playerelfresources import *
 
 class ElfRaceButton(MultiClassSelectorButton):
     "Elf Race Selector Window Button"
     def __init__(self, parent, callback, node):
-	MultiClassSelectorButton.__init__(self, parent, callback, node)
+	MultiClassSelectorButton.__init__(self, parent, callback, node, PlayerElfResources())
 	self.x = 150
 	self.y = 0
 	self.w = 50 

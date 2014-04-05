@@ -18,11 +18,12 @@ import pygame
 from pygame.locals import *
 
 from multiclassselectorbutton import *
+from playerelfresources import *
 
 class FighterThiefClassButton(MultiClassSelectorButton):
     "FighterThief Class Selector Window Button"
     def __init__(self, parent, callback, node):
-	MultiClassSelectorButton.__init__(self, parent, callback, node)
+	MultiClassSelectorButton.__init__(self, parent, callback, node, PlayerElfResources())
 	self.x = 50
 	self.y = 0
 	self.w = 50 

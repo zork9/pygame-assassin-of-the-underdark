@@ -28,7 +28,10 @@ from magicuserthiefclassbutton import *
 from fighterclassbutton import *
 from magicuserclassbutton import *
 from thiefclassbutton import *
+from imageresource import *
+
 import sys
+import time
 
 class MultiClassSelector(MultiSelectorWindow):
     "Multi Class Selector"
@@ -49,15 +52,6 @@ class MultiClassSelector(MultiSelectorWindow):
 	self.yoffset = 70
 
 	self.classeslist = ["Fighter", "Magic User", "Thief", "Fighter Magic User", "Fighter Thief", "Magic User Thief"]
-
-        # fighters
-
-        self.fightermagicuserimage = pygame.image.load('./pics/playerhumanfighter1-48x48.bmp').convert()
-        self.fighterthiefimage = pygame.image.load('./pics/playerhumanfighter1-48x48.bmp').convert()
-        self.magicuserthiefimage = pygame.image.load('./pics/playerhumanfighter1-48x48.bmp').convert()
-        self.fighterimage = pygame.image.load('./pics/playerhumanfighter1-48x48.bmp').convert()
-        self.magicuserimage = pygame.image.load('./pics/playerhumanfighter1-48x48.bmp').convert()
-        self.thiefimage = pygame.image.load('./pics/playerhumanfighter1-48x48.bmp').convert()
 
 
     def selectfightermagicuser(self):
@@ -82,24 +76,18 @@ class MultiClassSelector(MultiSelectorWindow):
 	### NOTE draw member func is in rootwindow
     def drawimages(self):
         MultiSelectorWindow.drawimages(self)       
-        self.screen.blit(self.fightermagicuserimage, (0,0))
         self.screen.blit(self.font.render("fighter/magicuser", 6, (255,255,255)), (0,50))
-        self.screen.blit(self.fighterthiefimage, (50,0))
         self.screen.blit(self.font.render("fighter/thief", 6, (255,255,255)), (50,50))
-        self.screen.blit(self.magicuserthiefimage, (100,0))
         self.screen.blit(self.font.render("magicuser/thief", 6, (255,255,255)), (100,50))
-        self.screen.blit(self.fighterimage, (150,0))
         self.screen.blit(self.font.render("fighter", 6, (255,255,255)), (150,50))
-        self.screen.blit(self.magicuserimage, (200,0))
         self.screen.blit(self.font.render("magic user", 6, (255,255,255)), (200,50))
-        self.screen.blit(self.thiefimage, (250,0))
         self.screen.blit(self.font.render("thief", 6, (255,255,255)), (250,50))
 
 
 
 
 
-    def window_mainloop(self):
+    def window_mainloop(self, integratedsleeptime):
         while 1:
                 self.drawimages()
 
@@ -132,6 +120,7 @@ class MultiClassSelector(MultiSelectorWindow):
 		        class0 = self.classeslist[rng.rolldx(len(self.classeslist)-1)]	
 		        self.klass = class0 
 		        return
+		time.sleep(integratedsleeptime)
 
     def askclass(self):
         return self.klass

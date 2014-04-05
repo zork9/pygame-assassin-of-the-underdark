@@ -18,11 +18,12 @@ import pygame
 from pygame.locals import *
 
 from multiclassselectorbutton import *
+from playerkattaresources import *
 
 class KattaRaceButton(MultiClassSelectorButton):
     "Katta Race Selector Window Button"
     def __init__(self, parent, callback, node):
-	MultiClassSelectorButton.__init__(self, parent, callback, node)
+	MultiClassSelectorButton.__init__(self, parent, callback, node, PlayerKattaResources())
 	self.x = 100
 	self.y = 0
 	self.w = 50 

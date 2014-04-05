@@ -21,11 +21,17 @@ from widgetbutton import *
 
 class MultiClassSelectorButton(WidgetButton):
     "Class Selector Window Button"
-    def __init__(self, parent, callback, node):
+    def __init__(self, parent, callback, node, resources):
 	WidgetButton.__init__(self, parent, callback, node)
-
 	if callback == None:
 		self.callback = self.cb
+	if resources != None:
+		self.resources = resources
 
     def cb(self):
 	print "Mutliclassselectorbutton clicked !"
+
+
+    def draw(self, screen):
+	WidgetButtonBaseColoredFrame.draw(self, screen)
+	self.resources.stimlib.draw(screen, self.x,self.y)

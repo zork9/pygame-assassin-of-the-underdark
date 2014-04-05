@@ -35,6 +35,7 @@ class MultiSelectorWindow(WidgetRootWindow):
     def drawimages(self):
         self.screen.blit(self.background, (0, 0))       
 
-    def window_mainloop(self):
+	### FIXME needs timer
+    def window_mainloop(self, integratedsleeptime):
 	pass
 
