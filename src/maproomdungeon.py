@@ -76,7 +76,8 @@ class MaproomDungeon(MaproomBase):
 
     def addeasttilebox(self, x,y,w,h,nx,ny,fn):
         self.easttileboxes.append(EastTilebox(x,y,w,h,nx,ny,fn))
-        
+       
+ 
     def draw(self,game):
         # draw bg
         game.screen.blit(self.background, (self.relativex, self.relativey))
@@ -122,11 +123,6 @@ class MaproomDungeon(MaproomBase):
 	for w in self.eastwalls:
 	    if w != None and w.collide(self, player):
 		return 2
-	for t in self.tileboxes:
-		if t != None and t.collide(self,player):
-			self.undomove()
-	                # FIXME self.undomove()
-			return 2 
 	for t in self.northtileboxes:
 		if t != None and t.collide(self,player):
 			self.undomove()
@@ -150,6 +146,11 @@ class MaproomDungeon(MaproomBase):
 	for p in self.pits:
 		if p != None and p.collide(self,player):
 			return 2
+	for t in self.tileboxes:
+		if t != None and t.collide(self,player):
+			self.undomove()
+	                # FIXME self.undomove()
+			return 2 
 	return 0
 
     def collidewithenemy(self, enemy):

@@ -23,16 +23,14 @@ from tilebox import *
 class SouthTilebox(Tilebox):
     "box full o tiles south side"
     
-# example:    self.northwall1 = Tilebox(1,1,60,48,16,1,'./pics/walldungeon1-60x48.bmp')
-#               draws 16 times the picture from left to right 1 high
     def __init__(self,x,y,w,h,nx,ny,imagefilename):
 	Tilebox.__init__(self,x,y,w,h,nx,ny,imagefilename)
         
     def collide(self, room, player):
 	if (player.x > self.x-room.relativex  and 
 	 player.x < self.x-room.relativex + self.w*self.nx and 
-	 player.y + player.h > self.y-room.relativey and 
-	 player.y < self.y-room.relativey + self.h*self.ny):
+	 player.y - player.h > self.y-room.relativey and 
+	 player.y - player.h < self.y-room.relativey + self.h*self.ny):
 	    print "collision in South Tilebox!"	
 	    return 1 
 	else:

@@ -31,7 +31,7 @@ class WestTilebox(Tilebox):
 	 player.x < self.x-room.relativex + self.w*self.nx and 
 	 player.y - player.h > self.y-room.relativey and 
 	 player.y < self.y-room.relativey + self.h*self.ny):
-	    print "collision in South Tilebox!"	
+	    print "collision in West Tilebox!"	
 	    return 1 
 	else:
 	    return 0

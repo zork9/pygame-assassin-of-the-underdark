@@ -41,7 +41,6 @@ class Tilebox:
             for i in range(0,self.nx):
                 screen.blit(self.image,(self.x+self.w*i+relativex,self.y+self.h*j+relativey))
 
-    # NOTE - player.h for fencepost errors
     def collide(self, room, player):
 	if (player.x > self.x-room.relativex  and 
 	 player.x < self.x-room.relativex + self.w*self.nx and 

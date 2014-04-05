@@ -59,8 +59,10 @@ class Maproom1(MaproomDungeon):
         self.gameobjects.append(Sword(100,120))
         self.gameobjects.append(FireballSpell(500,120))
 
-###        self.southwall1 = SouthTilebox(1,200,30,48,13,1,'./pics/walldungeonsouth1-30x48.bmp')
+        self.southwall1 = SouthTilebox(1,200,30,48,13,1,'./pics/walldungeonsouth1-30x48.bmp')
 	self.addsouthtilebox(1,200,30,48,13,1,'./pics/walldungeonsouth1-30x48.bmp')	
+###	self.southtileboxes.append(self.southwall1)
+
         self.gameobjects.append(Goblin3(300,100))
         self.gameobjects.append(Goblin3(340,140))
         self.gameobjects.append(Goblin3(380,180))
