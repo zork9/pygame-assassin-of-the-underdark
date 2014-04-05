@@ -124,10 +124,8 @@ class MultiClassSelector(WidgetRootWindow):
 			self.widgetroot.interrupt(pygame.MOUSEBUTTONDOWN, mousex, mousey)
 
 			if self.klass in set(self.classeslist):
-				print "selected class=%s" % self.klass
 				return
 			else:
-				print "not in list, klass=%s, generatin random class" % self.klass
 		        	rng = RNG()
 		        	class0 = self.classeslist[rng.rolldx(len(self.classeslist)-1)]	
 		        	self.klass = class0 

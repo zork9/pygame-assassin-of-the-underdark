@@ -18,91 +18,48 @@ import pygame
 from pygame.locals import *
 from gameobject import *
 from rng import *
-from widgettreenode import *
-from widgetframe import *
-from widgetrootwindow import *
-
-from humanracebutton import *
-from gnollracebutton import *
-from kattaracebutton import *
-from elfracebutton import *
-from drowracebutton import *
-
 import sys
 
-class MultiRaceSelector(WidgetRootWindow):
-    "Multi Race Selector"
+class MultiRaceSelector:
+    "Race Selector"
     def __init__(self, screen, font):
-	WidgetRootWindow.__init__(self, 300,350, self)
-
-	# construct widgets
-	
-	self.add_widget(HumanRaceButton(self, self.selecthuman, None)) 
-	self.add_widget(GnollRaceButton(self, self.selectgnoll, None)) 
-	self.add_widget(KattaRaceButton(self, self.selectkatta, None)) 
-	self.add_widget(ElfRaceButton(self, self.selectelf, None)) 
-	self.add_widget(DrowRaceButton(self, self.selectdrow, None)) 
-
         self.screen = screen
         self.font = font
         self.background = pygame.image.load('./pics/blank.bmp').convert()
-        self.race = "Random Race"
+        self.klass = "Fighter"
+        self.race = "Human"
 
 	self.yoffset = 70
 
 	self.raceslist = ["Human", "Gnoll", "Katta", "Elf", "Drow"]
 
-        # fighters
+        # races 
 
-        self.humanimage = pygame.image.load('./pics/playerhumanfighter1-48x48.bmp').convert()
-        self.gnollimage = pygame.image.load('./pics/playergnollfighter1-48x48.bmp').convert()
-        self.kattaimage = pygame.image.load('./pics/playerkattafighter1-48x48.bmp').convert()
-        self.elfimage = pygame.image.load('./pics/playerelffighter1-48x48.bmp').convert()
-        self.drowimage = pygame.image.load('./pics/playerdrowfighter1-48x48.bmp').convert()
+        self.humanfighterimage = pygame.image.load('./pics/playerhumanfighter1-48x48.bmp').convert()
+        self.gnollfighterimage = pygame.image.load('./pics/playergnollfighter1-48x48.bmp').convert()
+        self.kattafighterimage = pygame.image.load('./pics/playerkattafighter1-48x48.bmp').convert()
+        self.elffighterimage = pygame.image.load('./pics/playerelffighter1-48x48.bmp').convert()
+        self.drowfighterimage = pygame.image.load('./pics/playerdrowfighter1-48x48.bmp').convert()
+###        self.abeillefighterimage = pygame.image.load('./pics/taskbar-PC-abeillefighter.bmp').convert()
 
-
-    def selecthuman(self):
-	self.race = "Human"	
-
-    def selectgnoll(self):
-	self.race = "Gnoll"	
-
-    def selectkatta(self):
-	self.race = "Katta"	
-
-    def selectelf(self):
-	self.race = "Elf"	
-
-    def selectdrow(self):
-	self.race = "Drow"	
-
-	### NOTE draw member func is in rootwindow
-    def drawimages(self):
+    def draw(self):
         # fighters
         self.screen.blit(self.background, (0, 0))       
-        self.screen.blit(self.humanimage, (0,0))
+        self.screen.blit(self.humanfighterimage, (0,0))
         self.screen.blit(self.font.render("human", 6, (255,255,255)), (0,50))
-        self.screen.blit(self.gnollimage, (50,0))
+        self.screen.blit(self.gnollfighterimage, (50,0))
         self.screen.blit(self.font.render("gnoll", 6, (255,255,255)), (50,50))
-        self.screen.blit(self.kattaimage, (100,0))
+        self.screen.blit(self.kattafighterimage, (100,0))
         self.screen.blit(self.font.render("katta", 6, (255,255,255)), (100,50))
-        self.screen.blit(self.elfimage, (150,0))
+        self.screen.blit(self.elffighterimage, (150,0))
         self.screen.blit(self.font.render("elf", 6, (255,255,255)), (150,50))
-        self.screen.blit(self.drowimage, (200,0))
+        self.screen.blit(self.drowfighterimage, (200,0))
         self.screen.blit(self.font.render("drow", 6, (255,255,255)), (200,50))
-
-
-
-
+###        self.screen.blit(self.abeillefighterimage, (250,0))
 
     def select(self):
         while 1:
-                self.drawimages()
-
-		# Needs main loop
-
-		self.draw(self.screen)
-	
+                self.draw()
                 pygame.display.update()
                 for event in pygame.event.get():
                     if event.type == QUIT:
@@ -112,24 +69,35 @@ class MultiRaceSelector(WidgetRootWindow):
                         position = pygame.mouse.get_pos()
                         mousex = position[0]
                         mousey = position[1]
-
-			self.widgetroot.interrupt(pygame.MOUSEBUTTONDOWN, mousex, mousey)
-
-			if self.race in set(self.raceslist):
-				return
+                        
+                        if mousex > 0 and mousex < 50 and mousey > 0 and mousey < 50:
+                            self.race = "Human"    
+                            return
+                        elif mousex > 50 and mousex < 100 and mousey > 0 and mousey < 50:
+                            self.race = "Gnoll"    
+                            return
+                        elif mousex > 100 and mousex < 150 and mousey > 0 and mousey < 50:
+                            self.race = "Katta"    
+                            return
+                        elif mousex > 150 and mousex < 200 and mousey > 0 and mousey < 50:
+                            self.race = "Elf"    
+                            return
+                        elif mousex > 200 and mousex < 250 and mousey > 0 and mousey < 50:
+                            self.race = "Drow"    
+                            return
 			else:
-		        	rng = RNG()
-		        	race0 = self.raceslist[rng.rolldx(len(self.raceslist)-1)]	
-		        	self.race = race0 
-		        	return
-					
+				rng = RNG()
+				race0 = self.raceslist[rng.rolldx(len(self.raceslist)-1)]	
+				self.race = race0 
+				return
+
                     if event.type == KEYDOWN:
 		        rng = RNG()
 		        race0 = self.raceslist[rng.rolldx(len(self.raceslist)-1)]	
 		        self.race = race0 
 		        return
 
+
     def askrace(self):
         return self.race
-
 

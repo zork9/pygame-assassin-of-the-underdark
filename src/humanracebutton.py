@@ -19,16 +19,17 @@ from pygame.locals import *
 
 from multiclassselectorbutton import *
 
-class ElfClassButton(MultiClassSelectorButton):
-    "Elf Class Selector Window Button"
+class HumanRaceButton(MultiClassSelectorButton):
+    "Human Race Selector Window Button"
     def __init__(self, parent, callback, node):
 	MultiClassSelectorButton.__init__(self, parent, callback, node)
-	self.x = 150
+	self.x = 0
 	self.y = 0
 	self.w = 50 
 	self.h = 50 
 	if callback == None:
 		self.callback = self.cb
+	self.borderwidth = 1
 
     def cb(self):
-	print "Elf class - Mutliclassselectorbutton clicked !"
+	print "Human class - Mutliclassselectorbutton clicked !"

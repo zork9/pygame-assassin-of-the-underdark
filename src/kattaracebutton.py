@@ -19,8 +19,8 @@ from pygame.locals import *
 
 from multiclassselectorbutton import *
 
-class KattaClassButton(MultiClassSelectorButton):
-    "Katta Class Selector Window Button"
+class KattaRaceButton(MultiClassSelectorButton):
+    "Katta Race Selector Window Button"
     def __init__(self, parent, callback, node):
 	MultiClassSelectorButton.__init__(self, parent, callback, node)
 	self.x = 100
@@ -29,6 +29,7 @@ class KattaClassButton(MultiClassSelectorButton):
 	self.h = 50 
 	if callback == None:
 		self.callback = self.cb
+	self.borderwidth = 1
 
     def cb(self):
 	print "Katta class - Mutliclassselectorbutton clicked !"
