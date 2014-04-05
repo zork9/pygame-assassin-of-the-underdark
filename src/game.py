@@ -266,10 +266,10 @@ class Game:
                     			gameover = 1
 					return
             
+
             self.room.draw(self) 
             self.player.drawstatic(self.screen)
             
-
 	    # Set player hitpoints in life bar
 
 	    self.heartmeter.index = self.player.hitpoints

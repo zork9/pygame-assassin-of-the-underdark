@@ -24,17 +24,18 @@ class NorthTilebox(Tilebox):
     "box full o tiles south side"
     
     def __init__(self,x,y,w,h,nx,ny,imagefilename):
-	Tilebox.__init__(self,x,y,w,h,nx,ny,imagefile)
+	Tilebox.__init__(self,x,y,w,h,nx,ny,imagefilename)
         
     def collide(self, room, player):
 	if (player.x > self.x-room.relativex  and 
 	 player.x < self.x-room.relativex + self.w*self.nx and 
-	 player.y > self.y-room.relativey and 
-	 player.y < self.y-room.relativey + self.h*self.ny):
+	 player.y - player.h > self.y-room.relativey and 
+	 player.y - player.h < self.y-room.relativey + self.h*self.ny):
 	    print "collision in North Tilebox!"	
 	    return 1 
 	else:
 	    return 0
+
 
     def collidewithenemy(self, room, enemy):
 	if (enemy.x > self.x  and 

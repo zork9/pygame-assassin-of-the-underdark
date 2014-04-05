@@ -24,12 +24,12 @@ class WestTilebox(Tilebox):
     "box full o tiles west side"
     
     def __init__(self,x,y,w,h,nx,ny,imagefilename):
-	Tilebox.__init__(self,x,y,w,h,nx,ny,imagefile)
+	Tilebox.__init__(self,x,y,w,h,nx,ny,imagefilename)
         
     def collide(self, room, player):
-	if (player.x > self.x-room.relativex  and 
-	 player.x < self.x-room.relativex + self.w*self.nx and 
-	 player.y - player.h > self.y-room.relativey and 
+	if (player.x > self.x-room.relativex and 
+	 player.x < self.x-room.relativex + self.w*self.nx and
+	 player.y > self.y-room.relativey and 
 	 player.y < self.y-room.relativey + self.h*self.ny):
 	    print "collision in West Tilebox!"	
 	    return 1 

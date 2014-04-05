@@ -132,7 +132,7 @@ class MaproomDungeon(MaproomBase):
 		if t != None and t.collide(self,player):
 			self.undomove()
 	                # FIXME self.undomove()
-			return 2 
+			return 2
 	for t in self.southtileboxes:
 		if t != None and t.collide(self,player):
 			self.undomove()

@@ -25,7 +25,7 @@ class SouthTilebox(Tilebox):
     
     def __init__(self,x,y,w,h,nx,ny,imagefilename):
 	Tilebox.__init__(self,x,y,w,h,nx,ny,imagefilename)
-        
+       
     def collide(self, room, player):
 	if (player.x > self.x-room.relativex  and 
 	 player.x < self.x-room.relativex + self.w*self.nx and 
