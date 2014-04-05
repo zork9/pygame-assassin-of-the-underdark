@@ -98,7 +98,7 @@ class Game:
 
         self.selectormc = MultiClassSelector(self.screen, self.font)
 
-        self.selectormc.select()
+        self.selectormc.window_mainloop()
 
 
 
@@ -106,7 +106,7 @@ class Game:
 
 	# display character selection screen and wait for mouse click choice
 
-        self.selectormr.select()
+        self.selectormr.window_mainloop()
        
 	# get data from character selector screen 
 

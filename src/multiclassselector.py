@@ -20,7 +20,7 @@ from gameobject import *
 from rng import *
 from widgettreenode import *
 from widgetframe import *
-from widgetrootwindow import *
+from multiselectorwindow import *
 from multiclassselectorbutton import *
 from fightermagicuserclassbutton import *
 from fighterthiefclassbutton import *
@@ -30,10 +30,10 @@ from magicuserclassbutton import *
 from thiefclassbutton import *
 import sys
 
-class MultiClassSelector(WidgetRootWindow):
+class MultiClassSelector(MultiSelectorWindow):
     "Multi Class Selector"
     def __init__(self, screen, font):
-	WidgetRootWindow.__init__(self, 300,350, self)
+	MultiSelectorWindow.__init__(self, screen, font, 300,350)
 
 	# construct widgets
 	
@@ -44,9 +44,6 @@ class MultiClassSelector(WidgetRootWindow):
 	self.add_widget(MagicuserClassButton(self, self.selectmagicuser, None)) 
 	self.add_widget(ThiefClassButton(self, self.selectthief, None)) 
 
-        self.screen = screen
-        self.font = font
-        self.background = pygame.image.load('./pics/blank.bmp').convert()
         self.klass = "Random Class"
 
 	self.yoffset = 70
@@ -84,8 +81,7 @@ class MultiClassSelector(WidgetRootWindow):
 
 	### NOTE draw member func is in rootwindow
     def drawimages(self):
-        # fighters
-        self.screen.blit(self.background, (0, 0))       
+        MultiSelectorWindow.drawimages(self)       
         self.screen.blit(self.fightermagicuserimage, (0,0))
         self.screen.blit(self.font.render("fighter/magicuser", 6, (255,255,255)), (0,50))
         self.screen.blit(self.fighterthiefimage, (50,0))
@@ -103,7 +99,7 @@ class MultiClassSelector(WidgetRootWindow):
 
 
 
-    def select(self):
+    def window_mainloop(self):
         while 1:
                 self.drawimages()
 

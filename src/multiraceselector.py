@@ -20,7 +20,7 @@ from gameobject import *
 from rng import *
 from widgettreenode import *
 from widgetframe import *
-from widgetrootwindow import *
+from multiselectorwindow import *
 
 from humanracebutton import *
 from gnollracebutton import *
@@ -30,10 +30,10 @@ from drowracebutton import *
 
 import sys
 
-class MultiRaceSelector(WidgetRootWindow):
+class MultiRaceSelector(MultiSelectorWindow):
     "Multi Race Selector"
     def __init__(self, screen, font):
-	WidgetRootWindow.__init__(self, 300,350, self)
+	MultiSelectorWindow.__init__(self, screen, font, 300,350)
 
 	# construct widgets
 	
@@ -42,11 +42,6 @@ class MultiRaceSelector(WidgetRootWindow):
 	self.add_widget(KattaRaceButton(self, self.selectkatta, None)) 
 	self.add_widget(ElfRaceButton(self, self.selectelf, None)) 
 	self.add_widget(DrowRaceButton(self, self.selectdrow, None)) 
-
-        self.screen = screen
-        self.font = font
-        self.background = pygame.image.load('./pics/blank.bmp').convert()
-        self.race = "Random Race"
 
 	self.yoffset = 70
 
@@ -78,8 +73,7 @@ class MultiRaceSelector(WidgetRootWindow):
 
 	### NOTE draw member func is in rootwindow
     def drawimages(self):
-        # fighters
-        self.screen.blit(self.background, (0, 0))       
+	MultiSelectorWindow.drawimages(self)
         self.screen.blit(self.humanimage, (0,0))
         self.screen.blit(self.font.render("human", 6, (255,255,255)), (0,50))
         self.screen.blit(self.gnollimage, (50,0))
@@ -95,7 +89,7 @@ class MultiRaceSelector(WidgetRootWindow):
 
 
 
-    def select(self):
+    def window_mainloop(self):
         while 1:
                 self.drawimages()
 
