@@ -23,6 +23,10 @@ from maproomdungeonsouthwall import *
 from maproomdungeonwestwall import *
 from maproomdungeoneastwall import *
 from maproombase import *
+from northtilebox import *
+from southtilebox import *
+from westtilebox import *
+from easttilebox import *
 
 class MaproomDungeon(MaproomBase):
     "Room with a (big) map"
@@ -33,6 +37,10 @@ class MaproomDungeon(MaproomBase):
         self.westwalls = []
         self.eastwalls= []
         self.gameobjects = []
+        self.westtileboxes = []
+        self.northtileboxes = []
+        self.easttileboxes = []
+        self.southtileboxes = []
         self.tileboxes = []
         self.pits = []
 
@@ -43,25 +51,55 @@ class MaproomDungeon(MaproomBase):
        			return
  
     def addnorthwall(self, x,y):
-        self.northwalls.append(MaproomNorthDungeonWall(x,y))
+        self.northwalls.append(MaproomDungeonNorthWall(x,y))
 
     def addsouthwall(self, x,y):
-        self.southwalls.append(MaproomSouthDungeonWall(x,y))
+        self.southwalls.append(MaproomDungeonSouthWall(x,y))
 
     def addwestwall(self, x,y):
-        self.westwalls.append(MaproomWestDungeonWall(x,y))
+        self.westwalls.append(MaproomDungeonWestWall(x,y))
 
     def addeastwall(self, x,y):
-        self.eastwalls.append(MaproomEastDungeonWall(x,y))
+        self.eastwalls.append(MaproomDungeonEastWall(x,y))
+       
+
+
+ 
+    def addnorthtilebox(self, x,y,w,h,nx,ny,fn):
+        self.northtileboxes.append(NorthTilebox(x,y,w,h,nx,ny,fn))
+
+    def addsouthtilebox(self, x,y,w,h,nx,ny,fn):
+        self.southtileboxes.append(SouthTilebox(x,y,w,h,nx,ny,fn))
+
+    def addwesttilebox(self, x,y,w,h,nx,ny,fn):
+        self.westtileboxes.append(WestTilebox(x,y,w,h,nx,ny,fn))
+
+    def addeasttilebox(self, x,y,w,h,nx,ny,fn):
+        self.easttileboxes.append(EastTilebox(x,y,w,h,nx,ny,fn))
         
     def draw(self,game):
         # draw bg
         game.screen.blit(self.background, (self.relativex, self.relativey))
-        for w in self.northwalls:
-            w.draw(game.screen,self.relativex,self.relativey)
-        # draw walls
+        # draw tileboxes 
         for t in self.tileboxes:
             t.draw(game.screen,self.relativex,self.relativey)
+        for t in self.northtileboxes:
+            t.draw(game.screen,self.relativex,self.relativey)
+        for t in self.easttileboxes:
+            t.draw(game.screen,self.relativex,self.relativey)
+        for t in self.southtileboxes:
+            t.draw(game.screen,self.relativex,self.relativey)
+        for t in self.westtileboxes:
+            t.draw(game.screen,self.relativex,self.relativey)
+        # draw walls
+        for w in self.northwalls:
+            w.draw(game.screen,self.relativex,self.relativey)
+        for w in self.southwalls:
+            w.draw(game.screen,self.relativex,self.relativey)
+        for w in self.westwalls:
+            w.draw(game.screen,self.relativex,self.relativey)
+        for w in self.eastwalls:
+            w.draw(game.screen,self.relativex,self.relativey)
         # draw gameobjects
         for i in self.gameobjects:
 	    if i != None:
@@ -72,30 +110,66 @@ class MaproomDungeon(MaproomBase):
 	for i in self.gameobjects:
 	    if i != None and i.collide(self, player):
 		return 2 # 1 kills game
-	for i in self.northwalls:
-	    if i != None and i.collide(self, player):
+	for w in self.northwalls:
+	    if w != None and w.collide(self, player):
 		return 2
-	for i in self.southwalls:
-	    if i != None and i.collide(self, player):
+	for w in self.southwalls:
+	    if w != None and w.collide(self, player):
 		return 2
-	for i in self.westwalls:
-	    if i != None and i.collide(self, player):
+	for w in self.westwalls:
+	    if w != None and w.collide(self, player):
 		return 2
-	for i in self.eastwalls:
-	    if i != None and i.collide(self, player):
+	for w in self.eastwalls:
+	    if w != None and w.collide(self, player):
 		return 2
-	for i in self.tileboxes:
-		if i != None and i.collide(self,player):
+	for t in self.tileboxes:
+		if t != None and t.collide(self,player):
 			self.undomove()
 	                # FIXME self.undomove()
 			return 2 
-	for i in self.pits:
-		if i != None and i.collide(self,player):
+	for t in self.northtileboxes:
+		if t != None and t.collide(self,player):
+			self.undomove()
+	                # FIXME self.undomove()
+			return 2 
+	for t in self.easttileboxes:
+		if t != None and t.collide(self,player):
+			self.undomove()
+	                # FIXME self.undomove()
+			return 2 
+	for t in self.southtileboxes:
+		if t != None and t.collide(self,player):
+			self.undomove()
+	                # FIXME self.undomove()
+			return 2 
+	for t in self.westtileboxes:
+		if t != None and t.collide(self,player):
+			self.undomove()
+	                # FIXME self.undomove()
+			return 2 
+	for p in self.pits:
+		if p != None and p.collide(self,player):
 			return 2
 	return 0
 
     def collidewithenemy(self, enemy):
 	for t in self.tileboxes:
+		if t != None and t.collidewithenemy(self,enemy):
+                    enemy.undomove()
+                    return 2 # 1 kills game
+	for t in self.northtileboxes:
+		if t != None and t.collidewithenemy(self,enemy):
+                    enemy.undomove()
+                    return 2 # 1 kills game
+	for t in self.easttileboxes:
+		if t != None and t.collidewithenemy(self,enemy):
+                    enemy.undomove()
+                    return 2 # 1 kills game
+	for t in self.southtileboxes:
+		if t != None and t.collidewithenemy(self,enemy):
+                    enemy.undomove()
+                    return 2 # 1 kills game
+	for t in self.westtileboxes:
 		if t != None and t.collidewithenemy(self,enemy):
                     enemy.undomove()
                     return 2 # 1 kills game

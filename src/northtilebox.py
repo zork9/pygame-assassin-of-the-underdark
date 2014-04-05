@@ -18,13 +18,31 @@ import pygame
 from pygame.locals import *
 from koboldwizard import *
 from time import *
-from maproomdungeonwall import *
+from tilebox import *
 
-# each wall has its own pic, for dithered and changed images
-class MaproomDungeonEastWall(MaproomDungeonWall):
-    "Room with a (big) map"
-    def __init__(self,x,y):
-	MaproomDungeonWall.__init__(self,x,y,60,48)
-        self.wallimage = pygame.load.image('./pics/walldungeon1-60x48.bmp')
+class NorthTilebox(Tilebox):
+    "box full o tiles south side"
+    
+    def __init__(self,x,y,w,h,nx,ny,imagefilename):
+	Tilebox.__init__(self,x,y,w,h,nx,ny,imagefile)
         
-        
+    def collide(self, room, player):
+	if (player.x > self.x-room.relativex  and 
+	 player.x < self.x-room.relativex + self.w*self.nx and 
+	 player.y > self.y-room.relativey and 
+	 player.y < self.y-room.relativey + self.h*self.ny):
+	    print "collision in South Tilebox!"	
+	    return 1 
+	else:
+	    return 0
+
+    def collidewithenemy(self, room, enemy):
+	if (enemy.x > self.x  and 
+	enemy.x < self.x+self.w*self.nx and 
+	enemy.y - enemy.h > self.y and 
+	enemy.y < self.y + self.h*self.ny):
+	    #print "collision in Tilebox with enemy!"	
+	    return 1 
+	else:
+	    return 0
+

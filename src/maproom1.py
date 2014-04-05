@@ -21,12 +21,19 @@ from tree2 import *
 from dungeonentrance1 import *
 from maproomdungeon import *
 from maproomdungeonnorthwall import *
+from maproomdungeonsouthwall import *
+from maproomdungeonwestwall import *
+from maproomdungeoneastwall import *
 from sword import *
 from fireballspell import *
 from goblin1 import *
 from goblin2 import *
 from goblin3 import *
 from tilebox import *
+from northtilebox import *
+from southtilebox import *
+from easttilebox import *
+from westtilebox import *
 from snake1 import *
 from snake2 import *
 from rubysword import *
@@ -42,17 +49,18 @@ class Maproom1(MaproomDungeon):
         MaproomDungeon.__init__(self,x,y)
         self.background = pygame.image.load('./pics/room-bg1.bmp').convert()
         self.northwall1 = Tilebox(1,1,60,48,13,1,'./pics/walldungeonnorth1-60x48.bmp')
-        self.southwall1 = Tilebox(1,200,30,48,13,1,'./pics/walldungeonsouth1-30x48.bmp')
+###        self.southwall1 = Tilebox(1,200,30,48,13,1,'./pics/walldungeonsouth1-30x48.bmp')
         self.westwall1 = Tilebox(360,200,48,60,1,10,'./pics/walldungeonwest1-48x60.bmp')
         self.eastwall1 = Tilebox(775,1,48,60,1,14,'./pics/walldungeoneast1-48x60.bmp')
         self.tileboxes.append(self.northwall1)
         self.tileboxes.append(self.westwall1)
         self.tileboxes.append(self.eastwall1)
-        self.tileboxes.append(self.southwall1)
-
+####        self.tileboxes.append(self.southwall1)
         self.gameobjects.append(Sword(100,120))
         self.gameobjects.append(FireballSpell(500,120))
 
+###        self.southwall1 = SouthTilebox(1,200,30,48,13,1,'./pics/walldungeonsouth1-30x48.bmp')
+	self.addsouthtilebox(1,200,30,48,13,1,'./pics/walldungeonsouth1-30x48.bmp')	
         self.gameobjects.append(Goblin3(300,100))
         self.gameobjects.append(Goblin3(340,140))
         self.gameobjects.append(Goblin3(380,180))

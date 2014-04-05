@@ -249,7 +249,8 @@ class Game:
 
                                 self.inventory.draw(self.screen)
                                 pygame.display.update()
- 
+
+		# NOTE ce a collision returns 2 
             if self.room.collide(self.player) == 1 or self.player.hitpoints <= 0:
         	endingimage = pygame.image.load('./pics/endingscreen.bmp').convert()
         	while gameover == 0:

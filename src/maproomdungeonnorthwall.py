@@ -18,18 +18,13 @@ import pygame
 from pygame.locals import *
 from koboldwizard import *
 from time import *
+from maproomdungeonwall import *
 
 # each wall has its own pic, for dithered and changed images
-class MaproomNorthDungeonWall:
+class MaproomDungeonNorthWall(MaproomDungeonWall):
     "Room with a (big) map"
     def __init__(self,x,y):
-        self.x = x
-        self.y = y
-        self.w = 60
-        self.h = 48
+	MaproomDungeonWall.__init__(self,x,y,60,48)
         self.wallimage = pygame.image.load('./pics/walldungeon1-60x48.bmp')
         
         
-    def draw(self,screen,relativex,relativey):
-	##print "x=%d" % self.relativex 
-        screen.blit(self.wallimage, (self.x+relativex, self.y+relativey))
