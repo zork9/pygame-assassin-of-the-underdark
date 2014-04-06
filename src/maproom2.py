@@ -25,6 +25,7 @@ from goblin1 import *
 from goblin2 import *
 from goblin3 import *
 from tilebox import *
+from dungeoncave import *
 from snake1 import *
 from rubysword import *
 from beholder import *
@@ -36,13 +37,15 @@ class Maproom2(MaproomDungeon):
     def __init__(self,x,y):
         MaproomDungeon.__init__(self,x,y)
         self.background = pygame.image.load('./pics/room-bg2.bmp').convert()
-        #self.westwall1 = Tilebox(1,1,48,60,1,14,'./pics/walldungeonwest2-48x60.bmp')
-        #self.eastwall1 = Tilebox(775,1,48,60,1,14,'./pics/walldungeoneast1-48x60.bmp')
-        #self.tileboxes.append(self.westwall1)
-        #self.tileboxes.append(self.eastwall1)
+###        self.westwall1 = Tilebox(1,1,48,60,1,14,'./pics/walldungeonwest2-48x60.bmp')
+###        self.eastwall1 = Tilebox(775,1,48,60,1,14,'./pics/walldungeoneast1-48x60.bmp')
+###        self.tileboxes.append(self.westwall1)
+###        self.tileboxes.append(self.eastwall1)
         self.wall1 = Tilebox(600,500,100,100,2,1,'./pics/walldungeon1-100x100.bmp')
         self.tileboxes.append(self.wall1)
-        self.cave = Tilebox(500,500,100,100,1,1,'./pics/walldungeoncave2-100x100.bmp')
+###        self.cave = Tilebox(500,500,100,100,1,1,'./pics/walldungeoncave2-100x100.bmp')
+###        self.tileboxes.append(self.cave)
+        self.cave = DungeonCave(500,500,100,100,'./pics/walldungeoncave2-100x100.bmp')
         self.tileboxes.append(self.cave)
 
         self.gameobjects.append(Goblin3(100,100))
@@ -59,7 +62,7 @@ class Maproom2(MaproomDungeon):
         game.setxy(0,0) 
 
     def isroomcaveexit(self,game):
-	if self.cave.collide(self, game.player):
+	if self.cave.collideexit(self, game.player):
 		return 1
 	return 0
 
@@ -70,7 +73,7 @@ class Maproom2(MaproomDungeon):
 	if self.isroomupexit(game):
 		self.setxyfromup(game)
 		return 4 
-	elif self.isroomcaveexit(game):
+	if self.isroomcaveexit(game):
 		self.setxyfromcave(game)
 		return 3 
 	return 0 

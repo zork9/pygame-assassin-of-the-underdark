@@ -92,7 +92,6 @@ class MaproomBase:
         for i in range(0,len(self.gameobjects)):
 	    o = self.gameobjects[i]
             if o and o.collide(self, player):
-                id = o.pickup(self)
                 return o 
         return None 
 
