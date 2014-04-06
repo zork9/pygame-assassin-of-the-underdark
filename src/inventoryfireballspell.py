@@ -34,9 +34,6 @@ class InventoryFireballSpell(InventorySpell):
 	if go:
 		go.hitwithspell(game)
 		game.room.gameobjects.append(FireballSpellEffect(go.x, go.y))
-        	print 'You cast a fireball spell' 
-        else:
-		print 'You cast fireball spell, it did nothing'
 
     def roll(self, game):
 	return self.rng.rollfireball()	

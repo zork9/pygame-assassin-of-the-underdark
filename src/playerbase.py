@@ -121,12 +121,10 @@ class PlayerBase(PlayerBase, PlayerBase, PlayerBase0,PlayerBaseRace,PlayerBaseKl
 	if game.taskbar.sworditem != None: 
         	o = game.room.collidesword(game)
         	if o:
-            		print 'player hits with sword!'
             		game.room.hitwithsword(o, game)
 	else: ### hit with bare hands
         	o = game.room.collidebarehands(game)
         	if o:
-            		print 'player hits with sword!'
             		game.room.hitwithbarehands(o)
 
 

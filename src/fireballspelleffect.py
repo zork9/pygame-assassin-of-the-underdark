@@ -23,7 +23,7 @@ class FireballSpellEffect(SpellEffect):
     ""
     def __init__(self, xx,yy):
         SpellEffect.__init__(self, xx, yy)
-        self.image = pygame.image.load('./pics/bombexplosion2-36x36.bmp').convert()
+        self.image = pygame.image.load('./pics/fireballexplosion1-36x36.bmp').convert()
         self.image.set_colorkey((0,0,0)) 
 	self.counter = 0 
 

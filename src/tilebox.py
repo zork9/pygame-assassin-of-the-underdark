@@ -51,7 +51,6 @@ class Tilebox:
 	 player.x < self.x+room.relativex + self.w*self.nx and 
 	 player.y + player.h > self.y+room.relativey and ### FIXME h >  X 
 	 player.y < self.y+room.relativey + self.h*self.ny):
-	    print "collision in Tilebox!"	
 	    return 1 
 	else:
 	    return 0
@@ -62,7 +61,6 @@ class Tilebox:
 	enemy.x < self.x+self.w*self.nx and 
 	enemy.y - enemy.h > self.y and 
 	enemy.y - enemy.h < self.y + self.h*self.ny):
-	    #print "collision in Tilebox with enemy!"	
 	    return 1 
 	else:
 	    return 0
