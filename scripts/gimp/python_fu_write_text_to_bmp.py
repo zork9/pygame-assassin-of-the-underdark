@@ -5,7 +5,7 @@
 
 from gimpfu import *
 
-def write_text_to_bmp(initstr, font, size, color) :
+def write_text_to_image(initstr, font, size, color) :
     # First do a quick sanity check on the font
     if font == 'Comic Sans MS' :
         initstr = "Comic Sans? Are you sure?"
@@ -42,12 +42,12 @@ def write_text_to_bmp(initstr, font, size, color) :
     pdb.gimp_context_pop()
 
 register(
-    "python_fu_write_text_to_bmp",
-    "text to bmp image",
+    "python_fu_write_text_to_image",
+    "text to image",
     "Create a new image with your text string",
     "Akkana Peck, Johan Ceuppens",
     "Akkana Peck, Johan Ceuppens",
-    "2010,2014",
+    "2010, 2014",
     "Write text to BMP (Py)...",
     "",      # Create a new image, don't work on an existing one
     [
@@ -57,6 +57,6 @@ register(
         (PF_COLOR, "color", "Text color", (1.0, 0.0, 0.0))
     ],
     [],
-    write_text_to_bmp, menu="<Image>/File/Create")
+    write_text_to_image, menu="<Image>/File/Create")
 
 main()
