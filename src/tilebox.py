@@ -24,7 +24,6 @@ from box import *
 
 class Tilebox:
     "box full o tiles"
-    
     def __init__(self,x,y,w,h,nx,ny,imagefilename = None):
         # NOTE : self.w self.h is number of w and h tiles
         self.x = x

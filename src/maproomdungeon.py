@@ -77,7 +77,7 @@ class MaproomDungeon(MaproomBase):
     def addeasttilebox(self, x,y,w,h,nx,ny,fn):
         self.easttileboxes.append(EastTilebox(x,y,w,h,nx,ny,fn))
        
- 
+
     def draw(self,game):
         # draw bg
         game.screen.blit(self.background, (self.relativex, self.relativey))

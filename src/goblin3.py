@@ -78,6 +78,19 @@ class Goblin3(Gameobject):
 	    
 	     
     def update(self,game):
+	if (self.direction == "left"):
+		self.stimlibleft.update()
+		self.image = self.stimlibleft.image
+	elif (self.direction == "right"):
+		self.stimlibright.update()
+		self.image = self.stimlibright.image
+	elif (self.direction == "down"):
+		self.stimlibdown.update()
+		self.image = self.stimlibdown.image
+	elif (self.direction == "up"):
+		self.stimlibup.update()
+		self.image = self.stimlibup.image
+
 	if game.room.collidewithenemy(self):
 	    if (self.direction == "right"):
 	        self.x -=4

@@ -345,10 +345,26 @@ class Game:
                     			gameover = 1
 					return
             
+            ####self.room.draw(self) --> follows 
 
-            self.room.draw(self) 
-            self.player.drawstatic(self.screen)
-           
+       	    self.screen.blit(self.room.background, (self.room.relativex, self.room.relativey))
+            for go in self.room.gameobjects:
+	        if go != None:
+		    go.update(self)
+		    self.screen.blit(go.image, (go.x+self.room.relativex,go.y+self.room.relativey))  
+	    # draw tileboxes
+            for t in self.room.tileboxes:
+		 if t.image != None:
+		 	self.screen.blit(t.image, (t.x+self.room.relativex,t.y+self.room.relativey))  
+	    for e in self.room.exits:
+                if hasattr(e, 'draw'):
+		 	self.screen.blit(e.image, (e.x+self.room.relativex,e.y+self.room.relativey))  
+
+	    # draw player
+	    self.player.update()
+	    if self.player.image:
+    	    	self.screen.blit(self.player.image, (self.player.x,self.player.y))  
+
 	    # Set player hitpoints in life bar
 
 	    self.heartmeter.index = self.player.hitpoints

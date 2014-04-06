@@ -1,3 +1,5 @@
+. for graphics on screen : in game.py line : self.room.draw(self) must be images blit in while loop of SDL events (where pygame display update is) 
+
 . widget system needs mainloop class of func
 - grep for FIX
 . pickup enemies with 'x' key is possible but not yet implemented

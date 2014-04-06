@@ -35,6 +35,7 @@ class Gameobject(GameobjectResources):
         ## self.image = pygame.image.load('./pics/dungeon-statue1-36x36.bmp').convert()
         self.image = pygame.image.load('./pics/nopicture.bmp').convert()
         self.image.set_colorkey((0,0,0)) 
+
         self.hitpoints = 1
         # NOTE : decrease 1 hitpoint with default sword
 	self.name = "Gameobject"

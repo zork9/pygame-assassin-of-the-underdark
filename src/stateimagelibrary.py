@@ -20,10 +20,17 @@ class Stateimagelibrary(StateimagelibraryBase):
 	self.index = 0
 	self.max = 0
 	self.list = []
+	self.image = None
 
     def addpicture(self, image):
 	self.list.append(image)
 	self.max += 1
+
+    def update(self):
+	if (self.index >= self.max):
+            self.index = 0
+
+	self.image = self.list[self.index]
 
     def drawstatic(self, screen, xx, yy, index):
 	if (self.index >= self.max):

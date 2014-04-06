@@ -84,7 +84,6 @@ class PlayerBase(PlayerBase, PlayerBase, PlayerBase0,PlayerBaseRace,PlayerBaseKl
 
 	### NOTE FIXME : remove elfresources as default
 	PlayerElfResources.__init__(self)
-
 	self.klass = "Elf"
 	self.race = "Magic User Thief"
 	self.heartmeter = None 
@@ -95,7 +94,20 @@ class PlayerBase(PlayerBase, PlayerBase, PlayerBase0,PlayerBaseRace,PlayerBaseKl
         self.w = 48 
         self.h = 48
         self.fightcounter = 0
+	self.image = None
 
+    def update(self):
+        # NOTE
+        if self.fightcounter > 0:
+            self.fightcounter += 1
+            if self.fightcounter > 10:
+                self.fightcounter = 0
+            self.stimlibfight.update()
+	    self.image = self.stimlibfight.image
+            return
+        self.stimlib.update()
+	self.image = self.stimlib.image
+	
     def drawstatic(self, screen):
         # NOTE
         if self.fightcounter > 0:
