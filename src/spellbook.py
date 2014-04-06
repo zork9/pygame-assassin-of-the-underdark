@@ -22,13 +22,12 @@ import pygame
 from pygame.locals import *
 from inventorybomb import *
 
-class Inventory:
+class Spellbook:
     def __init__(self):
         self.background = pygame.image.load('./pics/blank.bmp').convert()
         self.list = []
 	self.ITEMWIDTH = 36 
 	self.ITEMMAX = 8 
-        self.list.append(InventoryBomb())
 
         self.rectimage = pygame.image.load('./pics/rectinventory-36x36.bmp').convert()
         self.rectimage.set_colorkey((0,0,0))
@@ -71,10 +70,7 @@ class Inventory:
         self.list.append(o)
 
     def setpickup(self, o):
-	if o.inventoryitem and o.inventoryitem.typename == "enemy":
-		self.additem(o.inventoryitem)
-		return 1
-	elif o.inventoryitem and o.inventoryitem.typename == "inventoryitem":
+	if o.inventoryitem and o.inventoryitem.typename == "spell":
 		self.additem(o.inventoryitem)
 		return 1
 	return 0	

@@ -32,7 +32,6 @@ class InventoryFireballSpell(InventorySpell):
     def cast(self,game):
 	go = game.room.getclosestgameobject(game.player.x, game.player.y)
 	if go:
-		print "foo> x=%s y=%s" % (go.x,go.y)
 		go.hitwithspell(game)
 		game.room.gameobjects.append(FireballSpellEffect(go.x, go.y))
         	print 'You cast %s (fireball spell)' % self

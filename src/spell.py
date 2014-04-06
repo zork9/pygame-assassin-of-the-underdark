@@ -38,7 +38,6 @@ class Spell(Gameobject):
 	1
 
     def collide(self, room, player):
-        #print 'spell x=%d y=%d player x=%d y=%d' % (self.x,self.y,player.x-room.relativex,player.y-room.relativey)
 	if (player.x-room.relativex > self.x - self.collisionw and 
 	player.x-room.relativex < self.x + self.w + self.collisionw and 
 	player.y-room.relativey > self.y - self.collisionh and 

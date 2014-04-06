@@ -19,13 +19,23 @@
 import pygame
 from pygame.locals import *
 
-from inventoryitem import *
+#### from inventoryitem import *
 
-class InventorySpell(Inventoryitem):
+class InventorySpell:
     def __init__(self, imagefilename):
-        Inventoryitem.__init__(self, imagefilename)
+        self.image = pygame.image.load(imagefilename).convert()
+        self.image.set_colorkey((0,0,0))
+	self.name = "spell"
 	self.typename = "spell"
-###	self.name = "spell"
+
+    def draw(self,screen,x,y):
+        screen.blit(self.image, (x, y))
+
+    def addtolist(self,list):
+        list.addobject(self)
+
+    def use(self,game):
+        print 'You used spell %s' % self
 
     def cast(self,game):
         print 'You cast the spell %s' % self

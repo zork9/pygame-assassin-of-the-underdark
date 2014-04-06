@@ -30,7 +30,3 @@ class FireballSpell(Spell):
 	self.name = "fireball"
 	self.inventoryitem = InventoryFireballSpell()
 
-###    def cast(self,game):
-###	game.room.gameobjects.append(FireballSpellEffect())
-###        print 'You cast %s' % self
-

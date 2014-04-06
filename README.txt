@@ -14,16 +14,19 @@ a random char is made.
 main screen :
 -------------
 
+- Escape key : quit game
+- i key : go to inventoryitmes screen
+- o key : go to spellitems screen
 - x key : use item, pickup item or enemy
 - z key : fight (with main weapon)
 - s key : use selected inventory item
 - c key : cast selected spell item 
 - arrow keys : movement
 
-inventory screen :
-------------------
+inventory and/or spelbook screen :
+----------------------------------
 
-- 'z' or 'x' key : exit inventory screen
+- 'z' or 'x' key : exit inventory screen and select itme under rectangle
 - arrow keys : movement in inventory
 
 Scripts :

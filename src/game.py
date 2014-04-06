@@ -29,6 +29,7 @@ from taskbar import *
 from time import *
 from sys import *
 from inventory import *
+from spellbook import *
 from meter import *
 from playergnollfighter import *
 from playerhumanfighter import *
@@ -188,6 +189,8 @@ class Game:
 	self.player.setheartmeter(self.heartmeter)        
         self.inventory = Inventory()
         self.inventoryitem = None 
+        self.spellbook = Spellbook()
+        self.spellitem = None 
 
         self.taskbar = Taskbar(self.screen,self.font,self.player)
         
@@ -216,8 +219,10 @@ class Game:
                     if event.key == K_x:
                         o = self.player.pickup(self.room)
 		        if o != None:
-				if self.inventory.setpickup(o) or self.taskbar.setpickup(o):
-					self.room.removegameobject(o)
+				self.inventory.setpickup(o)
+				self.taskbar.setpickup(o)
+				self.spellbook.setpickup(o)
+				self.room.removegameobject(o)
 
 	            elif event.key == K_z:
                         self.player.fight(self)  
@@ -229,7 +234,9 @@ class Game:
                         self.room.moveright()    
                     elif event.key == K_RIGHT:
                         self.room.moveleft()    
-    
+   
+			# enter inventory screen
+ 
                     elif event.key == K_i:
                         flag = 0
 		
@@ -240,19 +247,49 @@ class Game:
                                     return
 
                                 elif event.type == KEYDOWN:
-                                    if event.key == K_LEFT:
+		    		    if event.key == K_ESCAPE:
+					flag = 1
+                                    elif event.key == K_LEFT:
                                         self.inventory.moveleft()
                                     elif event.key == K_RIGHT:
                                         self.inventory.moveright()
                                     elif event.key == K_z or event.key == K_x:
                                         self.inventoryitem = self.inventory.getitem(self.inventoryitem)
 					self.taskbar.inventoryitem = self.inventoryitem
-					print "%s selected from inventory" % (self.inventoryitem)
                                         flag = 1
                     			pygame.key.set_repeat(90,90)
 
 
                                 self.inventory.draw(self.screen)
+                                pygame.display.update()
+
+			# enter spellbook (spell inventory) screen
+ 
+                    elif event.key == K_o:
+                        flag = 0
+		
+        		pygame.key.set_repeat(1000,1000)
+			while flag == 0:
+                            for event in pygame.event.get():
+                                if event.type == QUIT:
+                                    return
+
+                                elif event.type == KEYDOWN:
+		    		    if event.key == K_ESCAPE:
+					flag = 1
+                                    elif event.key == K_LEFT:
+                                        self.spellbook.moveleft()
+                                    elif event.key == K_RIGHT:
+                                        self.spellbook.moveright()
+                                    elif event.key == K_z or event.key == K_x:
+                                        self.spellitem = self.spellbook.getitem(self.spellitem)
+					self.taskbar.spellitem = self.spellitem
+					print "%s selected from spellbook" % (self.spellitem)
+                                        flag = 1
+                    			pygame.key.set_repeat(90,90)
+
+
+                                self.spellbook.draw(self.screen)
                                 pygame.display.update()
 
 		# NOTE ce a collision returns 2 
