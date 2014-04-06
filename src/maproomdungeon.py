@@ -111,9 +111,6 @@ class MaproomDungeon(MaproomBase):
             		e.draw(game.screen,self.relativex,self.relativey)
 	 
     def collide(self, player):	
-        for e in self.exits:
-	    if e != None and e.collide(self, player):
-		return 2 # 1 kills game
 	for i in self.gameobjects:
 	    if i != None and i.collide(self, player):
 		return 2 # 1 kills game
@@ -157,6 +154,9 @@ class MaproomDungeon(MaproomBase):
 			self.undomove()
 	                # FIXME self.undomove()
 			return 2 
+        for e in self.exits:
+	    if e != None and e.collide(self, player):
+		return 2 # 1 kills game
 	return 0
 
     def collidewithenemy(self, enemy):
