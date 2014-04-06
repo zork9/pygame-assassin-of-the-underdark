@@ -1,11 +1,17 @@
-. for graphics on screen : in game.py line : self.room.draw(self) must be images blit in while loop of SDL events (where pygame display update is) 
+todo items:
+-----------
 
-. widget system needs mainloop class of func
-- grep for FIX
-. pickup enemies with 'x' key is possible but not yet implemented
-	you need Goblin.inventoryitem for it for example
-. remove sleep fnuctions
-. use of item functions
-. picking up gameobjects/enemies
-. make interface for addpicture etc in statimagelibrary and stateimageresourcelibrary
-. spells are inventoryitem deriveds, change to own base class
+. [OPEN] work on pixelbuffer of background for player graphics, do not blit everything each main loop
+. [HALFDONE] for graphics on screen : in game.py line : self.room.draw(self) must be images blit in 
+	while loop of SDL events (where pygame display update is) 
+. [HALFDONE] remove sleep fnuctions
+. [OPEN] use of item functions
+. [BUGS LEFT] picking up gameobjects/enemies
+. [OPEN] make interface for addpicture etc in statimagelibrary and stateimageresourcelibrary
+. [DONE] spells are inventoryitem deriveds, change to own base class
+
+main:
+-----
+
+. grep FIXME and FIX
+
