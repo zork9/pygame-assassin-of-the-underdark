@@ -29,7 +29,6 @@ class Taskbar:
         self.player = player
         self.background = pygame.image.load('./pics/taskbar-bg.bmp').convert()
         self.background.set_colorkey((0,0,255)) 
-        #self.pc = pygame.image.load(player.askpicture()).convert()
         self.swordimage = pygame.image.load('./pics/taskbar-defaultsword1-32x32.bmp').convert()
         self.swordimage.set_colorkey((0,0,255)) 
 	self.inventoryitem = None ## InventoryBomb() 

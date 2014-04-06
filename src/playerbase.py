@@ -114,11 +114,6 @@ class PlayerBase(PlayerBase, PlayerBase, PlayerBase0,PlayerBaseRace,PlayerBaseKl
 
     def fight(self,game):
         self.fightcounter = 1
-##        self.x -= 30
-##        self.y -= 30
-##        self.w += 30
-##        self.h += 30
-       
 	if game.taskbar.sworditem != None: 
         	o = game.room.collidesword(game)
         	if o:
@@ -131,18 +126,10 @@ class PlayerBase(PlayerBase, PlayerBase, PlayerBase0,PlayerBaseRace,PlayerBaseKl
             		game.room.hitwithbarehands(o)
 
 
-		
-##        self.x += 30
-##        self.y += 30
-##        self.w -= 30
-##        self.h -= 30
-##        
-
-### FIXME heartmeter in game class
     def hit(self):
 	self.heartmeter.index -= 1 
 	if self.heartmeter.index <= 0:
-		return 0 #FIXME1 FIX for gameover when collision with enemies 
+		return 0 #FIXME return 1 for gameover when collision with enemies 
 	else:
 		return 0	
 
@@ -166,25 +153,18 @@ class PlayerBase(PlayerBase, PlayerBase, PlayerBase0,PlayerBaseRace,PlayerBaseKl
 
     def collidewithenemyweapon(self,room,o):
         if o.collide(room,self):
-		return self ## NOTE : returns collided entity (single)
+		return self ## NOTE : returns a single collided entity 
 		
 	return None
 
     def hitwithenemyweapon(self,damage):
 	if damage > 0:
-		print 'player is hit!'
-        self.hitpoints -= damage
+        	self.hitpoints -= damage
 
     def pickup(self,room):
         o = room.pickup(self)
 	return o
 
-###    def fight2(self,room):
-###        self.fightcounter = 1
-###        o = room.collidesword(self)
-###        if o:
-###            o.hitwithweapon(self.sword.roll())
-       
     def setrubysword(self):
 	self.sword = RubySword(0,0)
 

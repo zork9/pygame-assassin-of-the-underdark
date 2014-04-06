@@ -90,8 +90,7 @@ class PlayerKattaThief(PlayerBase):
 
     def hitwithenemyweapon(self,damage):
 	if damage > 0:
-		print 'player is hit!'
-        self.hitpoints -= damage
+        	self.hitpoints -= damage
 
     def setrubysword(self):
 	self.sword = RubySword(0,0)

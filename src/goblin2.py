@@ -57,15 +57,6 @@ class Goblin2(Gameobject):
 	    
 	     
     def update(self,game):
-        sleep(.04) # FIX goblin sleep
-#	if (not self.collideobjectY(game.room)): 
-#	    if (self.direction == "right"):
-#	        self.x -=2
-#	        self.direction = "left" 
-#	    elif (self.direction == "left"):
-#	        self.x +=2
-#	        self.direction = "right"
-
 	if game.player.x < self.x:
 		self.x -= 2
 	elif game.player.x > self.x+self.w:
@@ -82,9 +73,6 @@ class Goblin2(Gameobject):
 
     def fight(self,room,player):
         self.fightcounter = 1
-        #print 'fight'
         o = player.collidesword(room,self)
-        #print 'fight %s' % o
         if o:
-            print 'player is hit!'
             player.hitwithsword(RNG().rollgoblinknife())
