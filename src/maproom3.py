@@ -36,8 +36,6 @@ class Maproom3(MaproomDungeon):
     def __init__(self,x,y):
         MaproomDungeon.__init__(self,x,y)
         self.background = pygame.image.load('./pics/room-bg3.bmp').convert()
-        self.wall1 = Tilebox(600,500,100,100,2,1,'./pics/walldungeon1-100x100.bmp')
-        self.tileboxes.append(self.wall1)
 
     def isroomupexit(self,game):
 	if self.relativey < -650:

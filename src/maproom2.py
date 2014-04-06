@@ -46,6 +46,8 @@ class Maproom2(MaproomDungeon):
 
 	# FIXME add collision boxes around the following exit
         self.cave = DungeonCave(500,500,100,100,'./pics/walldungeoncave2-100x100.bmp')
+	self.tileboxes.append(Tilebox(500,500,100,65,1,1))
+	self.tileboxes.append(Tilebox(500,500,65,100,1,1))
         self.exits.append(self.cave)
 
         self.gameobjects.append(Goblin3(100,100))

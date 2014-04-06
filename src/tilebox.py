@@ -25,7 +25,7 @@ from box import *
 class Tilebox:
     "box full o tiles"
     
-    def __init__(self,x,y,w,h,nx,ny,imagefilename):
+    def __init__(self,x,y,w,h,nx,ny,imagefilename = None):
         # NOTE : self.w self.h is number of w and h tiles
         self.x = x
         self.y = y
@@ -33,21 +33,24 @@ class Tilebox:
         self.h = h
         self.nx = nx
         self.ny = ny
-        self.image = pygame.image.load(imagefilename).convert()
-	self.image.set_colorkey((0,0,255))
+	if imagefilename != None:
+        	self.image = pygame.image.load(imagefilename).convert()
+		self.image.set_colorkey((0,0,255))
+	else:
+		self.image = None
         
     def draw(self,screen,relativex,relativey):
-
+	if self.image:
 		#### FIXME w*i --> ?
-        for j in range(0, self.ny):
-            for i in range(0,self.nx):
-                screen.blit(self.image,(self.x+self.w*i+relativex,self.y+self.h*j+relativey))
+        	for j in range(0, self.ny):
+            		for i in range(0,self.nx):
+                		screen.blit(self.image,(self.x+self.w*i+relativex,self.y+self.h*j+relativey))
 
     def collide(self, room, player):
-	if (player.x > self.x-room.relativex  and 
-	 player.x < self.x-room.relativex + self.w*self.nx and 
-	 player.y - player.h > self.y-room.relativey and 
-	 player.y - player.h < self.y-room.relativey + self.h*self.ny):
+	if (player.x > self.x+room.relativex  and 
+	 player.x < self.x+room.relativex + self.w*self.nx and 
+	 player.y + player.h > self.y+room.relativey and ### FIXME h >  X 
+	 player.y < self.y+room.relativey + self.h*self.ny):
 	    print "collision in Tilebox!"	
 	    return 1 
 	else:
