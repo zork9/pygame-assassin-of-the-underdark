@@ -52,7 +52,19 @@ class Beholder(Gameobject):
 	    
 	     
     def update(self,game):
-        sleep(.04) # FIX goblin sleep
+	if (self.direction == "left"):
+                self.stimlib.update()
+                self.image = self.stimlib.image
+        elif (self.direction == "right"):
+                self.stimlib.update()
+                self.image = self.stimlib.image
+        elif (self.direction == "down"):
+                self.stimlib.update()
+                self.image = self.stimlib.image
+        elif (self.direction == "up"):
+                self.stimlibup.update()
+                self.image = self.stimlibup.image
+
 	if game.room.collidewithenemy(self):
 	    if (self.direction == "right"):
 	        self.x -=6

@@ -53,8 +53,19 @@ class ButterflyDemon(Gameobject):
         self.stimlib.draw(screen, self.x+room.relativex,self.y+room.relativey)    
 	     
     def update(self,game):
-        sleep(.005)
-##        self.x-=1
+	if (self.direction == "left"):
+                self.stimlib.update()
+                self.image = self.stimlib.image
+        elif (self.direction == "right"):
+                self.stimlib.update()
+                self.image = self.stimlib.image
+        elif (self.direction == "down"):
+                self.stimlib.update()
+                self.image = self.stimlib.image
+        elif (self.direction == "up"):
+                self.stimlib.update()
+                self.image = self.stimlib.image
+
 	if (random.randint(0,14) == 0 and self.direction == "left"):
 	   self.direction = "right"
         if (random.randint(0,13) == 0 and self.direction == "right"):

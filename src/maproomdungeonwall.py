@@ -27,12 +27,12 @@ class MaproomDungeonWall:
         self.y = y
         self.w = w 
         self.h = h 
-        self.wallimage = pygame.image.load('./pics/walldungeon1-60x48.bmp')
+        self.image = pygame.image.load('./pics/walldungeon1-60x48.bmp')
         
         
     def draw(self,screen,relativex,relativey):
         ####screen.blit(self.wall, (0+self.relativex, 0+self.relativey))
-        screen.blit(self.wallimage, (relativex+self.x, relativey+self.y))
+        screen.blit(self.image, (relativex+self.x, relativey+self.y))
 
     def collide(self, room, player):
 	if (player.x > self.x+room.relativex  and 

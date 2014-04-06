@@ -47,7 +47,19 @@ class Centipede(Gameobject):
 	    
 	     
     def update(self,game):
-        sleep(.04) # FIX goblin sleep
+	if (self.direction == "left"):
+                self.stimlib.update()
+                self.image = self.stimlib.image
+        elif (self.direction == "right"):
+                self.stimlib.update()
+                self.image = self.stimlib.image
+        elif (self.direction == "down"):
+                self.stimlib.update()
+                self.image = self.stimlib.image
+        elif (self.direction == "up"):
+                self.stimlib.update()
+                self.image = self.stimlib.image
+
 	if game.room.collidewithenemy(self):
 	    if (self.direction == "right"):
 	        self.x -=6

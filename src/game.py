@@ -345,13 +345,22 @@ class Game:
                     			gameover = 1
 					return
             
-            ####self.room.draw(self) --> follows 
-
        	    self.screen.blit(self.room.background, (self.room.relativex, self.room.relativey))
+
+	    # draw gameobjects 
             for go in self.room.gameobjects:
 	        if go != None:
 		    go.update(self)
 		    self.screen.blit(go.image, (go.x+self.room.relativex,go.y+self.room.relativey))  
+	    # draw walls 
+	    for w in self.room.northwalls:
+		    self.screen.blit(w.image, (w.x+self.room.relativex,w.y+self.room.relativey))  
+	    for w in self.room.eastwalls:
+		    self.screen.blit(w.image, (w.x+self.room.relativex,w.y+self.room.relativey))  
+	    for w in self.room.southwalls:
+		    self.screen.blit(w.image, (w.x+self.room.relativex,w.y+self.room.relativey))  
+	    for w in self.room.westwalls:
+		    self.screen.blit(w.image, (w.x+self.room.relativex,w.y+self.room.relativey))  
 	    # draw tileboxes
             for t in self.room.northtileboxes:
 		 for j in range(0, t.ny):

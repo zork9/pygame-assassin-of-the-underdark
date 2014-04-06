@@ -25,7 +25,7 @@ class MaproomDungeonSouthWall(MaproomDungeonWall):
     "Room with a (big) map"
     def __init__(self,x,y):
 	MaproomDungeonWall.__init__(self,x,y,60,48)
-        self.wallimage = pygame.image.load('./pics/walldungeonsouth1-60x48.bmp')
+        self.image = pygame.image.load('./pics/walldungeonsouth1-60x48.bmp')
         
     def collide(self, room, player):
 	if (player.x > self.x+room.relativex  and 

@@ -44,7 +44,6 @@ class Snake1(Gameobject):
         self.angle = sqrt(2)/2
 
     def draw(self, screen, room):
-        sleep(.1) # FIX goblin sleep
         self.angle += self.PI/8
         self.x -= 10
         self.y = sin(self.angle)*20
@@ -68,7 +67,18 @@ class Snake1(Gameobject):
         self.angle -= self.PI/8
 	     
     def update(self,game):
-        1
+	if (self.direction == "left"):
+                self.stimlib.update()
+                self.image = self.stimlib.image
+        elif (self.direction == "right"):
+                self.stimlib.update()
+                self.image = self.stimlib.image
+        elif (self.direction == "down"):
+                self.stimlib.update()
+                self.image = self.stimlib.image
+        elif (self.direction == "up"):
+                self.stimlibup.update()
+                self.image = self.stimlibup.image
 
     def collide(self, room, player):
         

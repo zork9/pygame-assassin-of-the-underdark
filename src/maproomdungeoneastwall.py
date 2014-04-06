@@ -25,6 +25,6 @@ class MaproomDungeonEastWall(MaproomDungeonWall):
     "Room with a (big) map"
     def __init__(self,x,y):
 	MaproomDungeonWall.__init__(self,x,y,60,48)
-        self.wallimage = pygame.load.image('./pics/walldungeon1-60x48.bmp')
+        self.image = pygame.load.image('./pics/walldungeon1-60x48.bmp')
         
         
