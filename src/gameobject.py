@@ -120,6 +120,12 @@ class Gameobject(GameobjectResources):
     def pickup(self, room):
         return 0
 
+    def talkto(self, room):
+        return 0
+
+    def gettext(self, game):
+        return "You cannot talk to this thing." 
+
     def hitwithspell(self,game):
 	if game.taskbar and game.taskbar.spellitem:
 		damage = game.taskbar.spellitem.roll(game)

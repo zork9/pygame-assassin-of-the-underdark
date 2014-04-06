@@ -15,6 +15,7 @@ main screen :
 -------------
 
 - Escape key : quit game
+- t key : talk (if possible)
 - i key : go to inventoryitmes screen
 - o key : go to spellitems screen
 - x key : use item, pickup item or enemy

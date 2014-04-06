@@ -165,6 +165,10 @@ class PlayerBase(PlayerBase, PlayerBase, PlayerBase0,PlayerBaseRace,PlayerBaseKl
         o = room.pickup(self)
 	return o
 
+    def talkto(self,room):
+        o = room.talkto(self)
+	return o
+
     def setrubysword(self):
 	self.sword = RubySword(0,0)
 

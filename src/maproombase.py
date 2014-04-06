@@ -79,15 +79,20 @@ class MaproomBase:
         self.x = -80 
         self.y = -80
 
-    def talkto(self):
-        return None
-
     def pickup(self, player):
         for i in range(0,len(self.gameobjects)):
 	    o = self.gameobjects[i]
             if o and o.collide(self, player):
                 id = o.pickup(self)
 		self.gameobjects[i] = None
+                return o 
+        return None 
+
+    def talkto(self, player):
+        for i in range(0,len(self.gameobjects)):
+	    o = self.gameobjects[i]
+            if o and o.collide(self, player):
+                id = o.pickup(self)
                 return o 
         return None 
 
