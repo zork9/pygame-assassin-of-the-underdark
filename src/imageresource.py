@@ -30,6 +30,7 @@ class ImageResource(ResourceBase,ResourceSubject):
     def load(self, filename, r,g,b):
 	self.loadfile(filename)
     	self.imagehandle.set_colorkey_rgb((r,g,b))
+	return self.imagehandle
 
     def load0(self, filename):
 	self.loadfile(filename)

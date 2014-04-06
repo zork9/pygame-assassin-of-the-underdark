@@ -1,6 +1,6 @@
 
-# Copyright (C) Johan Ceuppens 2010
 # Copyright (C) Johan Ceuppens 2014
+
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 2 of the License, or
@@ -17,32 +17,18 @@
 
 import pygame
 from pygame.locals import *
-from stateimagelibrary import *
 from playerbase import *
-from broadsword import *
+from playerdrowthiefresources import *
 
-class PlayerDrowThief(PlayerBase):
-    "Player"
-    def __init__(self):
-        PlayerBase.__init__(self,PlayerBase.DROW, PlayerBase.THIEF)
-	self.sword = BroadSword(0,0)
+class PlayerDrowThief(PlayerBase, PlayerDrowThiefResources):
+	"Player Drow Thief"
+	def __init__(self):
+		PlayerBase.__init__(self,PlayerBase.DROW, PlayerBase.THIEF)
+		PlayerDrowThiefResources.__init__(self)
 
-        self.stimlib = Stateimagelibrary()	
-        image = pygame.image.load('./pics/playerdrowmagicuser1-48x48.bmp').convert()
-        image.set_colorkey((0,0,0)) 
-	self.stimlib.addpicture(image)	
+	def askclass(self):
+		return "Thief"
 
-        self.stimlibfight = Stateimagelibrary()	
-        image = pygame.image.load('./pics/playerdrowmagicuser1-48x48.bmp').convert()
-        image.set_colorkey((0,0,0)) 
-	self.stimlibfight.addpicture(image)	
-
-    def askclass(self):
-        return "Thief"
-
-    def askrace(self):
-        return "Drow"
-
-    def askpicture(self):
-        return './pics/taskbar-PC-elffighter.bmp'
+	def askrace(self):
+		return "Drow"
 
