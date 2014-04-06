@@ -25,6 +25,7 @@ from playermagicuser import *
 from playermagicuserthief import *
 from playerthief import *
 from playermonk import *
+from playerassassin import *
 from playerelf import *
 from playergnoll import *
 from playerdrow import *
@@ -39,7 +40,7 @@ class PlayerBase:
 
 class PlayerBase0:
     def __init__(self):
-    	PlayerBase0.FIGHTER,PlayerBase0.MAGICUSER,PlayerBase0.THIEF,PlayerBase0.FIGHTERMAGICUSER,PlayerBase0.FIGHTERTHIEF,PlayerBase0.MAGICUSERTHIEF,PlayerBase0.MONK = xrange(7)
+    	PlayerBase0.FIGHTER,PlayerBase0.MAGICUSER,PlayerBase0.THIEF,PlayerBase0.FIGHTERMAGICUSER,PlayerBase0.FIGHTERTHIEF,PlayerBase0.MAGICUSERTHIEF,PlayerBase0.MONK,PlayerBase0.ASSASSIN = xrange(8)
     	PlayerBase0.ELF,PlayerBase0.GNOLL,PlayerBase0.KATTA,PlayerBase0.HUMAN,PlayerBase0.DROW = xrange(5)
 
 class PlayerBaseRace:
@@ -63,6 +64,7 @@ class PlayerBaseKlass:
                 PlayerBase0.MAGICUSERTHIEF : PlayerMagicuserThief,
                 PlayerBase0.THIEF : PlayerThief,
                 PlayerBase0.MONK : PlayerMonk,
+                PlayerBase0.ASSASSIN : PlayerAssassin,
         }
         classByType2[PLAYERCLASS]
 
@@ -71,13 +73,15 @@ class PlayerBaseKlass:
 class PlayerBase(PlayerBase, PlayerBase, PlayerBase0,PlayerBaseRace,PlayerBaseKlass,PlayerElfResources):
     "Player Base"
 
-    PlayerBase.FIGHTER,PlayerBase.MAGICUSER,PlayerBase.THIEF,PlayerBase.FIGHTERMAGICUSER,PlayerBase.FIGHTERTHIEF,PlayerBase.MAGICUSERTHIEF,PlayerBase.MONK = xrange(7)
+    PlayerBase.FIGHTER,PlayerBase.MAGICUSER,PlayerBase.THIEF,PlayerBase.FIGHTERMAGICUSER,PlayerBase.FIGHTERTHIEF,PlayerBase.MAGICUSERTHIEF,PlayerBase.MONK,PlayerBase.ASSASSIN = xrange(8)
     PlayerBase.ELF,PlayerBase.GNOLL,PlayerBase.KATTA,PlayerBase.HUMAN,PlayerBase.DROW = xrange(5)
 
     def __init__(self,PLAYERRACE,PLAYERCLASS):
 	PlayerBase0.__init__(self)
 	PlayerBaseRace.__init__(self, PLAYERRACE)
 	PlayerBaseKlass.__init__(self, PLAYERCLASS)
+
+
 	### NOTE FIXME : remove elfresources as default
 	PlayerElfResources.__init__(self)
 

@@ -29,6 +29,7 @@ from fighterclassbutton import *
 from magicuserclassbutton import *
 from thiefclassbutton import *
 from monkclassbutton import *
+from assassinclassbutton import *
 from imageresource import *
 from monklabel import *
 from widgettextxywhlabel import *
@@ -50,6 +51,7 @@ class MultiClassSelector(MultiSelectorWindow):
 	self.add_widget(MagicuserClassButton(self, self.selectmagicuser, None)) 
 	self.add_widget(ThiefClassButton(self, self.selectthief, None)) 
 	self.add_widget(MonkClassButton(self, self.selectmonk, None)) 
+	self.add_widget(AssassinClassButton(self, self.selectassassin, None)) 
 
 	## FIXME 13 == fontsize
 	self.add_widget(WidgetTextXYWHLabel(self, self.selectfightermagicuser, None, 0,50,50,13, font, "fighter/magicuser")) 
@@ -59,12 +61,13 @@ class MultiClassSelector(MultiSelectorWindow):
 	self.add_widget(WidgetTextXYWHLabel(self, self.selectmagicuser, None, 200,50,50,13, font, "magicuser")) 
 	self.add_widget(WidgetTextXYWHLabel(self, self.selectthief, None, 250,50,50,13, font, "thief")) 
 	self.add_widget(MonkLabel(self, self.selectmonk, None, font, "monk")) 
+	self.add_widget(WidgetTextXYWHLabel(self, self.selectassassin, None, 50,100,50,13, font, "assassin")) 
 
         self.klass = "Random Class"
 
 	self.yoffset = 70
 
-	self.classeslist = ["Fighter", "Magic User", "Thief", "Fighter Magic User", "Fighter Thief", "Magic User Thief", "Monk"]
+	self.classeslist = ["Fighter", "Magic User", "Thief", "Fighter Magic User", "Fighter Thief", "Magic User Thief", "Monk", "Assassin"]
 
 
     def selectfightermagicuser(self):
@@ -87,6 +90,9 @@ class MultiClassSelector(MultiSelectorWindow):
 
     def selectmonk(self):
 	self.klass = "Monk"	
+
+    def selectassassin(self):
+	self.klass = "Assassin"	
 
 
 	### NOTE draw member func is in rootwindow

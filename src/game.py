@@ -68,6 +68,11 @@ from playergnollmonk import *
 from playerkattamonk import *
 from playerelfmonk import *
 from playerdrowmonk import *
+from playerhumanassassin import *
+from playergnollassassin import *
+from playerkattaassassin import *
+from playerelfassassin import *
+from playerdrowassassin import *
 
 class Game:
     "Main function"
@@ -125,6 +130,8 @@ class Game:
                 self.player = PlayerHumanThief()
             elif self.selectormc.askclass() == "Monk":
                 self.player = PlayerHumanMonk()
+            elif self.selectormc.askclass() == "Assassin":
+                self.player = PlayerHumanAssassin()
             elif self.selectormc.askclass() == "Fighter Magic User":
                 self.player = PlayerHumanFighterMagicuser()
             elif self.selectormc.askclass() == "Fighter Thief":
@@ -140,6 +147,8 @@ class Game:
                 self.player = PlayerGnollThief()
             elif self.selectormc.askclass() == "Monk":
                 self.player = PlayerGnollMonk()
+            elif self.selectormc.askclass() == "Assassin":
+                self.player = PlayerGnollAssassin()
             elif self.selectormc.askclass() == "Fighter Magic User":
                 self.player = PlayerGnollFighterMagicuser()
             elif self.selectormc.askclass() == "Fighter Thief":
@@ -155,6 +164,8 @@ class Game:
                 self.player = PlayerKattaThief()
             elif self.selectormc.askclass() == "Monk":
                 self.player = PlayerKattaMonk()
+            elif self.selectormc.askclass() == "Assassin":
+                self.player = PlayerKattaAssassin()
             elif self.selectormc.askclass() == "Fighter Magic User":
                 self.player = PlayerKattaFighterMagicuser()
             elif self.selectormc.askclass() == "Fighter Thief":
@@ -170,6 +181,8 @@ class Game:
                 self.player = PlayerElfThief()
             elif self.selectormc.askclass() == "Monk":
                 self.player = PlayerElfMonk()
+            elif self.selectormc.askclass() == "Assassin":
+                self.player = PlayerElfAssassin()
             elif self.selectormc.askclass() == "Fighter Magic User":
                 self.player = PlayerElfFighterMagicuser()
             elif self.selectormc.askclass() == "Fighter Thief":
@@ -185,6 +198,8 @@ class Game:
                 self.player = PlayerDrowThief()
             elif self.selectormc.askclass() == "Monk":
                 self.player = PlayerDrowMonk()
+            elif self.selectormc.askclass() == "Assassin":
+                self.player = PlayerDrowAssassin()
             elif self.selectormc.askclass() == "Fighter Magic User":
                 self.player = PlayerDrowFighterMagicuser()
             elif self.selectormc.askclass() == "Fighter Thief":
