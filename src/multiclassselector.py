@@ -28,6 +28,7 @@ from magicuserthiefclassbutton import *
 from fighterclassbutton import *
 from magicuserclassbutton import *
 from thiefclassbutton import *
+from monkclassbutton import *
 from imageresource import *
 
 import sys
@@ -46,12 +47,13 @@ class MultiClassSelector(MultiSelectorWindow):
 	self.add_widget(FighterClassButton(self, self.selectfighter, None)) 
 	self.add_widget(MagicuserClassButton(self, self.selectmagicuser, None)) 
 	self.add_widget(ThiefClassButton(self, self.selectthief, None)) 
+	self.add_widget(MonkClassButton(self, self.selectmonk, None)) 
 
         self.klass = "Random Class"
 
 	self.yoffset = 70
 
-	self.classeslist = ["Fighter", "Magic User", "Thief", "Fighter Magic User", "Fighter Thief", "Magic User Thief"]
+	self.classeslist = ["Fighter", "Magic User", "Thief", "Fighter Magic User", "Fighter Thief", "Magic User Thief", "Monk"]
 
 
     def selectfightermagicuser(self):
@@ -72,6 +74,9 @@ class MultiClassSelector(MultiSelectorWindow):
     def selectthief(self):
 	self.klass = "Thief"	
 
+    def selectmonk(self):
+	self.klass = "Monk"	
+
 
 	### NOTE draw member func is in rootwindow
     def drawimages(self):
@@ -82,6 +87,7 @@ class MultiClassSelector(MultiSelectorWindow):
         self.screen.blit(self.font.render("fighter", 6, (255,255,255)), (150,50))
         self.screen.blit(self.font.render("magic user", 6, (255,255,255)), (200,50))
         self.screen.blit(self.font.render("thief", 6, (255,255,255)), (250,50))
+        self.screen.blit(self.font.render("monk", 6, (255,255,255)), (0,100))
 
 
 
