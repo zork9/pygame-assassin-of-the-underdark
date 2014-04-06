@@ -44,6 +44,7 @@ class MaproomDungeon(MaproomBase):
         self.southtileboxes = []
         self.tileboxes = []
         self.pits = []
+        self.exits = []
 
     def removegameobject(self, o):
 	for o2 in self.gameobjects:
@@ -105,8 +106,14 @@ class MaproomDungeon(MaproomBase):
 	    if i != None:
 		i.update(game)
 		i.draw(game.screen,self)
-      
+        for e in self.exits:
+        	if hasattr(e, 'draw'):
+            		e.draw(game.screen,self.relativex,self.relativey)
+	 
     def collide(self, player):	
+        for e in self.exits:
+	    if e != None and e.collide(self, player):
+		return 2 # 1 kills game
 	for i in self.gameobjects:
 	    if i != None and i.collide(self, player):
 		return 2 # 1 kills game

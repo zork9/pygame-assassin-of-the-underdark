@@ -20,26 +20,21 @@ import pygame
 from pygame.locals import *
 from time import *
 from gameobject import *
-from exit import *
 
-class DungeonCave(Exit):
+class Exit:
     "box"
-    def __init__(self,x,y,w,h,imagefilename):
-       	Exit.__init__(self,x,y,w,h) 
-        self.image = pygame.image.load(imagefilename).convert()
-	self.image.set_colorkey((0,0,255))
-       	self.collideoffsetx = 80
-       	self.collideoffsety = 80
+    def __init__(self,x,y,w,h):
+        self.x = x
+        self.y = y
+        self.w = w
+        self.h = h
  
-    def draw(self,screen,relativex,relativey):
-         screen.blit(self.image,(self.x+relativex,self.y+relativey))
-
     def collide(self, room, player):
 	if (player.x > self.x+room.relativex  and 
 	 player.x < self.x+room.relativex + self.w and 
-	 player.y > self.y+room.relativey+20 and 
-	 player.y < self.y+room.relativey + self.h - 20):
-	    print "collision in Dungeon Cave !"	
+	 player.y > self.y+room.relativey and 
+	 player.y < self.y+room.relativey + self.h):
+	    print "collision in Exit"	
 	    return 1 
 	else:
 	    return 0
@@ -49,7 +44,7 @@ class DungeonCave(Exit):
 	enemy.x < self.x+self.w*self.nx and 
 	enemy.y - enemy.h > self.y and 
 	enemy.y - enemy.h < self.y + self.h*self.ny):
-	    #print "collision in Tilebox with enemy!"	
+	    #print "collision in Exit with enemy!"	
 	    return 1 
 	else:
 	    return 0

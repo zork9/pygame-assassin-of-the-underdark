@@ -43,10 +43,10 @@ class Maproom2(MaproomDungeon):
 ###        self.tileboxes.append(self.eastwall1)
         self.wall1 = Tilebox(600,500,100,100,2,1,'./pics/walldungeon1-100x100.bmp')
         self.tileboxes.append(self.wall1)
-###        self.cave = Tilebox(500,500,100,100,1,1,'./pics/walldungeoncave2-100x100.bmp')
-###        self.tileboxes.append(self.cave)
+
+	# FIXME add collision boxes around the following exit
         self.cave = DungeonCave(500,500,100,100,'./pics/walldungeoncave2-100x100.bmp')
-        self.tileboxes.append(self.cave)
+        self.exits.append(self.cave)
 
         self.gameobjects.append(Goblin3(100,100))
         self.gameobjects.append(Goblin3(150,100))
@@ -62,7 +62,7 @@ class Maproom2(MaproomDungeon):
         game.setxy(0,0) 
 
     def isroomcaveexit(self,game):
-	if self.cave.collideexit(self, game.player):
+	if self.cave.collide(self, game.player):
 		return 1
 	return 0
 
