@@ -17,25 +17,13 @@
 import pygame
 from pygame.locals import *
 
-class WidgetFrame:
+from treenode import *
+from widget import *
+from widgetframe import *
+
+class WidgetLabel(Widget, WidgetFrame):
     ""
-    def __init__(self, xx, yy, ww, hh):
-	self.x = xx
-	self.y = yy
-	self.w = ww
-	self.h = hh
+    def __init__(self, parent, callback, widgettreenode):
+	Widget.__init__(self, parent, callback, widgettreenode)	
+	WidgetFrame.__init__(self, parent.x, parent.y, parent.w, parent.h)	
 
-    def draw(self, screen):
-	1
-
-    def setx(self,xx):
-	self.x = xx
-
-    def sety(self,yy):
-	self.y = yy
-
-    def getx(self):
-	return self.x
-
-    def gety(self):
-	return self.y

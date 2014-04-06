@@ -17,25 +17,16 @@
 import pygame
 from pygame.locals import *
 
-class WidgetFrame:
+from treenode import *
+from widgettextlabel import *
+
+class MonkLabel(WidgetTextLabel):
     ""
-    def __init__(self, xx, yy, ww, hh):
-	self.x = xx
-	self.y = yy
-	self.w = ww
-	self.h = hh
-
-    def draw(self, screen):
-	1
-
-    def setx(self,xx):
-	self.x = xx
-
-    def sety(self,yy):
-	self.y = yy
-
-    def getx(self):
-	return self.x
-
-    def gety(self):
-	return self.y
+    def __init__(self, parent, callback, widgettreenode, font, text):
+	WidgetTextLabel.__init__(self, parent, callback, widgettreenode, font, text)	
+	self.font = font 
+	self.text = text
+	self.x = 0
+	self.y = 100
+	self.w = 50 
+	self.h = 13 

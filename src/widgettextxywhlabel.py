@@ -17,25 +17,19 @@
 import pygame
 from pygame.locals import *
 
-class WidgetFrame:
+from treenode import *
+from widgettextlabel import *
+
+class WidgetTextXYWHLabel(WidgetTextLabel):
     ""
-    def __init__(self, xx, yy, ww, hh):
+    def __init__(self, parent, callback, widgettreenode, xx, yy, ww, hh, font, text):
+	WidgetTextLabel.__init__(self, parent, callback, widgettreenode, font, text)	
 	self.x = xx
 	self.y = yy
 	self.w = ww
 	self.h = hh
-
+	
     def draw(self, screen):
-	1
-
-    def setx(self,xx):
-	self.x = xx
-
-    def sety(self,yy):
-	self.y = yy
-
-    def getx(self):
-	return self.x
-
-    def gety(self):
-	return self.y
+	pygame.draw.rect(screen, self.colortuple, [self.x, self.y, self.w, self.h], self.borderwidth)	
+        screen.blit(self.font.render(self.text, 13, (255,255,255)), (self.x,self.y))
+	

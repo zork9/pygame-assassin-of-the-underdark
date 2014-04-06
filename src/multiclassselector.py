@@ -30,6 +30,8 @@ from magicuserclassbutton import *
 from thiefclassbutton import *
 from monkclassbutton import *
 from imageresource import *
+from monklabel import *
+from widgettextxywhlabel import *
 
 import sys
 import time
@@ -48,6 +50,15 @@ class MultiClassSelector(MultiSelectorWindow):
 	self.add_widget(MagicuserClassButton(self, self.selectmagicuser, None)) 
 	self.add_widget(ThiefClassButton(self, self.selectthief, None)) 
 	self.add_widget(MonkClassButton(self, self.selectmonk, None)) 
+
+	## FIXME 13 == fontsize
+	self.add_widget(WidgetTextXYWHLabel(self, self.selectfightermagicuser, None, 0,50,50,13, font, "fighter/magicuser")) 
+	self.add_widget(WidgetTextXYWHLabel(self, self.selectfighterthief, None, 50,50,50,13, font, "fighter/thief")) 
+	self.add_widget(WidgetTextXYWHLabel(self, self.selectmagicuserthief, None, 100,50,50,13, font, "magicuser/thief")) 
+	self.add_widget(WidgetTextXYWHLabel(self, self.selectfighter, None, 150,50,50,13, font, "fighter")) 
+	self.add_widget(WidgetTextXYWHLabel(self, self.selectmagicuser, None, 200,50,50,13, font, "magicuser")) 
+	self.add_widget(WidgetTextXYWHLabel(self, self.selectthief, None, 250,50,50,13, font, "thief")) 
+	self.add_widget(MonkLabel(self, self.selectmonk, None, font, "monk")) 
 
         self.klass = "Random Class"
 
@@ -81,13 +92,13 @@ class MultiClassSelector(MultiSelectorWindow):
 	### NOTE draw member func is in rootwindow
     def drawimages(self):
         MultiSelectorWindow.drawimages(self)       
-        self.screen.blit(self.font.render("fighter/magicuser", 6, (255,255,255)), (0,50))
-        self.screen.blit(self.font.render("fighter/thief", 6, (255,255,255)), (50,50))
-        self.screen.blit(self.font.render("magicuser/thief", 6, (255,255,255)), (100,50))
-        self.screen.blit(self.font.render("fighter", 6, (255,255,255)), (150,50))
-        self.screen.blit(self.font.render("magic user", 6, (255,255,255)), (200,50))
-        self.screen.blit(self.font.render("thief", 6, (255,255,255)), (250,50))
-        self.screen.blit(self.font.render("monk", 6, (255,255,255)), (0,100))
+###        self.screen.blit(self.font.render("fighter/magicuser", 6, (255,255,255)), (0,50))
+###        self.screen.blit(self.font.render("fighter/thief", 6, (255,255,255)), (50,50))
+###        self.screen.blit(self.font.render("magicuser/thief", 6, (255,255,255)), (100,50))
+###        self.screen.blit(self.font.render("fighter", 6, (255,255,255)), (150,50))
+###        self.screen.blit(self.font.render("magic user", 6, (255,255,255)), (200,50))
+###        self.screen.blit(self.font.render("thief", 6, (255,255,255)), (250,50))
+###        self.screen.blit(self.font.render("monk", 6, (255,255,255)), (0,100))
 
 
 
