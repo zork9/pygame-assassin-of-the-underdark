@@ -63,7 +63,7 @@ class Goblin3(Gameobject):
         image.set_colorkey((0,0,255)) 
 	self.stimlibup.addpicture(image)
 
-	self.talkcounter = 0
+	self.talkcounter = -1
 	self.direction = "left"
 
     def draw(self, screen, room):
@@ -115,8 +115,22 @@ class Goblin3(Gameobject):
 	    #print "collision with Goblin !"
 	    return 1 
 	else:
-	    return 0 ## for game self.talker
+	    return 0
 
+    def gettalktext(self, game):
+	self.talkcounter += 1
+	if self.talkcounter >= 3:
+		self.talkcounter = -1
+		return ""
+	elif self.talkcounter == 2:
+        	return "...Gniark.!." 
+	elif self.talkcounter == 1:
+        	return "...Gnurk.!." 
+	elif self.talkcounter == 0:
+        	return "...Gnro.!." 
+	else:
+		self.talkcounter = -1
+		return ""
 
     def fight(self,room,player):
         self.fightcounter = 1

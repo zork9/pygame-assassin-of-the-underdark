@@ -123,7 +123,7 @@ class Gameobject(GameobjectResources):
     def talkto(self, room):
         return 0
 
-    def gettext(self, game):
+    def gettalktext(self, game):
         return "You cannot talk to this thing." 
 
     def hitwithspell(self,game):

@@ -192,6 +192,7 @@ class Game:
         self.spellbook = Spellbook()
         self.spellitem = None 
 	self.talker = None
+	self.talktext = "" 
         self.taskbar = Taskbar(self.screen,self.font,self.player)
         
         pygame.key.set_repeat(90,90)
@@ -228,6 +229,7 @@ class Game:
                         o = self.player.talkto(self.room)
 		        if o != None:
 				self.talker = o	
+				self.talktext = o.gettalktext(self)
 
 	            elif event.key == K_z:
                         self.player.fight(self)  
@@ -317,12 +319,6 @@ class Game:
             self.room.draw(self) 
             self.player.drawstatic(self.screen)
            
-	    if self.talker != None:
-	        text = self.talker.gettext(self)
-                self.screen.blit(self.font.render(text, 8, (255,255,255)), (10,self.talker.y-10))
-		if not text:
-			self.talker = None
- 
 	    # Set player hitpoints in life bar
 
 	    self.heartmeter.index = self.player.hitpoints
@@ -338,7 +334,12 @@ class Game:
 
             self.taskbar.draw()
             self.heartmeter.draw(self.screen)
-            
+
+	    if self.talktext != "":
+            	self.screen.blit(self.font.render(self.talktext, 13, (255,255,255)), (self.talker.x,self.talker.y-14))
+            else:
+		self.talker = None
+ 
             pygame.display.update()
 
 	    # sleep for speed down
