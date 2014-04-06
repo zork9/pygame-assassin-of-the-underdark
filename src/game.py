@@ -353,9 +353,32 @@ class Game:
 		    go.update(self)
 		    self.screen.blit(go.image, (go.x+self.room.relativex,go.y+self.room.relativey))  
 	    # draw tileboxes
+            for t in self.room.northtileboxes:
+		 for j in range(0, t.ny):
+                        for i in range(0,t.nx):
+		 		if t.image != None:
+		 			self.screen.blit(t.image, (t.x+t.w*i+self.room.relativex,t.y+t.h*j+self.room.relativey))  
+            for t in self.room.easttileboxes:
+		 for j in range(0, t.ny):
+                        for i in range(0,t.nx):
+		 		if t.image != None:
+		 			self.screen.blit(t.image, (t.x+t.w*i+self.room.relativex,t.y+t.h*j+self.room.relativey))  
+            for t in self.room.southtileboxes:
+		 for j in range(0, t.ny):
+                        for i in range(0,t.nx):
+		 		if t.image != None:
+		 			self.screen.blit(t.image, (t.x+t.w*i+self.room.relativex,t.y+t.h*j+self.room.relativey))  
+            for t in self.room.westtileboxes:
+		 for j in range(0, t.ny):
+                        for i in range(0,t.nx):
+		 		if t.image != None:
+		 			self.screen.blit(t.image, (t.x+t.w*i+self.room.relativex,t.y+t.h*j+self.room.relativey))  
             for t in self.room.tileboxes:
-		 if t.image != None:
-		 	self.screen.blit(t.image, (t.x+self.room.relativex,t.y+self.room.relativey))  
+		 for j in range(0, t.ny):
+                        for i in range(0,t.nx):
+		 		if t.image != None:
+		 			self.screen.blit(t.image, (t.x+t.w*i+self.room.relativex,t.y+t.h*j+self.room.relativey))  
+
 	    for e in self.room.exits:
                 if hasattr(e, 'draw'):
 		 	self.screen.blit(e.image, (e.x+self.room.relativex,e.y+self.room.relativey))  
