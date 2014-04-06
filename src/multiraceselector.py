@@ -27,6 +27,7 @@ from gnollracebutton import *
 from kattaracebutton import *
 from elfracebutton import *
 from drowracebutton import *
+from widgettextxywhlabel import *
 
 import sys
 import time
@@ -43,6 +44,13 @@ class MultiRaceSelector(MultiSelectorWindow):
 	self.add_widget(KattaRaceButton(self, self.selectkatta, None)) 
 	self.add_widget(ElfRaceButton(self, self.selectelf, None)) 
 	self.add_widget(DrowRaceButton(self, self.selectdrow, None)) 
+
+	## FIXME 13 == fontsize
+	self.add_widget(WidgetTextXYWHLabel(self, self.selecthuman, None, 0,50,50,13, font, "human")) 
+	self.add_widget(WidgetTextXYWHLabel(self, self.selectgnoll, None, 50,50,50,13, font, "gnoll")) 
+	self.add_widget(WidgetTextXYWHLabel(self, self.selectkatta, None, 100,50,50,13, font, "katta")) 
+	self.add_widget(WidgetTextXYWHLabel(self, self.selectelf, None, 150,50,50,13, font, "elf")) 
+	self.add_widget(WidgetTextXYWHLabel(self, self.selectdrow, None, 200,50,50,13, font, "drow")) 
 
 	self.yoffset = 70
 
@@ -68,11 +76,6 @@ class MultiRaceSelector(MultiSelectorWindow):
 	### NOTE draw member func is in rootwindow
     def drawimages(self):
 	MultiSelectorWindow.drawimages(self)
-        self.screen.blit(self.font.render("human", 6, (255,255,255)), (0,50))
-        self.screen.blit(self.font.render("gnoll", 6, (255,255,255)), (50,50))
-        self.screen.blit(self.font.render("katta", 6, (255,255,255)), (100,50))
-        self.screen.blit(self.font.render("elf", 6, (255,255,255)), (150,50))
-        self.screen.blit(self.font.render("drow", 6, (255,255,255)), (200,50))
 
     def window_mainloop(self, integratedsleeptime):
         while 1:
