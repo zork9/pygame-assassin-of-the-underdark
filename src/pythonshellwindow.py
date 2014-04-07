@@ -40,7 +40,14 @@ class PythonShellWindow(MultiSelectorWindow):
 	self.add_widget(WidgetTextXYWHLabel(self, None, None, 0,350-14,300,14, font, "Python Shell")) 
 
     def touchtextbox(self,X,Y):
-	self.textbox.text += str(pygame.key.name(Y))	
+	if str(pygame.key.name(Y)) == "space":	
+		self.textbox.text += " "	
+	elif str(pygame.key.name(Y)) == "backspace":	
+		self.textbox.text = self.textbox.text[:-1]	
+	elif str(pygame.key.name(Y)) == "return":	
+		self.textbox.text += "\n"	
+	else:
+		self.textbox.text += str(pygame.key.name(Y))	
 
     ### NOTE draw member func is in rootwindow
     def drawimages(self):
