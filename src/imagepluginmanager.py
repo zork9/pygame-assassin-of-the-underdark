@@ -27,6 +27,14 @@ class ImagePluginManager:
 	self.plugindirectory = directory 
 	self.addpluginpathtosyspath()
 
+    ##############
+    ### You can add the plugins path to the python sys path :
+    def addpluginpathtosyspath(self):
+	sys.path.append(self.plugindirectory)
+    ##############
+    ### You can add a path such as this src/ path (or '..') within the plugins
+    ### scripts directory and access all imagebuffer code, see the file
+    ### plugins/exampleplugintemplate.py 
     def addpluginpathtosyspath(self):
 	sys.path.append(self.plugindirectory)
 
