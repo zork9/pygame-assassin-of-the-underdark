@@ -23,6 +23,7 @@
 					    	RGB-IMAGE "Layer 1" 100 NORMAL-MODE)0))
 			(gimp-drawable-fill layer BG-IMAGE-FILL)
 			(gimp-image-add-layer image layer 0)
+			(gimp-text-fontname 3 21 -1 0 str 0 TRUE 25 PIXELS "-freefont-blippo-heavy-r-normal-*-24-*-*-*-p-*-iso8859-1") 
 			(gimp-display-new image)
 			(outfile (string-append "~/" "text-to-bmp.bmp"))
 			(newimage (car (gimp-edit-paste-as-new)))
