@@ -39,7 +39,6 @@ class DungeonCave(Exit):
 	 player.x < self.x+room.relativex + self.w and 
 	 player.y > self.y+room.relativey+20 and 
 	 player.y < self.y+room.relativey + self.h - 20):
-	    print "collision in Dungeon Cave !"	
 	    return 1 
 	else:
 	    return 0
