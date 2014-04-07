@@ -21,7 +21,7 @@ from rng import *
 from widgettreenode import *
 from widgetframe import *
 from widgettextxywhlabel import *
-from widgettextbox import *
+from widgetpythonshelltextbox import *
 from multiselectorwindow import *
 import sys
 import time
@@ -33,7 +33,7 @@ class PythonShellWindow(MultiSelectorWindow):
 
 	# construct widgets
 	
-	self.textbox = WidgetTextBox(self, self.touchtextbox, None, font)
+	self.textbox = WidgetPythonShellTextBox(self, self.touchtextbox, None, font)
 	self.add_widget(self.textbox) 
 
 	## FIXME 13 == fontsize
@@ -42,8 +42,11 @@ class PythonShellWindow(MultiSelectorWindow):
     def touchtextbox(self,X,Y):
 	if str(pygame.key.name(Y)) == "space":	
 		self.textbox.text += " "	
-	elif str(pygame.key.name(Y)) == "backspace":	
-		self.textbox.text = self.textbox.text[:-1]	
+	elif str(pygame.key.name(Y)) == "backspace":
+		if len(self.textbox.text) <= 4:
+			return	
+		else:
+			self.textbox.text = self.textbox.text[:-1]	
 	elif str(pygame.key.name(Y)) == "return":	
 		self.textbox.text += "\n"	
 	else:
