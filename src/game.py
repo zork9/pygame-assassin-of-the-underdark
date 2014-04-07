@@ -75,6 +75,7 @@ from playerelfassassin import *
 from playerdrowassassin import *
 
 import imagepluginmanager
+import sys,os
 
 class Game:
     "Main function"
@@ -227,10 +228,13 @@ class Game:
 	self.talktext = "" 
         self.taskbar = Taskbar(self.screen,self.font,self.player)
        
-	self.imagepluginmanager = imagepluginmanager.ImagePluginManager()
+	self.imagepluginmanager = imagepluginmanager.ImagePluginManager("./plugins/")
 	self.imagepluginmanager.start()
-	print self.imagepluginmanager.getpluginfilenames()
- 
+
+	sys.path.append(self.imagepluginmanager.plugindirectory)
+	for f in self.imagepluginmanager.getpluginfilenames():
+		execfile(self.imagepluginmanager.plugindirectory + f)	
+			
         pygame.key.set_repeat(90,90)
         gameover = 0
         while gameover == 0:

@@ -21,22 +21,30 @@ import os
 
 class ImagePluginManager:
     ""
-    def __init__(self):
+    def __init__(self, directory = "./plugins/"):
 	### self.pluginrc = pluginrc
 	self.pluginfilenames = []
+	self.plugindirectory = directory 
+	self.addpluginpathtosyspath()
+
+    def addpluginpathtosyspath(self):
+	sys.path.append(self.plugindirectory)
+
+    def filetoimport(self, filename):
+	return filename.split('.')[0] ## FIXME .x.py
 
     def start(self):
-	if os.path.isdir('./plugins'):
-		self.refresh("./plugins/")
-	if os.path.isdir('./scripts'):
-		self.refresh("./scripts/")
+	if os.path.isdir(self.plugindirectory):
+		self.refresh(self.plugindirectory)
+###	if os.path.isdir('./scripts'):
+###		self.refresh("./scripts/")
 
     def getpluginfilenames(self):
 	return self.pluginfilenames
 	
-    def refresh(self, pluginsdirectory):
-	filenames = os.listdir(pluginsdirectory)
+    def refresh(self, plugindirectory = "./plugins/"):
+	filenames = os.listdir(plugindirectory)
 	for filename in filenames:
 		if filename.endswith(".py"):
-			self.pluginfilenames.append(pluginsdirectory + filename)	
+			self.pluginfilenames.append(filename)	
      
