@@ -1,5 +1,6 @@
 todo items:
 -----------
+. [OPEN] chroot to plugins dir for python shell (execfile, system)
 . [OPEN] python shell widget for working on src/plugins/ directory
 . [OPEN] work on pixelbuffer of background for player graphics, do not blit everything each main loop
 . [HALFDONE] for graphics on screen : in game.py line : self.room.draw(self) must be images blit in 
