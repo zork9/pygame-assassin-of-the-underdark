@@ -18,6 +18,9 @@ class StateimagelibraryBase:
     def addpicture(self, image):
 	pass
 
+    def update(self):
+	pass
+
     def drawstatic(self, screen, xx, yy, index):
 	pass
 
