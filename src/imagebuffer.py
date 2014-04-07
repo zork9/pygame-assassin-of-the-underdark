@@ -16,6 +16,7 @@
 
 import pygame
 from pygame.locals import *
+from struct import pack,unpack
 
 # FIXME needs to be scripted (eventually)
 
@@ -47,19 +48,34 @@ class ImageBuffer:
 	print "height=%d\n" % self.getheight(image)
 	print "bpp=%d\n" % image.get_bitsize()
 	print "bufferlength=%d\n" % self.imagebuffer.length
-	print "buffer=%s\n" % self.imagebuffer.raw
+	#print "buffer=%s\n" % self.imagebuffer.raw
 
     ### image transformation functions
-	
-    def dither(self, image):  ## image is a surface
-	self.imagebuffer = image.get_buffer()
 
+    def dither(self, image, r,g,b,a):  ## image is a surface
+	self.imagebuffer = image.get_buffer()
+	buffer = ""
+		
+	for j in range(0,self.getheight(image)):
+		for i in range(0,self.getwidth(image)*4):
+			### FIXME endianess !	
+			if i % 4 == 0:
+				char = chr(ord(self.imagebuffer.raw[i + j * self.getwidth(image)]) * r)
+			if i % 3 == 0:
+				char = chr(ord(self.imagebuffer.raw[i + j * self.getwidth(image)]) * g)
+			if i % 2 == 0:
+				char = chr(ord(self.imagebuffer.raw[i + j * self.getwidth(image)]) * b) 
+			if i % 1 == 0:
+				char = chr(ord(self.imagebuffer.raw[i + j * self.getwidth(image)]) * a) 
+			buffer += char
+	self.imagebuffer.write(buffer,0)
+				
     def ditherbuffer(self, imagebufferproxy):
 	1 # FIXME	
 
 
     def write(self, image, offset, bufferraw):
 	self.imagebuffer = image.get_buffer()
-	self.immagebuffer.write(bufferraw, offset)
+	self.imagebuffer.write(bufferraw, offset)
 
 
