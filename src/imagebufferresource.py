@@ -19,6 +19,7 @@ from pygame.locals import *
 from resourcebase import *
 from resourcesubject import *
 from imagebufferresource import *
+from imagebuffer import *
 
 class ImageBufferResource(ResourceBase,ResourceSubject,ImageBuffer):
     ""

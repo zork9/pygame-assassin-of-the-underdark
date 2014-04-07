@@ -27,7 +27,7 @@ class ImageBuffer:
     def __init__(self):
 	self.imagebuffer = None
 
-    ### status get functions
+    ### status get and set functions
 
     def getwidth(self, image):
 	return image.get_width()
@@ -37,6 +37,9 @@ class ImageBuffer:
 
     def getbpp(self, image):
 	return image.get_bitsize()
+
+    def set(self, image):  ## image is a surface
+	self.imagebuffer = image.get_buffer()
 
     def printimagedata(self,image):
 	self.imagebuffer = image.get_buffer()
@@ -54,7 +57,9 @@ class ImageBuffer:
     def ditherbuffer(self, imagebufferproxy):
 	1 # FIXME	
 
-    def set(self, image):  ## image is a surface
+
+    def write(self, image, offset, bufferraw):
 	self.imagebuffer = image.get_buffer()
+	self.immagebuffer.write(bufferraw, offset)
 
 
