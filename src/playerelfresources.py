@@ -56,7 +56,7 @@ class PlayerElfResources:
 	#test code : 
 	#img = imageres.image
 	#imgbuf = ImageBufferResource()
-	#imgbuf.dither(img,1/2,1,1,1)	
+	#imgbuf.filter2(img,1/2,1,1,1)	
 
     def askpicture(self):
         return './pics/taskbar-PC-elffighter.bmp'
