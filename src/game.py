@@ -24,7 +24,8 @@ from maproom3 import *
 from rng import *
 from multiraceselector import *
 from multiclassselector import *
-#from selector import *
+from pythonshellwindow import *
+##from selector import *
 from taskbar import *
 from time import *
 from sys import *
@@ -91,7 +92,7 @@ class Game:
         titleimage = pygame.image.load('./pics/titlescreen0.3.bmp').convert()
         self.x = 0
         self.y = 0
-        
+       
         while gameover == 0:
             pygame.display.update()
             self.screen.blit(titleimage, (0,0))
@@ -246,8 +247,12 @@ class Game:
             	   
 		    if event.key == K_ESCAPE:
 			gameover = 1
- 
+
                     self.player.draw(self.screen)
+
+                    if event.key == K_p:
+			self.pythonshellwindow = PythonShellWindow(self.screen, self.font)
+			self.pythonshellwindow.window_mainloop(0.3)
 
                     if event.key == K_s:
 			if self.taskbar.inventoryitem != None:

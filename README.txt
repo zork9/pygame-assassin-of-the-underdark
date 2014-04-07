@@ -24,6 +24,15 @@ main screen :
 - c key : cast selected spell item 
 - arrow keys : movement
 
+- p key : open Python scripting shell window
+
+
+Python scripting shell window :
+-------------------------------
+
+- Escape key : quit window 
+- keyboard keys
+
 inventory and/or spelbook screen :
 ----------------------------------
 

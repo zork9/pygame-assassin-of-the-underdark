@@ -58,19 +58,19 @@ class MultiRaceSelector(MultiSelectorWindow):
 
 	self.raceslist = ["Human", "Gnoll", "Katta", "Elf", "Drow"]
 
-    def selecthuman(self):
+    def selecthuman(self,X,Y):
 	self.race = "Human"	
 
-    def selectgnoll(self):
+    def selectgnoll(self,X,Y):
 	self.race = "Gnoll"	
 
-    def selectkatta(self):
+    def selectkatta(self,X,Y):
 	self.race = "Katta"	
 
-    def selectelf(self):
+    def selectelf(self,X,Y):
 	self.race = "Elf"	
 
-    def selectdrow(self):
+    def selectdrow(self,X,Y):
 	self.race = "Drow"	
 
 	### NOTE draw member func is in rootwindow

@@ -70,28 +70,28 @@ class MultiClassSelector(MultiSelectorWindow):
 	self.classeslist = ["Fighter", "Magic User", "Thief", "Fighter Magic User", "Fighter Thief", "Magic User Thief", "Monk", "Assassin"]
 
 
-    def selectfightermagicuser(self):
+    def selectfightermagicuser(self,X,y):
 	self.klass = "Fighter Magic User"	
 
-    def selectfighterthief(self):
+    def selectfighterthief(self,X,y):
 	self.klass = "Fighter Thief"	
 
-    def selectmagicuserthief(self):
+    def selectmagicuserthief(self,X,y):
 	self.klass = "Magic User Thief"	
 
-    def selectfighter(self):
+    def selectfighter(self,X,y):
 	self.klass = "Fighter"	
 
-    def selectmagicuser(self):
+    def selectmagicuser(self,X,y):
 	self.klass = "Magic User"	
 
-    def selectthief(self):
+    def selectthief(self,X,y):
 	self.klass = "Thief"	
 
-    def selectmonk(self):
+    def selectmonk(self,X,y):
 	self.klass = "Monk"	
 
-    def selectassassin(self):
+    def selectassassin(self,X,y):
 	self.klass = "Assassin"	
 
 
