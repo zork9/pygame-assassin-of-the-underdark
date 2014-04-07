@@ -14,13 +14,13 @@
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ;; display textbox, print text in textbox to bmp file in your home directory
-;; (Linux $HOME)
+;; (Linux home directory)
 
 
-(define (script-fu-text-to-bmp)
+(define (script-fu-text-to-bmp str font adjust)
   	(let* ((image (car (gimp-image-new 100 100 RGB)))
 	       	(layer (car (gimp-layer-new image 100 100
-					    	RGB-IMAGE "text" 100 NORMAL-MODE)0))
+					    	RGB-IMAGE "Layer 1" 100 NORMAL-MODE)0))
 			(gimp-drawable-fill layer BG-IMAGE-FILL)
 			(gimp-image-add-layer image layer 0)
 			(gimp-display-new image)
