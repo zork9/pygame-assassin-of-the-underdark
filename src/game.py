@@ -74,6 +74,8 @@ from playerkattaassassin import *
 from playerelfassassin import *
 from playerdrowassassin import *
 
+import imagepluginmanager
+
 class Game:
     "Main function"
     def __init__(self):
@@ -224,7 +226,11 @@ class Game:
 	self.talker = None
 	self.talktext = "" 
         self.taskbar = Taskbar(self.screen,self.font,self.player)
-        
+       
+	self.imagepluginmanager = imagepluginmanager.ImagePluginManager()
+	self.imagepluginmanager.start()
+	print self.imagepluginmanager.getpluginfilenames()
+ 
         pygame.key.set_repeat(90,90)
         gameover = 0
         while gameover == 0:
