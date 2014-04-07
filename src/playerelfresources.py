@@ -18,6 +18,7 @@ import pygame
 from pygame.locals import *
 from stateimageresourcelibrary import *
 from imageresource import *
+from imagebufferresource import *
 
 class PlayerElfResources:
     "playerelf"
@@ -51,6 +52,12 @@ class PlayerElfResources:
         self.stimlibfight.addpicture(imageres)
         imageres = ImageResource().load0('./pics/playerelffighterfight3-48x48.bmp')
         self.stimlibfight.addpicture(imageres)
+
+	#test code : 
+	#img = imageres.image
+	#imgbuf = ImageBufferResource()
+	#imgbuf.printimagedata(img)
+	
 
     def askpicture(self):
         return './pics/taskbar-PC-elffighter.bmp'

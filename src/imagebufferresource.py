@@ -21,19 +21,39 @@ from resourcesubject import *
 
 # FIXME needs to be scripted eventually
 
+# the buffer is persistent, pushes self.imagebufer status with image as
+# arguments to functions e.g. dither
+
 class ImageBufferResource(ResourceBase,ResourceSubject):
     ""
     def __init__(self):
 	ResourceBase.__init__(self)
 	ResourceSubject.__init__(self)
+	self.imagebuffer = None
 
     def dither(self, image):  ## image is a surface(
-	image.get_buffer()
-	1 # FIXME
+	self.imagebuffer = image.get_buffer()
 
     def ditherbuffer(self, imagebufferproxy):
 	1 # FIXME	
+
+    def getwidth(self, image):
+	return image.get_width()
 	
+    def getheight(self, image):
+	return image.get_height()
+
+    def getbpp(self, image):
+	return image.get_bitsize()
+	
+    def printimagedata(self,image):
+	self.imagebuffer = image.get_buffer()
+	print "width=%d\n" % self.getwidth(image)
+	print "height=%d\n" % self.getheight(image)
+	print "bpp=%d\n" % image.get_bitsize()
+	print "bufferlength=%d\n" % self.imagebuffer.length
+	print "buffer=%s\n" % self.imagebuffer.raw
+
     def notify(self):
 	for o in self.observers:
 		if o != None:
