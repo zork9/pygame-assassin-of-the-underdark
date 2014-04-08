@@ -1,6 +1,16 @@
+
+Running the game :
+------------------
+
 run 'python game.py' inside the src/ directory to run the game, pics/
 directory must be in the directory you run python in.
 You need to install pygame in your python distribution, see http://pygame.org
+
+Running the Python Shell :
+--------------------------
+
+run 'python pythonshellwindow.py' inside the src/ directory to run the game, pics/
+directory must be in the directory you run python in.
 
 These are the commands :
 
@@ -23,8 +33,6 @@ main screen :
 - s key : use selected inventory item
 - c key : cast selected spell item 
 - arrow keys : movement
-
-- p key : open Python scripting shell window
 
 
 Python scripting shell window :

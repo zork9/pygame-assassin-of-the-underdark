@@ -265,9 +265,9 @@ class Game:
 
                     self.player.draw(self.screen)
 
-                    if event.key == K_p:
-			self.pythonshellwindow = PythonShellWindow(self.screen, self.font)
-			self.pythonshellwindow.window_mainloop(0.3)
+                    ###if event.key == K_p:
+	            ###		self.pythonshellwindow = PythonShellWindow(self.screen, self.font)
+	            ###		self.pythonshellwindow.window_mainloop(0.3)
 
                     if event.key == K_s:
 			if self.taskbar.inventoryitem != None:
