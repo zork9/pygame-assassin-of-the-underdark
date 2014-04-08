@@ -46,6 +46,13 @@ inventory and/or spelbook screen :
 - 'z' or 'x' key : exit inventory screen and select itme under rectangle
 - arrow keys : movement in inventory
 
+Plugins :
+---------
+
+Inside src/ there is a plugins directory which gets executed by the program by using
+the imagepluginmanager class
+All scripts get loaded at the start of the game.
+Read the python files in the src/plugins/ directory for more information.
 
 Python scripting shell window :
 -------------------------------
