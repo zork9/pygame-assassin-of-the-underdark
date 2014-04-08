@@ -47,8 +47,11 @@ class PythonShellWindow(MultiSelectorWindow):
 			return	
 		else:
 			self.textbox.text = self.textbox.text[:-1]	
-	elif str(pygame.key.name(Y)) == "return":	
-		self.textbox.text += "\n"	
+	elif Y == K_RETURN:	
+		eval(self.textbox.text[4:])
+		###eval(self.textbox.text)
+		self.textbox.text = ">>> "	
+		###self.textbox.text += ""
 	else:
 		self.textbox.text += str(pygame.key.name(Y))	
 
