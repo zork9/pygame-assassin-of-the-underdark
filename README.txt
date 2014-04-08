@@ -20,13 +20,6 @@ These are the commands :
 	the text area. If you remove the "..." on a new line, python eval
 	function gets called on the full textarea buffer
 
-character selection screen :
-----------------------------
-
-use mouse to select a picture as character, if you don't click a character or just 
-press a key ni this screen,
-a random char is made.
-
 main screen :
 -------------
 
@@ -40,18 +33,25 @@ main screen :
 - c key : cast selected spell item 
 - arrow keys : movement
 
+character selection screen :
+----------------------------
 
-Python scripting shell window :
--------------------------------
-
-- Escape key : quit window 
-- keyboard keys
+use mouse to select a picture as character, if you don't click a character or just 
+press a key ni this screen,
+a random char is made.
 
 inventory and/or spelbook screen :
 ----------------------------------
 
 - 'z' or 'x' key : exit inventory screen and select itme under rectangle
 - arrow keys : movement in inventory
+
+
+Python scripting shell window :
+-------------------------------
+
+- Escape key : quit window 
+- keyboard keys
 
 Scripts :
 ---------
