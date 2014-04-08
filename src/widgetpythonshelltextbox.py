@@ -18,11 +18,11 @@ import pygame
 from pygame.locals import *
 
 from treenode import *
-from widgettextbox import *
+from widgettextarea import *
 
-class WidgetPythonShellTextBox(WidgetTextBox):
+class WidgetPythonShellTextArea(WidgetTextArea):
     ""
     def __init__(self, parent, callback, widgettreenode, font):
-    	WidgetTextBox.__init__(self, parent, callback, widgettreenode, font)
+    	WidgetTextArea.__init__(self, parent, callback, widgettreenode, font)
 	self.text = ">>> "
 

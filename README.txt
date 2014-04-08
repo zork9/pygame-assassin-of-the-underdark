@@ -9,10 +9,16 @@ You need to install pygame in your python distribution, see http://pygame.org
 Running the Python Shell :
 --------------------------
 
-run 'python pythonshellwindow.py' inside the src/ directory to run the game, pics/
+This is work in progress :
+
+run 'python pythonshellwindowmain.py' inside the src/ directory to run the game, pics/
 directory must be in the directory you run python in.
 
 These are the commands :
+
+	def gets parsed to a tabulated (with spaces) line and you jump into
+	the text area. If you remove the "..." on a new line, python eval
+	function gets called on the full textarea buffer
 
 character selection screen :
 ----------------------------

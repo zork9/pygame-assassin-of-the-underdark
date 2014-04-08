@@ -23,6 +23,7 @@ from widgetframe import *
 from widgettextxywhlabel import *
 from widgetpythonshelltextbox import *
 from multiselectorwindow import *
+from pythontextareaparser import *
 import sys
 import time
 
@@ -30,44 +31,18 @@ class PythonShellWindow(MultiSelectorWindow):
     "Python Shell Window"
     def __init__(self, screen, font):
 	MultiSelectorWindow.__init__(self, screen, font, 300,350)
-
-	# construct widgets
 	
-	self.textbox = WidgetPythonShellTextBox(self, self.touchtextbox, None, font)
-	self.add_widget(self.textbox) 
-
+	# construct widgets
+	self.textarea = None	
+	self.textareaparser = PythonTextareaParser(self.textarea)
+	self.textarea = WidgetPythonShellTextArea(self, self.textareaparser.parse, None, font)
+	self.add_widget(self.textarea) 
+	self.textareaparser.textarea = self.textarea
 	## FIXME 13 == fontsize
 	self.add_widget(WidgetTextXYWHLabel(self, None, None, 0,350-14,300,14, font, "Python Shell")) 
 
-    def touchtextbox(self,X,Y):
-	if str(pygame.key.name(Y)) == "space":	
-		self.textbox.text += " "	
-	elif str(pygame.key.name(Y)) == "tab":	
-		self.textbox.text += "\t"	
-	elif str(pygame.key.name(Y)) == "backspace":
-		if len(self.textbox.text) <= 4:
-			return	
-		else:
-			self.textbox.text = self.textbox.text[:-1]	
-	elif Y == K_RETURN:
-		print "foo=%s" % self.textbox.text
-		if self.textbox.text.endswith("   ") or self.textbox.text.endswith("\n   "):
-			eval(self.textbox.text[4:])
-			self.textbox.text = ">>> "
-			return
-		if self.textbox.text.startswith(">>> def "):	
-			self.textbox.text += "\n   "
-			return	
-		elif self.textbox.text.startswith(">>> "):	
-			return 
-		print "foo=%s" % (self.textbox.text.split('\n')[:-1][0])
-		if self.textbox.text.split('\n')[:-1][0].startswith("   "):
-			return	
-		###else:
-		###	eval(self.textbox.text)
-		###self.textbox.text += ""
-	else:
-		self.textbox.text += str(pygame.key.name(Y))	
+	self.prev = ""	
+	
 
     ### NOTE draw member func is in rootwindow
     def drawimages(self):
@@ -98,12 +73,68 @@ class PythonShellWindow(MultiSelectorWindow):
                     if event.type == KEYDOWN:
 		    	if event.key == K_ESCAPE:
 				return
-	
-			self.widgetroot.interrupt(pygame.KEYDOWN, self.textbox.x+2, event.key)
+
+			# Note that the argument is a HACK with Y = event.key	
+			self.widgetroot.interrupt(pygame.KEYDOWN, self.textarea.x+2, event.key)
 			
 		time.sleep(integratedsleeptime)
 
     def askclass(self):
         return self.klass
+
+
+    ### the following is a HACK, use the following lines 
+    ### self.textarea = WidgetPythonShellTextArea(self, self.touchtextarea, None, font)
+    ### self.widgetroot.interrupt(pygame.KEYDOWN, self.textarea.x+2, event.key)
+    ### Note that this callbac function has been abandoned for a real textarea parser
+    def touchtextarea(self,X,Y):
+
+	# switch sshifted keyboard commands
+	if self.prev == "right shift" or self.prev == "left shift":
+		print "text after update=%s =%s= prev=%s=" % (Y, str(pygame.key.name(Y)), self.prev)
+		if pygame.key.name(Y) == ';':
+			self.textarea.text += ":"		
+		elif pygame.key.name(Y) == '9':
+			self.textarea.text += "("		
+		elif pygame.key.name(Y) == '0':
+			self.textarea.text += ")"		
+		self.prev = ""
+		return 
+
+	if str(pygame.key.name(Y)) == "space":	
+		self.textarea.text += " "	
+	elif str(pygame.key.name(Y)) == "tab":	
+		self.textarea.text += "\t"	
+	elif str(pygame.key.name(Y)) == "backspace":
+		if len(self.textarea.text) <= 4:
+			return	
+		else:
+			self.textarea.text = self.textarea.text[:-1]	
+	elif Y == K_RETURN:
+		###print "foo=%s" % self.textarea.text
+		if self.textarea.text.endswith("   ") or self.textarea.text.endswith("\n   "):
+			eval(self.textarea.text[4:])
+			self.textarea.text = ">>> "
+			return
+		if self.textarea.text.startswith(">>> def "):	
+			print "foo=%s" % self.textarea.text
+			if self.textarea.text.endswith(":"): 	
+				self.textarea.text += "\n   "
+			return	
+		elif self.textarea.text.endswith(">>> "):	
+			return 
+		print "foo=%s" % (self.textarea.text.split('\n')[:-1][0])
+
+		### tabulated line, with text after '   '  
+		if self.textarea.text.split('\n')[:-1][0].startswith("   "):
+			if len(self.textarea.text.split('\n')[:-1][0]) > len("   "):
+				self.textarea.text += "\n"
+			return	
+	else:
+		if pygame.key.name(Y) == "right shift" or pygame.key.name(Y) == "left shift":
+			self.prev = pygame.key.name(Y) ### NOTE put also in return stataements
+		else:	
+			self.textarea.text += str(pygame.key.name(Y))	
+
 
 

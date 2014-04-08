@@ -27,11 +27,12 @@ class WidgetTextArea(Widget, WidgetFrame):
 	Widget.__init__(self, parent, callback, widgettreenode)	
 	WidgetFrame.__init__(self, parent.x, parent.y, parent.w, parent.h)	
 	self.font = font 
-	self.lineslist = []
-	self.fontw = pygame.font.size()[0]
-	self.fonth = pygame.font.size()[0]
+	self.text = ""
+	self.lines = []
 
     def draw(self, screen):
-	for line in self.lineslist:
-        	screen.blit(self.font.render(line, self.fonth, (255,255,255)), (self.x,self.y))
-    		 
+	self.lines = self.text.split('\n')
+	for n in range(0, len(self.lines)):	
+		###print "foo=%s n=%d" % (self.lines,n)
+        	screen.blit(self.font.render(self.lines[n], 8, (255,255,255)), (self.x, n * 8))
+        	

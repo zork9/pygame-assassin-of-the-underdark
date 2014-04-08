@@ -35,7 +35,7 @@ class PythonShellWindowMain:
         self.screen = pygame.display.set_mode((300, 350))
         self.font = pygame.font.SysFont("Times", 8)
 
-        pygame.key.set_repeat(90,90)
+        pygame.key.set_repeat(1000,1000)
         #pygame.display.update()
         #self.screen.blit(blankimage, (0,0))
 	self.pythonshellwindow = PythonShellWindow(self.screen, self.font)

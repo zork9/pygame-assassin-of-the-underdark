@@ -1,0 +1,12 @@
+04082014 :
+----------
+
+. start of python shell widget
+.
+
+04092014 :
+----------
+
+. plugin support, running scripts in src/plugins before start (you might change 
+  the graphics or AI system this way)
+
