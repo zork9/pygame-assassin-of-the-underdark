@@ -30,6 +30,7 @@ from magicuserclassbutton import *
 from thiefclassbutton import *
 from monkclassbutton import *
 from assassinclassbutton import *
+from druidclassbutton import *
 from imageresource import *
 from monklabel import *
 from widgettextxywhlabel import *
@@ -52,6 +53,7 @@ class MultiClassSelector(MultiSelectorWindow):
 	self.add_widget(ThiefClassButton(self, self.selectthief, None)) 
 	self.add_widget(MonkClassButton(self, self.selectmonk, None)) 
 	self.add_widget(AssassinClassButton(self, self.selectassassin, None)) 
+	self.add_widget(DruidClassButton(self, self.selectdruid, None)) 
 
 	## FIXME 13 == fontsize
 	self.add_widget(WidgetTextXYWHLabel(self, self.selectfightermagicuser, None, 0,50,50,13, font, "fighter/magicuser")) 
@@ -62,12 +64,13 @@ class MultiClassSelector(MultiSelectorWindow):
 	self.add_widget(WidgetTextXYWHLabel(self, self.selectthief, None, 250,50,50,13, font, "thief")) 
 	self.add_widget(MonkLabel(self, self.selectmonk, None, font, "monk")) 
 	self.add_widget(WidgetTextXYWHLabel(self, self.selectassassin, None, 50,100,50,13, font, "assassin")) 
+	self.add_widget(WidgetTextXYWHLabel(self, self.selectdruid, None, 100,100,50,13, font, "druid")) 
 
         self.klass = "Random Class"
 
 	self.yoffset = 70
 
-	self.classeslist = ["Fighter", "Magic User", "Thief", "Fighter Magic User", "Fighter Thief", "Magic User Thief", "Monk", "Assassin"]
+	self.classeslist = ["Fighter", "Magic User", "Thief", "Fighter Magic User", "Fighter Thief", "Magic User Thief", "Monk", "Assassin", "Druid"]
 
 
     def selectfightermagicuser(self,X,y):
@@ -94,21 +97,12 @@ class MultiClassSelector(MultiSelectorWindow):
     def selectassassin(self,X,y):
 	self.klass = "Assassin"	
 
+    def selectdruid(self,X,y):
+	self.klass = "Druid"	
 
 	### NOTE draw member func is in rootwindow
     def drawimages(self):
         MultiSelectorWindow.drawimages(self)       
-###        self.screen.blit(self.font.render("fighter/magicuser", 6, (255,255,255)), (0,50))
-###        self.screen.blit(self.font.render("fighter/thief", 6, (255,255,255)), (50,50))
-###        self.screen.blit(self.font.render("magicuser/thief", 6, (255,255,255)), (100,50))
-###        self.screen.blit(self.font.render("fighter", 6, (255,255,255)), (150,50))
-###        self.screen.blit(self.font.render("magic user", 6, (255,255,255)), (200,50))
-###        self.screen.blit(self.font.render("thief", 6, (255,255,255)), (250,50))
-###        self.screen.blit(self.font.render("monk", 6, (255,255,255)), (0,100))
-
-
-
-
 
     def window_mainloop(self, integratedsleeptime):
         while 1:

@@ -33,7 +33,7 @@ args = str(sys.argv)
 
 if len(sys.argv) < 7 or len(sys.argv) > 7:
 	print "Usage : outputplayer.py [playerrace] [playerclass] [Capitalplayerrace] [Capitalplayerclass] [RACE] [CLASS]\n"	
-	sys.exit
+	sys.exit(0)
 
 race = sys.argv[1]
 klass = sys.argv[2]
