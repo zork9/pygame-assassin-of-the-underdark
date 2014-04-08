@@ -1,5 +1,5 @@
 
-# Copyright (C) Johan Ceuppens 2010 
+# Copyright (C) Johan Ceuppens 2010-2014 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 2 of the License, or
@@ -42,15 +42,29 @@ class PythonShellWindow(MultiSelectorWindow):
     def touchtextbox(self,X,Y):
 	if str(pygame.key.name(Y)) == "space":	
 		self.textbox.text += " "	
+	elif str(pygame.key.name(Y)) == "tab":	
+		self.textbox.text += "\t"	
 	elif str(pygame.key.name(Y)) == "backspace":
 		if len(self.textbox.text) <= 4:
 			return	
 		else:
 			self.textbox.text = self.textbox.text[:-1]	
-	elif Y == K_RETURN:	
-		eval(self.textbox.text[4:])
-		###eval(self.textbox.text)
-		self.textbox.text = ">>> "	
+	elif Y == K_RETURN:
+		print "foo=%s" % self.textbox.text
+		if self.textbox.text.endswith("   ") or self.textbox.text.endswith("\n   "):
+			eval(self.textbox.text[4:])
+			self.textbox.text = ">>> "
+			return
+		if self.textbox.text.startswith(">>> def "):	
+			self.textbox.text += "\n   "
+			return	
+		elif self.textbox.text.startswith(">>> "):	
+			return 
+		print "foo=%s" % (self.textbox.text.split('\n')[:-1][0])
+		if self.textbox.text.split('\n')[:-1][0].startswith("   "):
+			return	
+		###else:
+		###	eval(self.textbox.text)
 		###self.textbox.text += ""
 	else:
 		self.textbox.text += str(pygame.key.name(Y))	
