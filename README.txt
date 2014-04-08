@@ -11,7 +11,7 @@ Running the Python Shell :
 
 This is work in progress :
 
-run 'python pythonshellwindowmain.py' inside the src/ directory to run the game, pics/
+run 'python pythonshellwindowmain.py' inside the src/ directory to run the shell window, pics/
 directory must be in the directory you run python in.
 
 These are the commands :

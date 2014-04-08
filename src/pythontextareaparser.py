@@ -74,19 +74,12 @@ class PythonTextareaParser:
 				return
 					
 					
-			###return	
 		elif self.textarea.text.endswith(">>> "):	
 			return 
-		#print "foo=%s" % (self.textarea.text.split('\n')[:-1][0])
 
-		### tabulated line, with text after '   '  
-		#if self.textarea.text.split('\n')[:-1][0].startswith("   "):
-		#	if len(self.textarea.text.split('\n')[:-1][0]) > len("   "):
-		#		self.textarea.text += "\n"
-		#	return	
 	else:
 		if pygame.key.name(Y) == "right shift" or pygame.key.name(Y) == "left shift":
-			self.prev = pygame.key.name(Y) ### NOTE put also in return stataements
+			self.prev = pygame.key.name(Y)
 		else:	
 			self.textarea.text += str(pygame.key.name(Y))	
 
