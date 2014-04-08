@@ -35,6 +35,7 @@ class ImagePluginManager:
     ### You can add a path such as this src/ path (or '..') within the plugins
     ### scripts directory and access all imagebuffer code, see the file
     ### plugins/exampleplugintemplate.py 
+
     def addpluginpathtosyspath(self):
 	sys.path.append(self.plugindirectory)
 

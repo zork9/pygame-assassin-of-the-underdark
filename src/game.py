@@ -351,7 +351,6 @@ class Game:
                                     elif event.key == K_z or event.key == K_x:
                                         self.spellitem = self.spellbook.getitem(self.spellitem)
 					self.taskbar.spellitem = self.spellitem
-					print "%s selected from spellbook" % (self.spellitem)
                                         flag = 1
                     			pygame.key.set_repeat(90,90)
 
