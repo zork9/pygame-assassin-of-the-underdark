@@ -24,6 +24,7 @@ from maproom3 import *
 from rng import *
 from multiraceselector import *
 from multiclassselector import *
+from charactersheetwindow import *
 from pythonshellwindow import *
 ##from selector import *
 from taskbar import *
@@ -91,6 +92,8 @@ class Game:
         self.screen = pygame.display.set_mode((300, 350))
         self.font = pygame.font.SysFont("Times", 8)
         gameover = 0
+	
+	self.charactersheet = None
 
         blankimage = pygame.image.load('./pics/blank.bmp').convert()
         ## There are several title screens in the ./pics/ directory
@@ -268,6 +271,9 @@ class Game:
                     ###if event.key == K_p:
 	            ###		self.pythonshellwindow = PythonShellWindow(self.screen, self.font)
 	            ###		self.pythonshellwindow.window_mainloop(0.3)
+                    if event.key == K_j:
+				self.charactersheet = CharacterSheetWindow(self.screen, self.font)
+        			self.charactersheet.window_mainloop(0.3)
 
                     if event.key == K_s:
 			if self.taskbar.inventoryitem != None:
