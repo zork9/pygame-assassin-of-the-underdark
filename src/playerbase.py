@@ -44,6 +44,21 @@ class PlayerBase0:
     	PlayerBase0.FIGHTER,PlayerBase0.MAGICUSER,PlayerBase0.THIEF,PlayerBase0.FIGHTERMAGICUSER,PlayerBase0.FIGHTERTHIEF,PlayerBase0.MAGICUSERTHIEF,PlayerBase0.MONK,PlayerBase0.ASSASSIN,PlayerBase0.DRUID = xrange(9)
     	PlayerBase0.ELF,PlayerBase0.GNOLL,PlayerBase0.KATTA,PlayerBase0.HUMAN,PlayerBase0.DROW = xrange(5)
 
+	# for character sheet
+	self.strength = 0
+	self.intelligence = 0
+	self.agility = 0
+	self.vitality = 0
+	self.luck = 0
+	self.weaponuse = 0
+	self.parry = 0
+	self.dodge = 0
+	self.stealth = 0
+	self.picklocks = 0
+	self.throwing = 0
+	self.climbing = 0
+	self.magic = 0
+
 class PlayerBaseRace:
     def __init__(self,PLAYERRACE):
         classByType = {

@@ -272,7 +272,7 @@ class Game:
 	            ###		self.pythonshellwindow = PythonShellWindow(self.screen, self.font)
 	            ###		self.pythonshellwindow.window_mainloop(0.3)
                     if event.key == K_j:
-				self.charactersheet = CharacterSheetWindow(self.screen, self.font)
+				self.charactersheet = CharacterSheetWindow(self.screen, self.font, self.player)
         			self.charactersheet.window_mainloop(0.3)
 
                     if event.key == K_s:

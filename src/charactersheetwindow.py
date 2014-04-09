@@ -29,26 +29,39 @@ import time
 
 class CharacterSheetWindow(MultiSelectorWindow):
     "Python Shell Window"
-    def __init__(self, screen, font):
+    def __init__(self, screen, font, player):
 	MultiSelectorWindow.__init__(self, screen, font, 300,350)
 	
 	# construct widgets
 	## FIXME 13 == fontsize
 	# left widgets
-	self.add_widget(WidgetTextXYWHLabel(self, None, None, 0,0,150,14, font, "Strength")) 
-	self.add_widget(WidgetTextXYWHLabel(self, None, None, 0,20,150,14, font, "Intelligence")) 
-	self.add_widget(WidgetTextXYWHLabel(self, None, None, 0,40,150,14, font, "Agility")) 
-	self.add_widget(WidgetTextXYWHLabel(self, None, None, 0,60,150,14, font, "Vitality")) 
-	self.add_widget(WidgetTextXYWHLabel(self, None, None, 0,80,150,14, font, "Luck")) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 0,0,100,14, font, "Strength")) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 100,0,100,14, font, "   " + str(player.strength))) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 0,20,100,14, font, "Intelligence")) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 100,20,100,14, font, "   " + str(player.intelligence))) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 0,40,100,14, font, "Agility")) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 100,40,100,14, font, "   " + str(player.agility))) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 0,60,100,14, font, "Vitality")) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 100,60,100,14, font, "   " + str(player.vitality))) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 0,80,100,14, font, "Luck")) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 100,80,100,14, font, "   " + str(player.luck))) 
 
-	self.add_widget(WidgetTextXYWHLabel(self, None, None, 150,0,150,14, font, "Weapon Use")) 
-	self.add_widget(WidgetTextXYWHLabel(self, None, None, 150,20,150,14, font, "Parry")) 
-	self.add_widget(WidgetTextXYWHLabel(self, None, None, 150,40,150,14, font, "Dodge")) 
-	self.add_widget(WidgetTextXYWHLabel(self, None, None, 150,60,150,14, font, "Stealth")) 
-	self.add_widget(WidgetTextXYWHLabel(self, None, None, 150,80,150,14, font, "Pick Locks")) 
-	self.add_widget(WidgetTextXYWHLabel(self, None, None, 150,100,150,14, font, "Throwing")) 
-	self.add_widget(WidgetTextXYWHLabel(self, None, None, 150,120,150,14, font, "Climbing")) 
-	self.add_widget(WidgetTextXYWHLabel(self, None, None, 150,140,150,14, font, "Magic")) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 150,0,100,14, font, "Weapon Use")) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 250,0,100,14, font, "   " + str(player.weaponuse))) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 150,20,100,14, font, "Parry")) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 250,20,100,14, font, "   " + str(player.parry))) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 150,40,100,14, font, "Dodge")) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 250,40,100,14, font, "   " + str(player.dodge))) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 150,60,100,14, font, "Stealth")) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 250,60,100,14, font, "   " + str(player.stealth))) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 150,80,100,14, font, "Pick Locks")) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 250,80,100,14, font, "   " + str(player.picklocks))) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 150,100,100,14, font, "Throwing")) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 250,100,100,14, font, "   " + str(player.throwing))) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 150,120,100,14, font, "Climbing")) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 250,120,100,14, font, "   " + str(player.climbing))) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 150,140,100,14, font, "Magic")) 
+	self.add_widget(WidgetTextXYWHLabel(self, None, None, 250,140,100,14, font, "   " + str(player.magic))) 
 
     ### NOTE draw member func is in rootwindow
     def drawimages(self):
@@ -75,8 +88,9 @@ class CharacterSheetWindow(MultiSelectorWindow):
 			return
 
                     if event.type == KEYDOWN:
-		    	if event.key == K_ESCAPE:
-				return
+		    	###if event.key == K_ESCAPE:
+			###	return
+			return
 
 			# Note that the argument is a HACK with Y = event.key	
 			####self.widgetroot.interrupt(pygame.KEYDOWN, self.textarea.x+2, event.key)
@@ -85,60 +99,6 @@ class CharacterSheetWindow(MultiSelectorWindow):
 
     def askclass(self):
         return self.klass
-
-
-    ### the following is a HACK, use the following lines 
-    ### self.textarea = WidgetPythonShellTextArea(self, self.touchtextarea, None, font)
-    ### self.widgetroot.interrupt(pygame.KEYDOWN, self.textarea.x+2, event.key)
-    ### Note that this callbac function has been abandoned for a real textarea parser
-    def touchtextarea(self,X,Y):
-
-	# switch sshifted keyboard commands
-	if self.prev == "right shift" or self.prev == "left shift":
-		print "text after update=%s =%s= prev=%s=" % (Y, str(pygame.key.name(Y)), self.prev)
-		if pygame.key.name(Y) == ';':
-			self.textarea.text += ":"		
-		elif pygame.key.name(Y) == '9':
-			self.textarea.text += "("		
-		elif pygame.key.name(Y) == '0':
-			self.textarea.text += ")"		
-		self.prev = ""
-		return 
-
-	if str(pygame.key.name(Y)) == "space":	
-		self.textarea.text += " "	
-	elif str(pygame.key.name(Y)) == "tab":	
-		self.textarea.text += "\t"	
-	elif str(pygame.key.name(Y)) == "backspace":
-		if len(self.textarea.text) <= 4:
-			return	
-		else:
-			self.textarea.text = self.textarea.text[:-1]	
-	elif Y == K_RETURN:
-		###print "foo=%s" % self.textarea.text
-		if self.textarea.text.endswith("   ") or self.textarea.text.endswith("\n   "):
-			eval(self.textarea.text[4:])
-			self.textarea.text = ">>> "
-			return
-		if self.textarea.text.startswith(">>> def "):	
-			print "foo=%s" % self.textarea.text
-			if self.textarea.text.endswith(":"): 	
-				self.textarea.text += "\n   "
-			return	
-		elif self.textarea.text.endswith(">>> "):	
-			return 
-		print "foo=%s" % (self.textarea.text.split('\n')[:-1][0])
-
-		### tabulated line, with text after '   '  
-		if self.textarea.text.split('\n')[:-1][0].startswith("   "):
-			if len(self.textarea.text.split('\n')[:-1][0]) > len("   "):
-				self.textarea.text += "\n"
-			return	
-	else:
-		if pygame.key.name(Y) == "right shift" or pygame.key.name(Y) == "left shift":
-			self.prev = pygame.key.name(Y) ### NOTE put also in return stataements
-		else:	
-			self.textarea.text += str(pygame.key.name(Y))	
 
 
 
