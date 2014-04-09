@@ -16,17 +16,27 @@
 
 import pygame
 from pygame.locals import *
+from meter import *
 
-class Meter:
-    "life or mana meter"
+class Mana:
+	def __init__(self):
+        	self.image = pygame.image.load('./pics/mana3.bmp').convert()
+        	self.image.set_colorkey((0,0,0)) 
+		
+
+class ManaMeter(Meter):
+    "mana meter"
     def __init__(self):
+	Meter.__init__(self)
 	self.max = 50 
 	self.index = 50
 	self.picslist = []
+	for i in range(0,3):
+		self.picslist.append(Mana())
  
     def draw(self,screen):
 	# KLUDGY
 	j = 0
 	for i in range(0,self.index):
-        	screen.blit(self.picslist[0].image, (78+j*1, 327))
+        	screen.blit(self.picslist[0].image, (78+j*1, 327+8))
 		j += 1

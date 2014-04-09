@@ -32,7 +32,8 @@ from time import *
 from sys import *
 from inventory import *
 from spellbook import *
-from meter import *
+from heartmeter import *
+from manameter import *
 from playergnollfighter import *
 from playerhumanfighter import *
 from playerhumanfightermagicuser import *
@@ -113,7 +114,8 @@ class Game:
                     gameover = 1
 
         self.room = Maproom1(0,0)
-        self.heartmeter = Meter()
+        self.heartmeter = HeartMeter()
+        self.manameter = ManaMeter()
 	self.player = None
         self.screen.blit(blankimage, (0,0))
 
@@ -239,6 +241,7 @@ class Game:
 	self.player.setclass(self.selectormc.askclass())
 
 	self.player.setheartmeter(self.heartmeter)        
+	self.player.setmanameter(self.manameter)        
         self.inventory = Inventory()
         self.inventoryitem = None 
         self.spellbook = Spellbook()
@@ -281,8 +284,9 @@ class Game:
 
                     if event.key == K_c:
 			if self.taskbar.spellitem != None:
-                        	self.taskbar.spellitem.cast(self)
-
+				if self.player.manapoints >= 0:
+                        		self.taskbar.spellitem.cast(self)
+					self.player.manapoints -= self.taskbar.spellitem.manapoints
                     if event.key == K_x:
                         o = self.player.pickup(self.room)
 		        if o != None:
@@ -435,6 +439,7 @@ class Game:
 	    # Set player hitpoints in life bar
 
 	    self.heartmeter.index = self.player.hitpoints
+	    self.manameter.index = self.player.manapoints
 
             # fight for enemies
             # remove dead game objects
@@ -447,6 +452,7 @@ class Game:
 
             self.taskbar.draw()
             self.heartmeter.draw(self.screen)
+            self.manameter.draw(self.screen)
 
 	    if self.talktext != "":
             	self.screen.blit(self.font.render(self.talktext, 13, (255,255,255)), (self.talker.x,self.talker.y-14))

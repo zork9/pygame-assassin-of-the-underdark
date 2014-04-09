@@ -27,6 +27,7 @@ class InventorySpell:
         self.image.set_colorkey((0,0,0))
 	self.name = "spell"
 	self.typename = "spell"
+	self.manapoints = 1
 
     def draw(self,screen,x,y):
         screen.blit(self.image, (x, y))

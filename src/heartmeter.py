@@ -16,13 +16,23 @@
 
 import pygame
 from pygame.locals import *
+from meter import *
 
-class Meter:
-    "life or mana meter"
+class Heart:
+	def __init__(self):
+        	self.image = pygame.image.load('./pics/life3.bmp').convert()
+        	self.image.set_colorkey((0,0,0)) 
+		
+
+class HeartMeter(Meter):
+    "life meter"
     def __init__(self):
+	Meter.__init__(self)
 	self.max = 50 
 	self.index = 50
 	self.picslist = []
+	for i in range(0,3):
+		self.picslist.append(Heart())
  
     def draw(self,screen):
 	# KLUDGY

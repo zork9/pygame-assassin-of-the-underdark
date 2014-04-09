@@ -104,8 +104,10 @@ class PlayerBase(PlayerBase, PlayerBase, PlayerBase0,PlayerBaseRace,PlayerBaseKl
 	self.klass = "Elf"
 	self.race = "Magic User Thief"
 	self.heartmeter = None 
+	self.manameter = None 
 	self.sword = BroadSword(0,0)
 	self.hitpoints = 78
+	self.manapoints = 57
         self.x = 150 
         self.y = 150 
         self.w = 48 
@@ -166,6 +168,9 @@ class PlayerBase(PlayerBase, PlayerBase, PlayerBase0,PlayerBaseRace,PlayerBaseKl
 
     def setheartmeter(self, heartmeter):
 	self.heartmeter = heartmeter
+
+    def setmanameter(self, manameter):
+	self.manameter = manameter
 
     def askrace(self):
         return self.race 
